@@ -1,0 +1,17 @@
+{
+  "name": "NailGestor · Gabriely Vitorino",
+  "short_name": "NailGestor",
+  "description": "Atendimentos, custos e estoque da Gabriely Vitorino Nail Designer. Funciona offline; os dados ficam só no aparelho.",
+  "lang": "pt-BR",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7EEE9",
+  "theme_color": "#F7EEE9",
+  "icons": [
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
