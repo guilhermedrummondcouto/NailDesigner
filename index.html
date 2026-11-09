@@ -301,7 +301,101 @@ button.linha-lista:active{background:#FFF0F5!important}
 .retorno-card{border-color:#F6CADC!important;background:linear-gradient(160deg,#FFEDF4 0%,var(--card) 72%)!important}
 .aviso-toast{background:rgba(58,28,42,.95)!important}
 input:focus,select:focus,textarea:focus{box-shadow:0 0 0 5px rgba(180,56,106,.14)!important}
+/* VISUAL VIDRO (desligado pela opção Visual: Sólido) */
+/* ===== VISUAL VIDRO (Liquid Glass) — camada por cima da Rosa Blush ===== */
+html:not(.solido){
+  --vidro:rgba(255,255,255,.46);
+  --vidro-forte:rgba(255,250,252,.80);
+  --vidro-borda:rgba(255,255,255,.78);
+  --vidro-luz:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(180,56,106,.06);
+  --vidro-blur:blur(22px) saturate(185%);
+  --r:22px;
+}
+/* fundo com cor para o vidro refletir */
+html:not(.solido) body{background:#FFF3F7}
+
+html:not(.solido) body::before{background:
+  radial-gradient(60% 38% at 6% 4%,rgba(247,170,201,.55) 0%,rgba(247,170,201,0) 70%),
+  radial-gradient(55% 34% at 100% 26%,rgba(251,205,184,.55) 0%,rgba(251,205,184,0) 70%),
+  radial-gradient(60% 36% at 0% 66%,rgba(226,196,240,.50) 0%,rgba(226,196,240,0) 70%),
+  radial-gradient(60% 38% at 100% 96%,rgba(246,222,176,.55) 0%,rgba(246,222,176,0) 70%),
+  #FFF3F7!important}
+
+/* topo transparente; os botões é que são de vidro */
+html:not(.solido) header.topo{background:linear-gradient(180deg,rgba(255,243,247,.86),rgba(255,243,247,.58))!important;
+  -webkit-backdrop-filter:var(--vidro-blur);backdrop-filter:var(--vidro-blur);border-bottom:1px solid rgba(255,255,255,.55)!important}
+
+html:not(.solido) .btn-ico{background:var(--vidro)!important;border:1px solid var(--vidro-borda)!important;
+  -webkit-backdrop-filter:var(--vidro-blur);backdrop-filter:var(--vidro-blur);
+  box-shadow:var(--vidro-luz),0 6px 16px -8px rgba(140,36,82,.35)!important}
+
+/* barra inferior flutuante em pílula */
+html:not(.solido) nav.abas{left:12px!important;right:12px!important;bottom:calc(10px + env(safe-area-inset-bottom))!important;
+  max-width:560px;margin:0 auto;border-radius:32px;padding:.38rem .4rem!important;
+  background:rgba(255,255,255,.68)!important;-webkit-backdrop-filter:blur(26px) saturate(190%);backdrop-filter:blur(26px) saturate(190%);
+  border:1px solid var(--vidro-borda)!important;
+  box-shadow:var(--vidro-luz),0 18px 40px -16px rgba(140,36,82,.42)!important}
+
+html:not(.solido) .aba{border-radius:24px;min-height:54px;color:var(--tinta2)}
+
+html:not(.solido) .aba[aria-current="page"]{background:rgba(180,56,106,.11);box-shadow:inset 0 0 0 1px rgba(180,56,106,.10)}
+
+html:not(.solido) .aba[aria-current="page"]::before{display:none}
+
+html:not(.solido) .fab{top:50%!important;margin:-29px 0 0 -29px!important;width:58px!important;height:58px!important;border-radius:50%!important;
+  border:1px solid rgba(255,255,255,.55)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,0) 48%),var(--rose-gold)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 10px 22px -8px rgba(140,36,82,.6)!important}
+
+html:not(.solido) .fab::after{top:-5px;right:-3px}
+
+html:not(.solido) main{padding-bottom:calc(8.5rem + env(safe-area-inset-bottom))}
+
+/* cartões: vidro quase sólido, para ler fácil */
+html:not(.solido) .cartao,html:not(.solido) .kpi{background:var(--vidro-forte)!important;border:1px solid var(--vidro-borda)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 12px 30px -18px rgba(140,36,82,.32)!important}
+
+html:not(.solido) .kpi.destaque{border:1px solid rgba(255,255,255,.35)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,0) 46%),linear-gradient(140deg,#B4386A 0%,#962A59 55%,#781E47 100%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 16px 30px -14px rgba(140,36,82,.65)!important}
+
+/* chips e botões secundários de vidro */
+html:not(.solido) .chip,html:not(.solido) .btn.contorno{background:var(--vidro)!important;border:1px solid var(--vidro-borda)!important;
+  -webkit-backdrop-filter:var(--vidro-blur);backdrop-filter:var(--vidro-blur);box-shadow:var(--vidro-luz)}
+
+html:not(.solido) .chip[aria-pressed="true"],html:not(.solido) .chip[aria-checked="true"]{border-color:rgba(255,255,255,.4)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 50%),var(--rose-gold)!important}
+
+html:not(.solido) .btn.primario{background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0) 50%),var(--rose-gold)!important;
+  border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 12px 22px -10px rgba(140,36,82,.6)!important}
+
+/* janelas (fichas, menus) sobem como folha de vidro */
+html:not(.solido) .folha{top:calc(env(safe-area-inset-top) + 14px)!important;border-radius:30px 30px 0 0;
+  background:rgba(255,246,250,.74)!important;-webkit-backdrop-filter:blur(34px) saturate(180%);backdrop-filter:blur(34px) saturate(180%);
+  border-top:1px solid rgba(255,255,255,.85);box-shadow:0 0 0 100vmax rgba(40,14,28,.30),0 -24px 60px -20px rgba(140,36,82,.45)}
+
+html:not(.solido) .folha-topo{background:rgba(255,248,251,.55)!important;border-bottom:1px solid rgba(255,255,255,.6)!important;
+  -webkit-backdrop-filter:var(--vidro-blur);backdrop-filter:var(--vidro-blur);padding-top:1.15rem!important;border-radius:30px 30px 0 0}
+
+html:not(.solido) .folha-topo::before{content:"";position:absolute;top:.45rem;left:50%;width:38px;height:5px;margin-left:-19px;border-radius:9px;background:rgba(109,70,88,.28)}
+
+html:not(.solido) .folha input:not([type=checkbox]):not([type=radio]):not([type=file]),html:not(.solido) .folha select,html:not(.solido) .folha textarea{background-color:rgba(255,255,255,.85)}
+
+html:not(.solido) .aviso-toast{background:rgba(58,28,42,.74)!important;-webkit-backdrop-filter:var(--vidro-blur);backdrop-filter:var(--vidro-blur);border:1px solid rgba(255,255,255,.18)}
+
+/* sem suporte a desfoque: versão sólida */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  
+html:not(.solido) nav.abas,html:not(.solido) .btn-ico,html:not(.solido) .chip,html:not(.solido) .btn.contorno{background:#fff!important}
+  
+html:not(.solido) .cartao,html:not(.solido) .kpi{background:#fff!important}
+  
+html:not(.solido) .folha{background:#FFF6F9!important}
+}
+
 </style>
+<script>try{if(localStorage.getItem('ng_visual')==='solido')document.documentElement.classList.add('solido')}catch(e){}</script>
 </head>
 <body>
 <a class="pular-link" href="#conteudo-principal">Pular para o conteúdo</a>
@@ -2010,6 +2104,13 @@ function abrirMenu(){
         <span class="cresce"><span class="titulo-linha" style="display:block;color:var(--erro)">Apagar todos os dados</span>
         <span class="sub-linha" style="display:block">remove tudo deste aparelho (irreversível)</span></span></button>
     </div>
+    <div class="cartao" style="padding:.8rem 1rem">
+      <p class="titulo-linha" id="mn-visual-tit">Visual do app</p>
+      <div class="chips" role="radiogroup" aria-labelledby="mn-visual-tit">
+        <button type="button" class="chip" role="radio" data-visual="vidro" aria-checked="${document.documentElement.classList.contains('solido')?'false':'true'}">Vidro</button>
+        <button type="button" class="chip" role="radio" data-visual="solido" aria-checked="${document.documentElement.classList.contains('solido')?'true':'false'}">Sólido</button>
+      </div>
+    </div>
     <div class="cartao">
       <button type="button" class="linha-lista" id="mn-conta">
         <span class="avatar" aria-hidden="true">${esc(iniciais(PERFIL.nome))}</span>
@@ -2045,6 +2146,12 @@ function abrirMenu(){
   $('mn-conta').onclick = ()=>{ fecharFolha(); telaConta(); };
   const trancar = $('mn-trancar');
   if (trancar) trancar.onclick = ()=>{ fecharFolha(); trancarApp(); };
+  document.querySelectorAll('[data-visual]').forEach(b=> b.onclick = ()=>{
+    const solido = b.dataset.visual === 'solido';
+    try{ localStorage.setItem('ng_visual', solido ? 'solido' : 'vidro'); }catch(e){}
+    document.documentElement.classList.toggle('solido', solido);
+    document.querySelectorAll('[data-visual]').forEach(x=> x.setAttribute('aria-checked', String(x === b)));
+  });
 }
 
 /* ==========================================================================
