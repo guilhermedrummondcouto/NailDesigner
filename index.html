@@ -488,6 +488,85 @@ input[type="time"],input[type="date"]{-webkit-appearance:none;appearance:none;mi
 .fin-heroi .fin-var.boa,.fin-heroi .fin-var.ruim,.fin-heroi .fin-var.neutra{background:#fff}
 .ag-seta:disabled{opacity:.35;pointer-events:none}
 
+/* INÍCIO E CATÁLOGO */
+/* ===== NAVEGAÇÃO: Início | Agenda | + | Financeiro | Clientes ===== */
+#aba-inicio{grid-column:1;grid-row:1}
+#aba-hoje{grid-column:2;grid-row:1}
+#aba-painel{grid-column:4;grid-row:1}
+#aba-clientes{grid-column:5;grid-row:1}
+
+/* ===== INÍCIO ===== */
+.ini-ola{font-family:var(--disp);font-weight:600;font-size:1.32rem;letter-spacing:.02em;color:var(--ameixa);margin-top:1.1rem}
+.ini-data{margin-top:.15rem}
+.ini-hoje{display:block;width:100%;text-align:left;margin-top:.9rem;padding:1rem 1.15rem!important;color:#fff}
+.ini-hoje span{display:block}
+.ini-hoje .valor{font-size:clamp(1.35rem,6.4vw,1.7rem)!important;margin-top:.25rem}
+.ini-hoje-sub{margin-top:.35rem;font-size:.82rem;font-weight:600;color:#FFE9F2}
+.ini-hoje-sub strong{font-weight:800;color:#fff}
+.ini-meta{padding:.8rem 1rem!important}
+.ini-meta .fin-barra-trilha{margin:.45rem 0 0}
+.ini-avisos{display:flex;flex-direction:column;gap:.45rem;margin-top:.8rem}
+.ini-aviso{display:flex;align-items:center;gap:.35rem;width:100%;text-align:left;min-height:46px;padding:.6rem .95rem;border-radius:16px;
+  background:var(--framboesa-suave);color:var(--framboesa-escuro);font-size:.86rem;font-weight:600}
+.ini-aviso strong{font-weight:800}
+.ini-aviso span{margin-left:auto;font-size:1.1rem}
+.ini-aviso.amb{background:var(--ambar-suave);color:var(--ambar)}
+.ini-grade{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:.8rem}
+.ini-tile{display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;text-align:left;padding:.9rem .95rem .85rem;min-height:112px;
+  border-radius:22px;background:var(--card);border:1px solid var(--linha2);box-shadow:var(--sombra);color:var(--ameixa)}
+.ini-tile:active{transform:scale(.98)}
+.ini-tile .ini-ico{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;margin-bottom:.45rem;
+  background:var(--framboesa-suave);color:var(--framboesa-escuro)}
+.ini-ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ini-tt{font-weight:800;font-size:.95rem;line-height:1.2}
+.ini-sub{font-size:.74rem;color:var(--tinta3);font-weight:600}
+.ini-tile.destaque{background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 50%),var(--rose-gold);color:#fff;border-color:rgba(255,255,255,.35)}
+.ini-tile.destaque .ini-ico{background:rgba(255,255,255,.22);color:#fff}
+.ini-tile.destaque .ini-sub{color:#FFE9F2}
+.ini-mini{margin-top:.65rem}
+.ini-link{display:flex;align-items:center;gap:.55rem;min-height:52px;padding:.5rem .8rem;border-radius:18px;font-weight:700;font-size:.88rem;
+  background:var(--card);border:1px solid var(--linha2);color:var(--ameixa)}
+.ini-link .ini-ico{color:var(--framboesa-escuro);display:grid}
+.ini-voltar{display:flex;align-items:center;gap:.7rem;margin-top:.9rem}
+.ini-titulo-tela{font-family:var(--disp);font-weight:600;font-size:1.1rem;letter-spacing:.03em;color:var(--ameixa)}
+
+/* ===== CATÁLOGO ===== */
+.ct-cta{margin-top:.8rem}
+.ct-cta.vazio{border-style:dashed!important}
+.ct-cta .btn{margin-top:.7rem}
+.busca-catalogo{position:sticky;top:calc(4.1rem + env(safe-area-inset-top));z-index:6;padding:.7rem 0 .3rem}
+.ct-linha[disabled]{opacity:1}
+.ct-linha[disabled] .titulo-linha{color:var(--tinta2)}
+.ct-check{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.9rem;
+  background:var(--framboesa-suave);color:var(--framboesa-escuro)}
+.ct-linha[aria-pressed="true"] .ct-check{background:var(--rose-gold);color:#fff}
+.ct-linha[disabled] .ct-check{background:var(--esmeralda-suave);color:var(--esmeralda)}
+.ct-seta{color:var(--tinta3);font-size:1.2rem}
+.ct-linha[aria-expanded="true"] .ct-seta{transform:rotate(90deg)}
+.ct-cores{padding:.2rem 0 .9rem}
+.ct-paleta{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:.35rem}
+.ct-cor{display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.4rem .15rem;border-radius:14px;border:2px solid transparent;min-height:72px}
+.ct-cor[aria-pressed="true"]{border-color:var(--framboesa);background:var(--framboesa-suave)}
+.ct-cor[disabled]{opacity:.45}
+.ct-amostra{width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(58,28,42,.18),0 2px 6px -3px rgba(58,28,42,.4)}
+.ct-cor[aria-pressed="true"] .ct-amostra{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--framboesa)}
+.ct-nome{font-size:.64rem;font-weight:700;color:var(--tinta2);text-align:center;line-height:1.15}
+.ct-outra{display:flex;gap:.5rem;align-items:center;margin-top:.6rem}
+.ct-outra input{flex:1;min-width:0}
+.ct-outra .chip{flex:none}
+.ct-rodape{position:sticky;bottom:0;padding:.6rem 0 calc(.6rem + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,rgba(255,246,250,0),rgba(255,246,250,.96) 35%)}
+.ct-rodape .btn{margin-top:0}
+.ct-atalho{margin-top:.9rem}
+.ct-atalho .btn{margin-top:0}
+
+/* paleta no cadastro de produto */
+.fi-paleta{display:flex;gap:.45rem;overflow-x:auto;padding:.3rem .1rem .5rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.fi-cor{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;scroll-snap-align:start;border:2px solid transparent}
+.fi-cor span{width:32px;height:32px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(58,28,42,.18)}
+.fi-cor[aria-pressed="true"]{border-color:var(--framboesa)}
+.cor-bolinha{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.3rem;vertical-align:-1px;box-shadow:inset 0 0 0 1px rgba(58,28,42,.2)}
+
 /* VISUAL VIDRO (desligado pela opção Visual: Sólido) */
 /* ===== VISUAL VIDRO (Liquid Glass) — camada por cima da Rosa Blush ===== */
 html:not(.solido){
@@ -664,22 +743,23 @@ html:not(.solido) .folha{background:#FFF6F9!important}
   </header>
 
   <main id="conteudo-principal">
-    <div id="painel-hoje" role="tabpanel" aria-labelledby="aba-hoje"></div>
+    <div id="painel-inicio" role="tabpanel" aria-labelledby="aba-inicio"></div>
+    <div id="painel-hoje" class="oculto" role="tabpanel" aria-labelledby="aba-hoje"></div>
     <div id="painel-clientes" class="oculto" role="tabpanel" aria-labelledby="aba-clientes"></div>
     <div id="painel-painel" class="oculto" role="tabpanel" aria-labelledby="aba-painel"></div>
-    <div id="painel-estoque" class="oculto" role="tabpanel" aria-labelledby="aba-estoque"></div>
+    <div id="painel-estoque" class="oculto" role="region" aria-label="Estoque"></div>
   </main>
 
   <nav class="abas" aria-label="Navegação principal">
     <div class="abas-in" role="tablist">
+      <button class="aba" id="aba-inicio" role="tab" aria-controls="painel-inicio" data-aba="inicio">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.2 12 4.5l8 6.7"/><path d="M6.2 9.6v8.4a2 2 0 0 0 2 2h7.6a2 2 0 0 0 2-2V9.6"/><path d="M10 20v-4.6h4V20"/></svg>Início</button>
       <button class="aba" id="aba-hoje" role="tab" aria-controls="painel-hoje" data-aba="hoje">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3.5"/><path d="M3.5 10h17M8.5 3v4M15.5 3v4"/><path d="M12 12.4l.8 1.8 1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8z" fill="currentColor" stroke="none"/></svg>Agenda</button>
-      <button class="aba" id="aba-clientes" role="tab" aria-controls="painel-clientes" data-aba="clientes">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3S3.6 15.3 3.6 9.6C3.6 7 5.6 5 8.1 5c1.7 0 3.1.9 3.9 2.3C12.8 5.9 14.2 5 15.9 5c2.5 0 4.5 2 4.5 4.6 0 5.7-8.4 10.7-8.4 10.7z"/></svg>Clientes</button>
       <button class="aba" id="aba-painel" role="tab" aria-controls="painel-painel" data-aba="painel">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20.5h16"/><rect x="5.6" y="11.5" width="3.2" height="6" rx="1.2"/><rect x="10.4" y="6.5" width="3.2" height="11" rx="1.2"/><rect x="15.2" y="13.5" width="3.2" height="4" rx="1.2"/></svg>Financeiro</button>
-      <button class="aba" id="aba-estoque" role="tab" aria-controls="painel-estoque" data-aba="estoque">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9.6" y="2.6" width="4.8" height="6.1" rx="1.4"/><path d="M8.3 8.7h7.4c.9 0 1.6.6 1.9 1.4l.6 1.9v6.4a3 3 0 0 1-3 3H8.8a3 3 0 0 1-3-3V12l.6-1.9c.3-.8 1-1.4 1.9-1.4z"/><path d="M8.7 14.4h6.6" opacity=".5"/></svg>Estoque</button>
+      <button class="aba" id="aba-clientes" role="tab" aria-controls="painel-clientes" data-aba="clientes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3S3.6 15.3 3.6 9.6C3.6 7 5.6 5 8.1 5c1.7 0 3.1.9 3.9 2.3C12.8 5.9 14.2 5 15.9 5c2.5 0 4.5 2 4.5 4.6 0 5.7-8.4 10.7-8.4 10.7z"/></svg>Clientes</button>
     </div>
     <button class="fab" id="btn-novo-atendimento" aria-label="Novo atendimento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5v13M5.5 12h13"/></svg></button>
   </nav>
@@ -968,7 +1048,7 @@ function entrarNoApp(){
   $('app-principal').classList.remove('oculto');
   $('topo-estudio').textContent = PERFIL.studio || PERFIL.nome;
   document.title = 'NailGestor — ' + (PERFIL.studio || PERFIL.nome);
-  irParaAba('hoje');
+  irParaAba('inicio');
 }
 function trancarApp(){
   $('app-principal').classList.add('oculto');
@@ -976,18 +1056,21 @@ function trancarApp(){
   iniciarTelaEntrada();
 }
 
-const ABAS = ['hoje','clientes','painel','estoque'];
-let abaAtual = 'hoje';
+const ABAS = ['inicio','hoje','clientes','painel','estoque'];   // o estoque não tem aba: abre pelo Início e pelo menu
+let abaAtual = 'inicio';
 function irParaAba(aba){
   abaAtual = aba;
   ABAS.forEach(a=>{
-    $('aba-'+a).setAttribute('aria-current', a===aba ? 'page' : 'false');
-    $('aba-'+a).setAttribute('aria-selected', a===aba ? 'true' : 'false');
+    const b = $('aba-'+a);
+    if (b){
+      b.setAttribute('aria-current', a===aba ? 'page' : 'false');
+      b.setAttribute('aria-selected', a===aba ? 'true' : 'false');
+    }
     $('painel-'+a).classList.toggle('oculto', a!==aba);
   });
-  ({hoje:renderHoje, clientes:renderClientes, painel:renderPainel, estoque:renderEstoque})[aba]();
+  ({inicio:()=>renderInicio(), hoje:renderHoje, clientes:renderClientes, painel:renderPainel, estoque:renderEstoque})[aba]();
 }
-ABAS.forEach(a=> $('aba-'+a).addEventListener('click', ()=> irParaAba(a)));
+ABAS.forEach(a=>{ const b = $('aba-'+a); if (b) b.addEventListener('click', ()=> irParaAba(a)); });
 $('btn-novo-atendimento').addEventListener('click', ()=> formNovoAtendimento());
 $('btn-abrir-menu').addEventListener('click', ()=> abrirMenu());
 
@@ -3717,6 +3800,388 @@ carregarDadosExemplo = function(){
   D.despesas.forEach(d=>{ if (!d.categoria && cat[d.descricao]) d.categoria = cat[d.descricao]; });
   salvarDados();
 };
+
+</script>
+<script>
+/* ==========================================================================
+   TELA INICIAL + CATÁLOGO DE PRODUTOS
+   - Aba "Início": atalhos para tudo (agenda, atendimento, financeiro, clientes,
+     estoque, catálogo, serviços, despesas, horários, taxas) e o resumo do dia.
+   - Catálogo pronto com os materiais que uma nail designer usa: ela marca o que
+     tem e adiciona tudo de uma vez ao estoque (depois só registra o preço pago).
+   - Paleta de cores de esmalte no cadastro de produto: toca na cor ou digita o nome.
+   Os valores de embalagem e rendimento são estimativas comuns e ficam editáveis.
+   ========================================================================== */
+
+/* correção: no app original só o primeiro botão [data-fechar-folha] de cada janela funcionava
+   ("Não, começar do zero" e "Cancelar" não fechavam). Os demais passam a fechar a janela. */
+$('camada-folhas').addEventListener('click', ev=>{
+  const b = ev.target.closest('[data-fechar-folha]');
+  if (b && !b.onclick) fecharFolha();
+});
+
+/* item que ainda não teve nenhuma compra registrada (ex.: recém-adicionado pelo catálogo) não entra
+   no aviso de "repor": o saldo dele ainda não é conhecido */
+const _itemEstoqueBaixoOriginal = itemEstoqueBaixo;
+itemEstoqueBaixo = function(item){ return (item.compras || []).length > 0 && _itemEstoqueBaixoOriginal(item); };
+
+/* ---------- cores (nome → amostra) ---------- */
+const CORES_ESMALTE = [
+  ['Nudes', [['Nude claro','#EBCDBB'],['Nude rosado','#DDAE9F'],['Nude bege','#D2B293'],['Café com leite','#B98C6E'],['Caramelo','#B5713A'],['Chocolate','#5C3A21']]],
+  ['Rosas', [['Rosa bebê','#F6C9D6'],['Rosa milkshake','#F2B3C4'],['Rosa chiclete','#EE7DB0'],['Pink','#E8337F'],['Pink neon','#FF2E9A'],['Rosa antigo','#C68A94'],['Malva','#A97488']]],
+  ['Vermelhos', [['Coral','#FF6F61'],['Vermelho clássico','#C1121F'],['Vermelho cereja','#9E0B2E'],['Marsala','#7B2635'],['Bordô','#5E1426'],['Vinho','#4A0E25']]],
+  ['Quentes', [['Pêssego','#F7B58B'],['Laranja','#FF7F27'],['Terracota','#BF5B3A'],['Amarelo','#FFD23F'],['Amarelo manteiga','#F6E3A1']]],
+  ['Frios', [['Verde menta','#A8E6CF'],['Verde oliva','#7A7B3A'],['Verde militar','#4B5320'],['Verde esmeralda','#0F7B5A'],['Azul bebê','#A9D3F5'],['Azul tiffany','#81D8D0'],['Azul serenity','#92A8D1'],['Azul royal','#1F4FBF'],['Azul marinho','#1B2A49'],['Lavanda','#BBA8E2'],['Lilás','#C8A2C8'],['Roxo','#5B2A86']]],
+  ['Neutros', [['Branco','#FFFFFF'],['Branco leitoso','#F3EEE9'],['Off-white','#EFE6D8'],['Cinza','#9A9A9A'],['Chumbo','#4A4A4F'],['Preto','#141414']]],
+  ['Efeitos', [['Dourado','linear-gradient(135deg,#F6E27A,#C99A2E 55%,#F2D675)'],['Prata','linear-gradient(135deg,#F2F2F2,#9EA3A8 55%,#E6E6E6)'],['Rosé gold','linear-gradient(135deg,#F3C6C0,#B76E79 55%,#EAB3AC)'],['Glitter holográfico','linear-gradient(135deg,#F9C5D1,#C5E3F6,#D6F5C9,#F7E7A6)'],['Cat eye (magnético)','radial-gradient(circle at 50% 45%,#C9B6F2,#3B2A63 60%)'],['Perolado','linear-gradient(135deg,#FFFFFF,#F1E4EC 50%,#E4EEF5)']]],
+];
+const MAPA_CORES = new Map(CORES_ESMALTE.flatMap(([, cs])=> cs).map(([n, v])=> [n.toLowerCase(), v]));
+const CORES_GEL = ['Transparente','Rosa leitoso','Nude','Branco leitoso','Pink','Cover (camuflagem)'].map(n=> [n, ({'Transparente':'linear-gradient(135deg,#FFFFFF,#E9EEF2)','Rosa leitoso':'#F4CDD6','Nude':'#E3BBA6','Branco leitoso':'#F3EEE9','Pink':'#F29AB8','Cover (camuflagem)':'#E8AE9A'})[n]]);
+CORES_GEL.forEach(([n, v])=> { if (!MAPA_CORES.has(n.toLowerCase())) MAPA_CORES.set(n.toLowerCase(), v); });
+const amostraDe = nome => MAPA_CORES.get(String(nome || '').trim().toLowerCase()) || null;
+const todasCoresEsmalte = () => CORES_ESMALTE.flatMap(([, cs])=> cs);
+
+/* ---------- catálogo: [nome, embalagem, unidade da embalagem, rendimento, unidade de uso, tipo, aviso mínimo, cores?] ---------- */
+const F = 'fracionario', U = 'contavel';
+const CATALOGO = [
+  {grupo:'Esmaltação em gel', categoria:'Esmalte em gel', itens:[
+    ['Esmalte em gel', 10, 'ml', 25, 'aplicação', F, 5, 'esmalte'],
+    ['Base para esmalte em gel', 10, 'ml', 30, 'aplicação', F, 6],
+    ['Base niveladora (rubber base)', 15, 'ml', 25, 'aplicação', F, 5, 'gel'],
+    ['Top coat brilho', 10, 'ml', 30, 'aplicação', F, 6],
+    ['Top coat fosco', 10, 'ml', 30, 'aplicação', F, 6],
+    ['Top coat sem goma (no wipe)', 10, 'ml', 30, 'aplicação', F, 6],
+    ['Esmalte em gel efeito (glitter, cat eye, neon)', 10, 'ml', 25, 'aplicação', F, 5, 'esmalte'],
+  ]},
+  {grupo:'Esmaltação tradicional', categoria:'Esmalte', itens:[
+    ['Esmalte comum', 9, 'ml', 15, 'aplicação', F, 4, 'esmalte'],
+    ['Base fortalecedora', 9, 'ml', 20, 'aplicação', F, 4],
+    ['Extra brilho / secante', 9, 'ml', 20, 'aplicação', F, 4],
+  ]},
+  {grupo:'Alongamento', categoria:'Gel', itens:[
+    ['Gel construtor', 24, 'g', 16, 'aplicação', F, 4, 'gel'],
+    ['Polygel (acrygel)', 30, 'g', 15, 'aplicação', F, 4, 'gel'],
+    ['Pó acrílico', 30, 'g', 12, 'aplicação', F, 3, 'gel'],
+    ['Monômero (líquido acrílico)', 120, 'ml', 20, 'aplicação', F, 4],
+    ['Slip solution (solução para polygel)', 30, 'ml', 30, 'aplicação', F, 5],
+    ['Fibra de vidro', 1, 'pacote', 30, 'aplicação', F, 5],
+    ['Tips de alongamento', 100, 'un', 100, 'un', U, 20],
+    ['Tips francesinha', 100, 'un', 100, 'un', U, 20],
+    ['Molde de papel (formas)', 300, 'un', 300, 'un', U, 40],
+    ['Cola para tips', 10, 'g', 40, 'aplicação', F, 6],
+    ['Gel para pintura (linhas e desenhos)', 5, 'g', 40, 'aplicação', F, 6, 'esmalte'],
+  ]},
+  {grupo:'Preparação', categoria:'Preparação', itens:[
+    ['Prep (desidratador)', 15, 'ml', 40, 'aplicação', F, 8],
+    ['Primer ácido', 15, 'ml', 40, 'aplicação', F, 8],
+    ['Primer sem ácido', 15, 'ml', 40, 'aplicação', F, 8],
+    ['Bonder', 15, 'ml', 40, 'aplicação', F, 8],
+    ['Removedor de cutícula', 30, 'ml', 40, 'aplicação', F, 8],
+    ['Óleo de cutícula', 15, 'ml', 60, 'aplicação', F, 10],
+  ]},
+  {grupo:'Limpeza e remoção', categoria:'Limpeza', itens:[
+    ['Álcool 70%', 1000, 'ml', 100, 'uso', F, 15],
+    ['Acetona', 500, 'ml', 50, 'uso', F, 10],
+    ['Removedor de esmalte sem acetona', 100, 'ml', 25, 'uso', F, 5],
+    ['Cleaner (limpador de goma)', 500, 'ml', 100, 'uso', F, 15],
+    ['Algodão', 200, 'un', 200, 'un', U, 40],
+    ['Papel alumínio (remoção)', 1, 'rolo', 50, 'uso', F, 8],
+    ['Papel toalha', 1, 'rolo', 40, 'uso', F, 8],
+  ]},
+  {grupo:'Lixas e descartáveis', categoria:'Descartáveis', itens:[
+    ['Lixa 100/180', 50, 'un', 50, 'un', U, 10],
+    ['Lixa 150/180', 50, 'un', 50, 'un', U, 10],
+    ['Buffer (polidor)', 50, 'un', 50, 'un', U, 10],
+    ['Palito de laranjeira', 100, 'un', 100, 'un', U, 20],
+    ['Luvas descartáveis', 100, 'un', 100, 'un', U, 20],
+    ['Máscara descartável', 50, 'un', 50, 'un', U, 10],
+    ['Toalha descartável', 100, 'un', 100, 'un', U, 20],
+    ['Lençol descartável (mesa)', 50, 'un', 50, 'un', U, 10],
+  ]},
+  {grupo:'Decoração', categoria:'Decoração', itens:[
+    ['Glitter', 5, 'g', 30, 'aplicação', F, 5, 'efeito'],
+    ['Pó cromado (espelhado)', 1, 'g', 30, 'aplicação', F, 5, 'efeito'],
+    ['Foil', 1, 'rolo', 30, 'aplicação', F, 5, 'efeito'],
+    ['Strass (pedrarias)', 1440, 'un', 1440, 'un', U, 100],
+    ['Adesivos / películas', 20, 'un', 20, 'un', U, 4],
+    ['Encapsulados (flores, folha de ouro)', 1, 'pote', 30, 'aplicação', F, 5],
+  ]},
+  {grupo:'Cuidados e spa', categoria:'Cuidados', itens:[
+    ['Creme hidratante para mãos', 250, 'g', 50, 'uso', F, 8],
+    ['Esfoliante', 300, 'g', 30, 'uso', F, 6],
+    ['Sabonete / antisséptico', 500, 'ml', 100, 'uso', F, 15],
+  ]},
+];
+function coresDoTipo(tipo){
+  if (tipo === 'gel') return CORES_GEL;
+  if (tipo === 'efeito') return CORES_ESMALTE.find(([g])=> g === 'Efeitos')[1];
+  if (tipo === 'esmalte') return todasCoresEsmalte();
+  return null;
+}
+const chaveItem = (nome, cor)=> `${String(nome).trim().toLowerCase()}|${String(cor || '').trim().toLowerCase()}`;
+const jaNoEstoque = ()=> new Set(D.itens.filter(i=> i.ativo).map(i=> chaveItem(i.nome, i.cor)));
+const bolinha = (cor, classe = 'cor-bolinha')=> { const a = amostraDe(cor); return a ? `<span class="${classe}" style="background:${a}" aria-hidden="true"></span>` : ''; };
+
+/* ---------- catálogo: escolher vários de uma vez (ou um só, para preencher o cadastro) ---------- */
+function telaCatalogo({umSo = null} = {}){
+  const tem = jaNoEstoque();
+  const sel = new Map();            // chave → {def, grupo, cor}
+  const f = abrirFolha(umSo ? 'Escolher do catálogo' : 'Catálogo de produtos', `
+    <p class="sub-linha" style="margin-top:.8rem">${umSo
+      ? 'Toque no produto para preencher o cadastro.'
+      : 'Marque o que você usa. Os produtos com cor abrem a paleta: escolha uma ou várias cores, ou digite outra. Depois é só registrar o preço pago em cada um.'}</p>
+    <div class="busca-catalogo"><label class="so-leitor" for="ct-busca">Buscar no catálogo</label>
+      <input id="ct-busca" placeholder="Buscar: gel, primer, lixa, glitter…" autocomplete="off" type="search"></div>
+    <div id="ct-lista"></div>
+    ${umSo ? '' : `<div class="ct-rodape"><button type="button" class="btn primario" id="ct-add" disabled>Marque os produtos</button></div>`}`,
+    umSo ? null : ()=> irParaAba(abaAtual));
+  const lista = f.querySelector('#ct-lista');
+  function rotuloSel(){
+    if (umSo) return;
+    const n = sel.size, b = f.querySelector('#ct-add');
+    b.disabled = !n; b.textContent = n ? `Adicionar ${n} ${n === 1 ? 'item' : 'itens'} ao estoque` : 'Marque os produtos';
+  }
+  function render(){
+    const t = f.querySelector('#ct-busca').value.trim().toLowerCase();
+    lista.innerHTML = CATALOGO.map((g, gi)=>{
+      const todos = g.itens.map((def, ii)=> ({def, ii}));
+      const porNome = todos.filter(({def})=> def[0].toLowerCase().includes(t));
+      const algumNome = CATALOGO.some(x=> x.itens.some(d=> d[0].toLowerCase().includes(t)));
+      /* busca pelo nome do produto; se nenhum nome bater, vale o nome do grupo (ex.: "decoração") */
+      const itens = !t ? todos : (algumNome ? porNome : (g.grupo.toLowerCase().includes(t) ? todos : []));
+      if (!itens.length) return '';
+      return `<div class="secao-titulo"><h2>${esc(g.grupo)}</h2></div>
+        <div class="cartao" style="padding:.2rem 1rem">${itens.map(({def, ii})=>{
+          const [nome, cont, ue, rend, uc, , , tipoCor] = def;
+          const cores = coresDoTipo(tipoCor);
+          const nSel = [...sel.values()].filter(x=> x.def === def).length;
+          const jaTem = !cores && tem.has(chaveItem(nome, ''));
+          const marcado = !cores && sel.has(chaveItem(nome, ''));
+          return `<div class="ct-item" data-g="${gi}" data-i="${ii}">
+            <button type="button" class="linha-lista ct-linha" ${cores ? `aria-expanded="false"` : (umSo ? '' : `aria-pressed="${marcado}"`)}
+              ${jaTem && !umSo ? 'disabled' : ''} data-abrir>
+              <span class="ct-check" aria-hidden="true">${cores ? (nSel ? nSel : '◐') : (jaTem ? '✓' : (marcado ? '✓' : '+'))}</span>
+              <span class="cresce"><span class="titulo-linha" style="display:block">${esc(nome)}</span>
+                <span class="sub-linha" style="display:block">${jaTem ? 'já está no estoque' : `${qFmt(cont)} ${esc(ue)} · rende ~${qFmt(rend)} ${esc(uc)}${cores ? ' · escolha as cores' : ''}`}</span></span>
+              ${cores ? '<span aria-hidden="true" class="ct-seta">›</span>' : ''}
+            </button>
+            ${cores ? `<div class="ct-cores oculto"></div>` : ''}
+          </div>`;
+        }).join('')}</div>`;
+    }).join('') || '<p class="vazio">Nada encontrado. Use "+ cadastrar do zero" no Estoque.</p>';
+    lista.querySelectorAll('.ct-item').forEach(el=>{
+      const g = CATALOGO[+el.dataset.g], def = g.itens[+el.dataset.i];
+      const cores = coresDoTipo(def[7]);
+      const botao = el.querySelector('[data-abrir]');
+      botao.onclick = ()=>{
+        if (!cores){
+          if (umSo){ fecharFolha(); umSo({def, grupo: g, cor: ''}); return; }
+          const k = chaveItem(def[0], '');
+          sel.has(k) ? sel.delete(k) : sel.set(k, {def, grupo: g, cor: ''});
+          botao.setAttribute('aria-pressed', String(sel.has(k)));
+          botao.querySelector('.ct-check').textContent = sel.has(k) ? '✓' : '+';
+          rotuloSel(); return;
+        }
+        const caixa = el.querySelector('.ct-cores'), aberto = !caixa.classList.contains('oculto');
+        caixa.classList.toggle('oculto', aberto); botao.setAttribute('aria-expanded', String(!aberto));
+        if (!aberto) renderCores(caixa, def, g, cores, botao);
+      };
+    });
+  }
+  function renderCores(caixa, def, g, cores, botao){
+    const nome = def[0];
+    const outras = [...sel.values()].filter(x=> x.def === def && !cores.some(([n])=> n === x.cor)).map(x=> x.cor);
+    caixa.innerHTML = `
+      <div class="ct-paleta" role="group" aria-label="Cores de ${esc(nome)}">${cores.map(([n, v])=>{
+        const k = chaveItem(nome, n), jaTem = tem.has(k);
+        return `<button type="button" class="ct-cor" ${umSo ? '' : `aria-pressed="${sel.has(k)}"`} ${jaTem && !umSo ? 'disabled' : ''} data-cor="${esc(n)}"
+          aria-label="${esc(n)}${jaTem ? ' (já no estoque)' : ''}"><span class="ct-amostra" style="background:${v}"></span><span class="ct-nome">${esc(n)}</span></button>`;
+      }).join('')}</div>
+      ${outras.length ? `<p class="sub-linha" style="margin:.3rem 0">Outras cores marcadas: ${outras.map(esc).join(', ')}</p>` : ''}
+      <div class="ct-outra"><label class="so-leitor" for="ct-outra-${g.itens.indexOf(def)}-${CATALOGO.indexOf(g)}">Outra cor ou código</label>
+        <input id="ct-outra-${g.itens.indexOf(def)}-${CATALOGO.indexOf(g)}" placeholder="Outra cor ou código (ex.: Nude 03)" maxlength="40">
+        <button type="button" class="chip" data-outra>${umSo ? 'Usar' : 'Adicionar'}</button></div>`;
+    const atualizarContador = ()=>{
+      const n = [...sel.values()].filter(x=> x.def === def).length;
+      botao.querySelector('.ct-check').textContent = n || '◐';
+      rotuloSel();
+    };
+    caixa.querySelectorAll('[data-cor]').forEach(b=> b.onclick = ()=>{
+      const cor = b.dataset.cor, k = chaveItem(nome, cor);
+      if (umSo){ fecharFolha(); umSo({def, grupo: g, cor}); return; }
+      sel.has(k) ? sel.delete(k) : sel.set(k, {def, grupo: g, cor});
+      b.setAttribute('aria-pressed', String(sel.has(k))); atualizarContador();
+    });
+    const inp = caixa.querySelector('input'), btnOutra = caixa.querySelector('[data-outra]');
+    const usarOutra = ()=>{
+      const cor = inp.value.trim(); if (!cor){ inp.focus(); return; }
+      if (umSo){ fecharFolha(); umSo({def, grupo: g, cor}); return; }
+      const k = chaveItem(nome, cor);
+      if (tem.has(k)){ aviso(`${nome} ${cor} já está no estoque.`); return; }
+      sel.set(k, {def, grupo: g, cor}); inp.value = ''; atualizarContador(); renderCores(caixa, def, g, cores, botao);
+      aviso(`${cor} marcada ✓`);
+    };
+    btnOutra.onclick = usarOutra;
+    inp.onkeydown = ev=>{ if (ev.key === 'Enter'){ ev.preventDefault(); usarOutra(); } };
+  }
+  f.querySelector('#ct-busca').oninput = render;
+  render(); rotuloSel();
+  if (!umSo) f.querySelector('#ct-add').onclick = ()=>{
+    let n = 0;
+    for (const {def, grupo, cor} of sel.values()){
+      const [nome, cont, ue, rend, uc, tipo, min] = def;
+      criarItem({nome, categoria: grupo.categoria, marca: '', cor, tipo_consumo: tipo, conteudo_embalagem: cont,
+        unidade_embalagem: ue, unidade_consumo: uc, rendimento_embalagem: rend, estoque_minimo: min, favorito: false});
+      n++;
+    }
+    fecharFolha(); irParaAba('estoque');
+    aviso(`${n} ${n === 1 ? 'item adicionado' : 'itens adicionados'} ✓ Toque em cada um para registrar o preço pago.`);
+  };
+}
+
+/* ---------- cadastro de produto: "escolher do catálogo" + paleta de cores ---------- */
+const _formItemOriginal = formItem;
+formItem = function(i){
+  _formItemOriginal(i);
+  const f = $('camada-folhas').lastElementChild;
+  const corInp = f && f.querySelector('#fi-cor');
+  if (!corInp) return;
+  if (!i){
+    const topo = document.createElement('div');
+    topo.className = 'ct-atalho';
+    topo.innerHTML = `<button type="button" class="btn claro" id="fi-catalogo">Escolher do catálogo</button>
+      <p class="dica-campo" style="text-align:center">Preenche nome, embalagem e rendimento. Ou digite tudo abaixo.</p>`;
+    f.querySelector('.folha-corpo').prepend(topo);
+    topo.querySelector('#fi-catalogo').onclick = ()=> telaCatalogo({umSo: ({def, grupo, cor})=> preencherItem(f, def, grupo, cor)});
+  }
+  /* paleta: toca na cor e ela vai para o campo; digitar continua valendo */
+  const caixa = document.createElement('div');
+  caixa.className = 'fi-paleta-caixa';
+  caixa.innerHTML = `<p class="fin-legenda" id="fi-paleta-tit" style="margin-top:.7rem">Toque numa cor (opcional)</p>
+    <div class="fi-paleta" role="group" aria-labelledby="fi-paleta-tit">${todasCoresEsmalte().concat(CORES_GEL.filter(([n])=> !todasCoresEsmalte().some(([m])=> m === n))).map(([n, v])=>
+      `<button type="button" class="fi-cor" data-cor="${esc(n)}" aria-label="${esc(n)}" title="${esc(n)}" aria-pressed="${corInp.value.trim().toLowerCase() === n.toLowerCase()}">
+        <span style="background:${v}"></span></button>`).join('')}</div>`;
+  corInp.closest('div[style*="display:flex"]').after(caixa);
+  const marcar = ()=> caixa.querySelectorAll('.fi-cor').forEach(b=> b.setAttribute('aria-pressed', String(b.dataset.cor.toLowerCase() === corInp.value.trim().toLowerCase())));
+  caixa.querySelectorAll('.fi-cor').forEach(b=> b.onclick = ()=>{ corInp.value = b.dataset.cor; marcar(); });
+  corInp.addEventListener('input', marcar);
+};
+function preencherItem(f, def, grupo, cor){
+  const [nome, cont, ue, rend, uc, tipo, min] = def;
+  const set = (id, v)=>{ const el = f.querySelector('#' + id); if (el) el.value = v; };
+  set('fi-nome', nome); set('fi-cat', grupo.categoria); set('fi-cor', cor || ''); set('fi-cont', cont); set('fi-ue', ue);
+  set('fi-uc', uc); set('fi-rend', rend); set('fi-min', min);
+  const chip = f.querySelector(`[data-tc="${tipo}"]`); if (chip) chip.click();
+  f.querySelectorAll('.fi-cor').forEach(b=> b.setAttribute('aria-pressed', String(b.dataset.cor.toLowerCase() === String(cor || '').toLowerCase())));
+  aviso('Preenchido pelo catálogo ✓ Confira e informe o preço pago.');
+  const preco = f.querySelector('#fi-preco'); if (preco) preco.focus();
+}
+
+/* ---------- estoque: atalhos do catálogo e amostra da cor ---------- */
+const _renderEstoqueOriginal = renderEstoque;
+renderEstoque = function(){
+  _renderEstoqueOriginal();
+  const alvo = $('painel-estoque');
+  const vazio = !D.itens.some(i=> i.ativo);
+  const topo = document.createElement('div');
+  topo.innerHTML = `
+    <div class="ini-voltar"><button type="button" class="chip" data-ir-inicio>‹ Início</button><h2 class="ini-titulo-tela">Estoque</h2></div>
+    <div class="cartao ct-cta${vazio ? ' vazio' : ''}">
+      <p class="titulo-linha">${vazio ? 'Comece pelo catálogo pronto' : 'Faltou algum produto?'}</p>
+      <p class="sub-linha">${vazio ? 'Mais de 50 materiais de nail designer, com cores de esmalte e gel. Marque o que você tem e adicione tudo de uma vez.' : 'Adicione vários do catálogo de uma vez ou cadastre do zero.'}</p>
+      <button type="button" class="btn primario" id="es-catalogo">Adicionar do catálogo</button>
+    </div>`;
+  alvo.prepend(...topo.children);
+  $('es-catalogo').onclick = ()=> telaCatalogo();
+  alvo.querySelector('[data-ir-inicio]').onclick = ()=> irParaAba('inicio');
+  const cad = $('es-cadastrar'); if (cad) cad.textContent = '+ cadastrar do zero';
+  alvo.querySelectorAll('[data-item]').forEach(b=>{
+    const it = buscarItem(b.dataset.item); const am = it && amostraDe(it.cor);
+    if (am){ const t = b.querySelector('.tag.cinza'); if (t) t.insertAdjacentHTML('afterbegin', `<span class="cor-bolinha" style="background:${am}" aria-hidden="true"></span>`); }
+  });
+};
+
+/* ==========================================================================
+   TELA: INÍCIO
+   ========================================================================== */
+const ICONES_INI = {
+  agenda:'<svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3.5"/><path d="M3.5 10h17M8.5 3v4M15.5 3v4"/></svg>',
+  novo:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v8M8 12h8"/></svg>',
+  financeiro:'<svg viewBox="0 0 24 24"><path d="M4 20.5h16"/><rect x="5.6" y="11.5" width="3.2" height="6" rx="1.2"/><rect x="10.4" y="6.5" width="3.2" height="11" rx="1.2"/><rect x="15.2" y="13.5" width="3.2" height="4" rx="1.2"/></svg>',
+  clientes:'<svg viewBox="0 0 24 24"><path d="M12 20.3S3.6 15.3 3.6 9.6C3.6 7 5.6 5 8.1 5c1.7 0 3.1.9 3.9 2.3C12.8 5.9 14.2 5 15.9 5c2.5 0 4.5 2 4.5 4.6 0 5.7-8.4 10.7-8.4 10.7z"/></svg>',
+  estoque:'<svg viewBox="0 0 24 24"><rect x="9.6" y="2.6" width="4.8" height="6.1" rx="1.4"/><path d="M8.3 8.7h7.4c.9 0 1.6.6 1.9 1.4l.6 1.9v6.4a3 3 0 0 1-3 3H8.8a3 3 0 0 1-3-3V12l.6-1.9c.3-.8 1-1.4 1.9-1.4z"/></svg>',
+  catalogo:'<svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="8" cy="16" r="3"/><path d="M16 13v6M13 16h6"/></svg>',
+  servicos:'<svg viewBox="0 0 24 24"><path d="M7 4.5h10M9 4.5v3.2c0 1.2-1.4 1.8-1.4 3.3v7.5a2 2 0 0 0 2 2h4.8a2 2 0 0 0 2-2V11c0-1.5-1.4-2.1-1.4-3.3V4.5"/><path d="M9.5 14h5"/></svg>',
+  despesas:'<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="3"/><path d="M4 9.5h16M8 14.5h3"/></svg>',
+  horarios:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',
+  taxas:'<svg viewBox="0 0 24 24"><path d="M6 18L18 6"/><circle cx="7.5" cy="7.5" r="2.2"/><circle cx="16.5" cy="16.5" r="2.2"/></svg>',
+};
+function saudacao(){ const h = new Date().getHours(); return h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite'; }
+function renderInicio(){
+  garantirConfig();
+  const alvo = $('painel-inicio');
+  const hoje0 = inicioDia(new Date()), amanha = somaDias(hoje0, 1);
+  const atsHoje = atsDoDia(hoje0).filter(ocupaHorario);
+  const pendHoje = atsHoje.filter(a=> a.estado === 'agendado');
+  const prox = pendHoje.find(a=> new Date(a.data_hora).getTime() >= Date.now() - 15*60000);
+  const finHoje = calcularFinanceiro(hoje0, amanha);
+  const finMesI = calcularFinanceiro(new Date(hoje0.getFullYear(), hoje0.getMonth(), 1), amanha);
+  const meta = D.config.meta_mensal;
+  const baixos = D.itens.filter(i=> i.ativo && itemEstoqueBaixo(i));
+  const aReceber = D.atendimentos.filter(a=> faltaDe(a) > 0.009);
+  const retorno = clientesParaRetorno();
+  const nItens = D.itens.filter(i=> i.ativo).length, nClientes = D.clientes.filter(c=> c.ativo).length;
+  const nServ = D.servicos.filter(s=> s.ativo).length;
+  const tile = (id, ic, titulo, sub, destaque)=> `<button type="button" class="ini-tile${destaque ? ' destaque' : ''}" data-ini="${id}">
+      <span class="ini-ico" aria-hidden="true">${ICONES_INI[ic]}</span>
+      <span class="ini-tt">${titulo}</span><span class="ini-sub">${sub}</span></button>`;
+  const avisos = [];
+  if (baixos.length) avisos.push(`<button type="button" class="ini-aviso amb" data-ini="estoque"><strong>${baixos.length}</strong> produto(s) para repor<span aria-hidden="true">›</span></button>`);
+  if (aReceber.length) avisos.push(`<button type="button" class="ini-aviso amb" data-ini="financeiro"><strong>${dinheiro(aReceber.reduce((s, a)=> s + faltaDe(a), 0))}</strong> a receber de ${aReceber.length} cliente(s)<span aria-hidden="true">›</span></button>`);
+  if (retorno.length) avisos.push(`<button type="button" class="ini-aviso" data-ini="agenda"><strong>${retorno.length}</strong> cliente(s) para chamar de volta<span aria-hidden="true">›</span></button>`);
+  if (!nItens) avisos.push(`<button type="button" class="ini-aviso" data-ini="catalogo">Cadastre seus produtos pelo <strong>catálogo pronto</strong><span aria-hidden="true">›</span></button>`);
+  if (!nServ) avisos.push(`<button type="button" class="ini-aviso" data-ini="servicos">Cadastre seus <strong>serviços e preços</strong><span aria-hidden="true">›</span></button>`);
+
+  alvo.innerHTML = `
+    <h1 class="ini-ola">${saudacao()}, ${esc(primeiroNome(PERFIL.nome))} <span aria-hidden="true">✨</span></h1>
+    <p class="sub-linha ini-data">${capital(dataExtenso(hoje0))}</p>
+
+    <button type="button" class="kpi destaque ini-hoje" data-ini="agenda">
+      <span class="rotulo">Hoje</span>
+      <span class="valor">${atsHoje.length ? `${atsHoje.length} atendimento${atsHoje.length > 1 ? 's' : ''}` : 'Agenda livre'}</span>
+      <span class="ini-hoje-sub">${prox ? `Próxima: <strong>${esc((buscarCliente(prox.cliente_id) || {nome:'cliente'}).nome)}</strong> às ${horaBR(prox.data_hora)} · ${emQuanto(prox.data_hora)}`
+        : (pendHoje.length ? 'Atendimentos de hoje em andamento' : 'Toque para ver a agenda')}</span>
+    </button>
+    <div class="grade2">
+      <div class="kpi"><p class="rotulo">Entrou hoje</p><p class="valor verde">${dinheiro(finHoje.entrou)}</p></div>
+      <div class="kpi"><p class="rotulo">Sobrou no mês</p><p class="valor">${dinheiro(finMesI.sobrou)}</p></div>
+    </div>
+    ${meta > 0 ? `<div class="cartao ini-meta"><div class="fin-barra-topo"><span>Meta de ${MESES[hoje0.getMonth()]}</span><strong class="num">${Math.min(999, Math.round(100 * finMesI.faturado / meta))}%</strong></div>
+      <div class="fin-barra-trilha grossa" role="progressbar" aria-label="Meta do mês" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.min(100, Math.round(100 * finMesI.faturado / meta))}"><div style="width:${Math.min(100, 100 * finMesI.faturado / meta)}%"></div></div></div>` : ''}
+    ${avisos.length ? `<div class="ini-avisos">${avisos.join('')}</div>` : ''}
+
+    <div class="secao-titulo"><h2>O que você quer fazer?</h2></div>
+    <div class="ini-grade">
+      ${tile('novo', 'novo', 'Novo atendimento', 'agendar ou encerrar', true)}
+      ${tile('agenda', 'agenda', 'Agenda', atsHoje.length ? `${atsHoje.length} hoje` : 'dia e mês')}
+      ${tile('financeiro', 'financeiro', 'Financeiro', 'entrou, saiu, sobrou')}
+      ${tile('clientes', 'clientes', 'Clientes', `${nClientes} cadastrada(s)`)}
+      ${tile('estoque', 'estoque', 'Estoque', baixos.length ? `${baixos.length} para repor` : `${nItens} produto(s)`)}
+      ${tile('catalogo', 'catalogo', 'Catálogo', 'esmaltes, géis e materiais')}
+      ${tile('servicos', 'servicos', 'Serviços e preços', `${nServ} serviço(s)`)}
+      ${tile('despesas', 'despesas', 'Despesas', 'aluguel, contas…')}
+    </div>
+    <div class="grade2 ini-mini">
+      <button type="button" class="ini-link" data-ini="horarios"><span class="ini-ico" aria-hidden="true">${ICONES_INI.horarios}</span>Horários</button>
+      <button type="button" class="ini-link" data-ini="taxas"><span class="ini-ico" aria-hidden="true">${ICONES_INI.taxas}</span>Taxas e meta</button>
+    </div>`;
+  const acoes = {
+    novo: ()=> formAgendamento({}), agenda: ()=> irParaAba('hoje'), financeiro: ()=> irParaAba('painel'),
+    clientes: ()=> irParaAba('clientes'), estoque: ()=> irParaAba('estoque'), catalogo: ()=> telaCatalogo(),
+    servicos: ()=> telaServicos(), despesas: ()=> telaDespesas(true), horarios: ()=> telaHorarios(), taxas: ()=> telaConfigFinanceiro(),
+  };
+  alvo.querySelectorAll('[data-ini]').forEach(b=> b.onclick = ()=> acoes[b.dataset.ini]());
+}
 
 </script>
 <script>
