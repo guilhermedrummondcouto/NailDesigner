@@ -301,6 +301,129 @@ button.linha-lista:active{background:#FFF0F5!important}
 .retorno-card{border-color:#F6CADC!important;background:linear-gradient(160deg,#FFEDF4 0%,var(--card) 72%)!important}
 .aviso-toast{background:rgba(58,28,42,.95)!important}
 input:focus,select:focus,textarea:focus{box-shadow:0 0 0 5px rgba(180,56,106,.14)!important}
+/* AGENDA */
+/* ===== AGENDA ===== */
+.ag-barra{display:flex;align-items:center;gap:.5rem;margin-top:.9rem}
+.ag-modos{display:flex;gap:.4rem;flex:1}
+.ag-barra .chip{min-height:42px;padding:.45rem 1rem}
+.chip[aria-pressed="true"]{background:var(--rose-gold);border-color:transparent;color:#fff}
+.ag-ico svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ag-seta{width:38px!important;height:38px!important;font-size:1.3rem!important;font-weight:700;flex:none}
+
+/* faixa da semana */
+.ag-semana{display:flex;align-items:center;gap:.3rem;margin-top:.85rem}
+.ag-dias{flex:1;display:grid;grid-template-columns:repeat(7,1fr);gap:.2rem;min-width:0}
+.ag-dia{display:flex;flex-direction:column;align-items:center;gap:2px;padding:.42rem 0 .38rem;border-radius:16px;
+  color:var(--tinta2);min-height:60px;border:1px solid transparent;transition:background .15s}
+.ag-dsem{font-size:.64rem;font-weight:800;letter-spacing:.06em}
+.ag-dnum{font-family:var(--disp);font-size:1.06rem;font-weight:700;color:var(--ameixa);line-height:1.1}
+.ag-dia.hoje .ag-dnum{color:var(--framboesa)}
+.ag-dia.hoje:not(.sel){border-color:rgba(180,56,106,.35)}
+.ag-dia.folga:not(.sel) .ag-dnum{color:var(--tinta3)}
+.ag-dia.sel{background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 50%),var(--rose-gold);
+  border-color:rgba(255,255,255,.4);box-shadow:0 8px 18px -10px rgba(140,36,82,.7)}
+.ag-dia.sel .ag-dsem,.ag-dia.sel .ag-dnum{color:#fff}
+.ag-pontos{display:flex;gap:3px;height:6px;align-items:center}
+.ag-pontos i{width:6px;height:6px;border-radius:50%;background:var(--framboesa)}
+.ag-pontos i.confirmado{background:var(--framboesa-escuro)}
+.ag-pontos i.concluido{background:var(--esmeralda)}
+.ag-dia.sel .ag-pontos i{background:#fff}
+
+.ag-titulo-dia{margin-top:1.1rem}
+.ag-titulo-dia h2{font-family:var(--disp);font-weight:600;font-size:1.05rem;letter-spacing:.03em;color:var(--ameixa)}
+.ag-titulo-dia .sub-linha{margin-top:.15rem}
+.ag-aviso-dia{font-size:.85rem;font-weight:700;color:var(--tinta2);text-align:center}
+
+/* linha do tempo */
+.ag-tempo-cartao{padding:1rem .7rem 1rem .2rem!important}
+.ag-tempo{position:relative;margin-left:3.2rem}
+.ag-hora{position:absolute;left:-3.2rem;width:2.5rem;text-align:right;font-size:.7rem;font-weight:700;color:var(--tinta3);
+  transform:translateY(-50%);font-variant-numeric:tabular-nums}
+.ag-linha{position:absolute;left:0;right:0;border-top:1px solid var(--linha)}
+.ag-linha.meia{border-top:1px dashed var(--linha2)}
+.ag-slot{position:absolute;left:0;right:0;border-radius:12px;background:transparent;z-index:1}
+.ag-slot:active{background:rgba(180,56,106,.10)}
+.ag-slot:focus-visible{background:rgba(180,56,106,.10);outline:2px solid var(--foco);outline-offset:-2px}
+.ag-pausa{position:absolute;left:0;right:0;z-index:1;pointer-events:none;border-radius:12px;padding:.2rem .6rem;
+  background:repeating-linear-gradient(-45deg,rgba(109,70,88,.08) 0 6px,transparent 6px 12px);
+  font-size:.68rem;font-weight:800;color:var(--tinta3);letter-spacing:.04em}
+.ag-bloq{position:absolute;left:0;right:0;z-index:2;pointer-events:none;border-radius:12px;padding:.25rem .65rem;text-align:left;
+  background:repeating-linear-gradient(-45deg,rgba(109,70,88,.16) 0 6px,rgba(109,70,88,.05) 6px 12px);
+  border:1px dashed rgba(109,70,88,.45);font-size:.72rem;font-weight:800;color:var(--tinta2);overflow:hidden}
+.ag-bloco{position:absolute;z-index:3;border-radius:14px;padding:.32rem .55rem;text-align:left;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-start;gap:1px;
+  background:#FDEBF2;border:1px solid rgba(180,56,106,.22);border-left:4px solid var(--framboesa);color:var(--ameixa);
+  box-shadow:0 6px 14px -10px rgba(140,36,82,.55)}
+.ag-bloco .n{font-weight:800;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ag-bloco .s{font-size:.7rem;color:var(--tinta2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ag-bloco .st{font-weight:800}
+.ag-bloco.confirmado{background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 55%),var(--rose-gold);
+  color:#fff;border-color:rgba(255,255,255,.35);border-left-color:#fff}
+.ag-bloco.confirmado .s{color:#FFE9F2}
+.ag-bloco.concluido{background:#E5F2EA;border-color:rgba(44,113,85,.25);border-left-color:var(--esmeralda)}
+.ag-bloco.concluido .st{color:var(--esmeralda)}
+.ag-bloco.faltou,.ag-bloco.cancelado{background:#F2EDEF;border-color:rgba(109,70,88,.2);border-left-color:#8A7680;color:var(--tinta2);box-shadow:none}
+.ag-bloco.faltou .n,.ag-bloco.cancelado .n{text-decoration:line-through}
+.ag-bloco.cancelado{background:rgba(255,255,255,.7);border-style:dashed}
+.ag-bloco.choque{outline:2px solid var(--ambar);outline-offset:1px}
+.ag-agora{position:absolute;left:0;right:0;height:0;border-top:2px solid #D0215B;z-index:4;pointer-events:none}
+.ag-agora::before{content:"";position:absolute;left:-5px;top:-6px;width:10px;height:10px;border-radius:50%;background:#D0215B}
+.ag-legenda{display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem .9rem;margin-top:.6rem;font-size:.7rem;font-weight:700;color:var(--tinta2)}
+.ag-legenda span{display:flex;align-items:center;gap:.3rem}
+.ag-legenda i{width:10px;height:10px;border-radius:3px;background:#FDEBF2;border-left:3px solid var(--framboesa)}
+.ag-legenda i.confirmado{background:var(--framboesa-escuro);border-left-color:var(--framboesa-escuro)}
+.ag-legenda i.concluido{background:#E5F2EA;border-left-color:var(--esmeralda)}
+.ag-legenda i.faltou{background:#F2EDEF;border-left-color:#8A7680}
+
+/* mês */
+.ag-mes-topo{display:flex;align-items:center;justify-content:space-between;margin-top:.9rem}
+.ag-mes-topo h2{font-family:var(--disp);font-weight:600;font-size:1.1rem;letter-spacing:.03em;color:var(--ameixa)}
+.ag-mes-cartao{padding:.7rem .55rem!important}
+.ag-mgrade{display:grid;grid-template-columns:repeat(7,1fr);gap:.25rem}
+.ag-mgrade + .ag-mgrade{margin-top:.35rem}
+.ag-msem{text-align:center;font-size:.66rem;font-weight:800;color:var(--tinta3);letter-spacing:.06em}
+.ag-mcel{min-height:54px;border-radius:14px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:.4rem 0 .3rem;
+  background:rgba(255,255,255,.6);border:1px solid rgba(180,56,106,.08)}
+.ag-mcel .n{font-weight:800;font-size:.9rem;color:var(--ameixa);font-variant-numeric:tabular-nums}
+.ag-mcel.fora{opacity:.38}
+.ag-mcel.folga:not(.sel){background:transparent}
+.ag-mcel.folga:not(.sel) .n{color:var(--tinta3)}
+.ag-mcel.hoje:not(.sel){border-color:var(--framboesa)}
+.ag-mcel.hoje .n{color:var(--framboesa)}
+.ag-mcel.sel{background:var(--rose-gold);border-color:transparent}
+.ag-mcel.sel .n{color:#fff}
+.ag-mcel.sel .ag-pontos i{background:#fff}
+.ag-mqtd{font-size:.6rem;font-weight:800;color:var(--tinta2);line-height:1}
+.ag-mcel.sel .ag-mqtd{color:#fff}
+
+/* detalhe do agendamento */
+.ag-det-topo{display:flex;align-items:center;gap:.8rem}
+.ag-det-topo .tag{flex:none}
+.ag-tag-agendado{background:var(--framboesa-suave);color:var(--framboesa-escuro)}
+.ag-tag-confirmado{background:var(--framboesa-escuro);color:#fff}
+.ag-tag-faltou,.ag-tag-cancelado{background:var(--linha2);color:var(--tinta2)}
+.ag-grade-btn{gap:.6rem!important}
+.ag-grade-btn .btn{margin-top:0;font-size:.86rem;padding:.7rem .6rem;text-decoration:none}
+a.btn{text-decoration:none}
+.ag-zap-chip{text-decoration:none;color:#1E6B45!important;font-weight:800}
+
+/* horários de atendimento */
+.ag-hcfg{padding:.7rem 0;border-bottom:1px solid var(--linha2)}
+.ag-hcfg:last-child{border-bottom:none}
+.ag-hcfg-dia,.ag-check{display:flex!important;align-items:center;gap:.65rem;margin:0!important;font-size:.95rem!important;
+  text-transform:none!important;letter-spacing:0!important;color:var(--ameixa)!important;font-weight:800!important;min-height:44px}
+.ag-check{margin-top:1rem!important}
+.ag-hcfg-dia input,.ag-check input{width:24px;height:24px;flex:none;accent-color:var(--framboesa);margin:0}
+.ag-hcfg-folga{margin-left:auto;font-weight:700}
+.ag-hcfg-horas{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .7rem;margin-top:.2rem}
+.ag-hcfg-horas label{margin:.4rem 0 0;font-size:.64rem}
+.ag-hcfg-horas input{margin-top:.25rem;padding:.55rem .7rem;min-height:2.8rem}
+input[type="time"],input[type="date"]{-webkit-appearance:none;appearance:none;min-height:3.1rem}
+
+.ag-proxima{display:inline-flex;align-items:center;gap:.25rem;margin-top:.55rem;padding:.5rem .9rem;border-radius:99px;min-height:40px;
+  background:var(--framboesa-suave);color:var(--framboesa-escuro);font-size:.82rem;font-weight:700;text-align:left}
+.ag-proxima strong{font-weight:800}
+
 /* VISUAL VIDRO (desligado pela opção Visual: Sólido) */
 /* ===== VISUAL VIDRO (Liquid Glass) — camada por cima da Rosa Blush ===== */
 html:not(.solido){
@@ -486,7 +609,7 @@ html:not(.solido) .folha{background:#FFF6F9!important}
   <nav class="abas" aria-label="Navegação principal">
     <div class="abas-in" role="tablist">
       <button class="aba" id="aba-hoje" role="tab" aria-controls="painel-hoje" data-aba="hoje">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3.5"/><path d="M3.5 10h17M8.5 3v4M15.5 3v4"/><path d="M12 12.4l.8 1.8 1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8z" fill="currentColor" stroke="none"/></svg>Hoje</button>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3.5"/><path d="M3.5 10h17M8.5 3v4M15.5 3v4"/><path d="M12 12.4l.8 1.8 1.8.8-1.8.8-.8 1.8-.8-1.8-1.8-.8 1.8-.8z" fill="currentColor" stroke="none"/></svg>Agenda</button>
       <button class="aba" id="aba-clientes" role="tab" aria-controls="painel-clientes" data-aba="clientes">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3S3.6 15.3 3.6 9.6C3.6 7 5.6 5 8.1 5c1.7 0 3.1.9 3.9 2.3C12.8 5.9 14.2 5 15.9 5c2.5 0 4.5 2 4.5 4.6 0 5.7-8.4 10.7-8.4 10.7z"/></svg>Clientes</button>
       <button class="aba" id="aba-painel" role="tab" aria-controls="painel-painel" data-aba="painel">
@@ -1708,7 +1831,8 @@ async function verCliente(clienteId){
         <span class="sub-linha" style="display:block">${nomesItens}${a.consumos.length>3?'…':''}</span></span>
       <span class="dir">${a.estado==='encerrado'
         ? `<span class="num" style="font-weight:800;display:block">${dinheiro(a.preco_total)}</span>${a.fotos.length?'<span class="sub-linha">📷 '+a.fotos.length+'</span>':''}`
-        : '<span class="tag rosa">agendado</span>'}</span></button>`;
+        : ({faltou:'<span class="tag cinza">faltou</span>', cancelado:'<span class="tag cinza">cancelado</span>'}[a.estado]
+           || `<span class="tag rosa">${a.confirmado ? 'confirmado' : 'agendado'}</span>`)}</span></button>`;
   }).join('') : '<p class="vazio">Nenhum atendimento ainda.</p>';
   $('vc-hist').querySelectorAll('[data-ver-hist]').forEach(b=> b.onclick = ()=> verAtendimento(b.dataset.verHist));
 }
@@ -2087,6 +2211,9 @@ function abrirMenu(){
       <button type="button" class="linha-lista" id="mn-despesas">
         <span class="avatar" aria-hidden="true">▤</span><span class="cresce"><span class="titulo-linha" style="display:block">Despesas fixas</span>
         <span class="sub-linha" style="display:block">aluguel, cursos… para a margem real</span></span><span aria-hidden="true">›</span></button>
+      <button type="button" class="linha-lista" id="mn-horarios">
+        <span class="avatar" aria-hidden="true">◷</span><span class="cresce"><span class="titulo-linha" style="display:block">Horários de atendimento</span>
+        <span class="sub-linha" style="display:block">dias, pausas, folgas e intervalo</span></span><span aria-hidden="true">›</span></button>
     </div>
     <div class="cartao" style="padding:.2rem 1rem">
       <button type="button" class="linha-lista" id="mn-backup">
@@ -2146,6 +2273,7 @@ function abrirMenu(){
   $('mn-conta').onclick = ()=>{ fecharFolha(); telaConta(); };
   const trancar = $('mn-trancar');
   if (trancar) trancar.onclick = ()=>{ fecharFolha(); trancarApp(); };
+  $('mn-horarios').onclick = ()=>{ fecharFolha(); telaHorarios(); };
   document.querySelectorAll('[data-visual]').forEach(b=> b.onclick = ()=>{
     const solido = b.dataset.visual === 'solido';
     try{ localStorage.setItem('ng_visual', solido ? 'solido' : 'vidro'); }catch(e){}
@@ -2157,6 +2285,771 @@ function abrirMenu(){
 /* ==========================================================================
    BOOT
    ========================================================================== */
+</script>
+<script>
+/* ==========================================================================
+   AGENDA PROFISSIONAL
+   Visões Dia e Mês, horários de atendimento, pausas, folgas e bloqueios,
+   aviso de choque de horário, status, repetição, WhatsApp e calendário do iPhone.
+
+   Dados: só acrescenta, nunca muda o que já existia.
+   - D.config = {horarios[7], intervalo_min, bloqueios[]}
+   - atendimento: duracao_min, confirmado, serie_id (opcionais)
+   - atendimento.estado ganha 'faltou' e 'cancelado' (ficam fora das contas,
+     assim como 'agendado'; só 'encerrado' entra no faturamento)
+   ========================================================================== */
+const DIAS_SEMANA = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+const DIAS_CURTOS = ['D','S','T','Q','Q','S','S'];
+const MESES = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+const ROTULO_SIT = {agendado:'agendado', confirmado:'confirmado', concluido:'concluído', faltou:'faltou', cancelado:'cancelado'};
+const PX_MIN = 1.1;   // altura da linha do tempo: 1,1 px por minuto (66 px por hora)
+const ICONE_HORARIOS = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>';
+
+/* ---------- configuração (com migração silenciosa dos dados antigos) ---------- */
+function configPadrao(){
+  const dia = ativo => ({ativo, inicio:'09:00', fim:'19:00', pausa_inicio:'12:00', pausa_fim:'13:00'});
+  return {horarios:[dia(false), dia(true), dia(true), dia(true), dia(true), dia(true), dia(true)],
+          intervalo_min:10, bloqueios:[]};
+}
+dadosPadrao = function(){
+  return {clientes:[], servicos:[], itens:[], atendimentos:[], despesas:[], config: configPadrao()};
+};
+function garantirConfig(){
+  const p = configPadrao();
+  if (!D.config || typeof D.config !== 'object') D.config = p;
+  if (!Array.isArray(D.config.horarios) || D.config.horarios.length !== 7) D.config.horarios = p.horarios;
+  if (!Array.isArray(D.config.bloqueios)) D.config.bloqueios = [];
+  if (typeof D.config.intervalo_min !== 'number') D.config.intervalo_min = p.intervalo_min;
+}
+garantirConfig();
+
+/* o importador original só conhece as 5 listas: aqui ele passa a trazer a configuração da agenda
+   (backups antigos, sem configuração, recebem os horários padrão) */
+const _importarBackupOriginal = importarBackup;
+importarBackup = async function(arquivo){
+  let cfg = null;
+  try{ const j = JSON.parse(await arquivo.text()); cfg = j && j.config; }catch(e){}
+  await _importarBackupOriginal(arquivo);
+  D.config = cfg || null; garantirConfig(); salvarDados();
+};
+
+/* ---------- utilidades de data ---------- */
+const inicioDia = d => { const x = new Date(d); x.setHours(0,0,0,0); return x; };
+const somaDias = (d, n) => { const x = new Date(d); x.setDate(x.getDate()+n); return x; };
+const mesmoDia = (a, b) => a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+const chaveDia = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const deChave = k => { const [a,m,d] = k.split('-').map(Number); return new Date(a, m-1, d); };
+const minutosDe = hhmm => { if (!hhmm) return null; const [h,m] = hhmm.split(':').map(Number); return h*60 + m; };
+const hhmm = min => `${String(Math.floor(min/60)).padStart(2,'0')}:${String(min%60).padStart(2,'0')}`;
+const minutosDoDia = d => { d = new Date(d); return d.getHours()*60 + d.getMinutes(); };
+const capital = t => t.charAt(0).toUpperCase() + t.slice(1);
+const dataExtenso = d => `${DIAS_SEMANA[d.getDay()].toLowerCase()}, ${d.getDate()} de ${MESES[d.getMonth()]}`;
+function valorInputLocal(d){
+  const x = new Date(d); x.setMinutes(x.getMinutes() - x.getTimezoneOffset());
+  return x.toISOString().slice(0,16);
+}
+
+/* ---------- atendimento: duração, situação, conflitos ---------- */
+function duracaoServicos(ids){
+  return ids.reduce((s, id)=>{ const sv = buscarServico(id); return s + (sv && sv.duracao_min || 0); }, 0);
+}
+function duracaoDe(a){
+  if (a.duracao_min > 0) return a.duracao_min;
+  const soma = duracaoServicos(a.servicos.map(s=>s.servico_id));
+  return soma > 0 ? soma : 60;
+}
+const fimDe = a => new Date(new Date(a.data_hora).getTime() + duracaoDe(a)*60000);
+function situacaoDe(a){
+  if (a.estado === 'encerrado') return 'concluido';
+  if (a.estado === 'faltou' || a.estado === 'cancelado') return a.estado;
+  return a.confirmado ? 'confirmado' : 'agendado';
+}
+const ocupaHorario = a => a.estado !== 'cancelado' && a.estado !== 'faltou';
+const nomesServicosDe = a => a.servicos.map(s=>{ const sv = buscarServico(s.servico_id); return sv ? sv.nome : ''; })
+  .filter(Boolean).join(' + ');
+
+function conflitosCom(inicio, fim, ignorar=[]){
+  const gap = (D.config.intervalo_min || 0) * 60000;
+  const ats = D.atendimentos.filter(a=> ocupaHorario(a) && !ignorar.includes(a.id)
+    && new Date(a.data_hora).getTime() < fim.getTime() + gap && fimDe(a).getTime() + gap > inicio.getTime());
+  const bls = D.config.bloqueios.filter(b=> new Date(b.inicio) < fim && new Date(b.fim) > inicio);
+  return {ats, bls};
+}
+function foraDoHorario(inicio, fim){
+  const h = D.config.horarios[inicio.getDay()];
+  if (!h.ativo) return `${DIAS_SEMANA[inicio.getDay()]} é dia de folga.`;
+  const a = minutosDoDia(inicio), b = a + Math.round((fim - inicio)/60000);
+  if (a < minutosDe(h.inicio) || b > minutosDe(h.fim)) return `Fora do horário de atendimento (${h.inicio}–${h.fim}).`;
+  const pi = minutosDe(h.pausa_inicio), pf = minutosDe(h.pausa_fim);
+  if (pi != null && pf != null && pf > pi && a < pf && b > pi) return `Pega a pausa (${h.pausa_inicio}–${h.pausa_fim}).`;
+  return '';
+}
+function textoConflitos(inicio, fim, ignorar=[]){
+  const {ats, bls} = conflitosCom(inicio, fim, ignorar);
+  const partes = ats.map(a=>{ const c = buscarCliente(a.cliente_id); return `${c ? c.nome : 'outra cliente'} às ${horaBR(a.data_hora)}`; })
+    .concat(bls.map(b=> 'horário bloqueado' + (b.motivo ? ` (${b.motivo})` : '')));
+  let msg = partes.length
+    ? `Choque de horário com ${partes.join(', ')}${D.config.intervalo_min ? ` (contando ${D.config.intervalo_min} min de intervalo)` : ''}.` : '';
+  const fora = foraDoHorario(inicio, fim);
+  if (fora) msg += (msg ? ' ' : '') + fora;
+  return msg;
+}
+
+/* ---------- WhatsApp e calendário do iPhone ---------- */
+function telWhats(tel){
+  let d = String(tel || '').replace(/\D/g, '').replace(/^0+/, '');
+  if (d.length === 10 || d.length === 11) d = '55' + d;
+  return d.length >= 12 && d.length <= 13 ? d : '';
+}
+const linkWhats = (tel, texto) => { const n = telWhats(tel); return n ? `https://wa.me/${n}?text=${encodeURIComponent(texto)}` : ''; };
+const primeiroNome = n => (n || '').trim().split(/\s+/)[0] || '';
+const assinatura = () => (PERFIL && (PERFIL.studio || PERFIL.nome)) ? `\n— ${PERFIL.studio || PERFIL.nome}` : '';
+function quandoFalado(d){
+  const hoje = inicioDia(new Date());
+  if (mesmoDia(d, hoje)) return 'hoje';
+  if (mesmoDia(d, somaDias(hoje, 1))) return 'amanhã';
+  return dataExtenso(d);
+}
+function msgConfirmar(a, c){
+  const sv = nomesServicosDe(a);
+  return `Oi, ${primeiroNome(c.nome)}! Tudo bem? 💅\nPassando pra confirmar seu horário${sv ? ` de ${sv}` : ''} ${quandoFalado(new Date(a.data_hora))}, às ${horaBR(a.data_hora)}.\nPosso confirmar?${assinatura()}`;
+}
+function msgLembrete(a, c){
+  const sv = nomesServicosDe(a);
+  return `Oi, ${primeiroNome(c.nome)}! Lembrete do seu horário ${quandoFalado(new Date(a.data_hora))} às ${horaBR(a.data_hora)}${sv ? ` (${sv})` : ''}. Te espero! 💖${assinatura()}`;
+}
+function msgRetorno(nome, dias){
+  return `Oi, ${primeiroNome(nome)}! Já faz ${dias} dias desde o seu último atendimento. Que tal agendar a manutenção? Tenho horários essa semana 💅${assinatura()}`;
+}
+const icsData = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+const icsEsc = t => String(t || '').replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+function linkICS(a){
+  const c = buscarCliente(a.cliente_id), sv = nomesServicosDe(a);
+  const linhas = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//NailGestor//PT-BR', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+    'BEGIN:VEVENT', `UID:${a.id}@nailgestor`, `DTSTAMP:${icsData(new Date())}`,
+    `DTSTART:${icsData(new Date(a.data_hora))}`, `DTEND:${icsData(fimDe(a))}`,
+    `SUMMARY:${icsEsc('💅 ' + (c ? c.nome : 'Atendimento') + (sv ? ' — ' + sv : ''))}`,
+    `DESCRIPTION:${icsEsc((c && c.telefone ? 'Telefone: ' + c.telefone + '\n' : '') + 'Agendado no NailGestor')}`,
+    'BEGIN:VALARM', 'TRIGGER:-PT60M', 'ACTION:DISPLAY', 'DESCRIPTION:Atendimento em 1 hora', 'END:VALARM',
+    'END:VEVENT', 'END:VCALENDAR'];
+  return 'data:text/calendar;charset=utf-8,' + encodeURIComponent(linhas.join('\r\n'));
+}
+
+function emQuanto(iso){
+  const min = Math.round((new Date(iso) - Date.now()) / 60000);
+  if (min <= 0) return 'agora';
+  if (min < 60) return `em ${min} min`;
+  const h = Math.floor(min / 60), m = min % 60;
+  return `em ${h}h${m ? String(m).padStart(2, '0') : ''}`;
+}
+/* ---------- estado da tela ---------- */
+let agModo = 'dia';
+let agDia = inicioDia(new Date());
+let agMes = new Date(agDia.getFullYear(), agDia.getMonth(), 1);
+
+const atsDoDia = dia => {
+  const i = inicioDia(dia).getTime(), f = somaDias(inicioDia(dia), 1).getTime();
+  return D.atendimentos.filter(a=>{ const t = new Date(a.data_hora).getTime(); return t >= i && t < f; })
+    .sort((x, y)=> new Date(x.data_hora) - new Date(y.data_hora));
+};
+const bloqueiosDoDia = dia => {
+  const i = inicioDia(dia), f = somaDias(i, 1);
+  return D.config.bloqueios.filter(b=> new Date(b.inicio) < f && new Date(b.fim) > i);
+};
+function pontosHTML(ats){
+  return ats.filter(ocupaHorario).slice(0, 3).map(a=> `<i class="${situacaoDe(a)}"></i>`).join('');
+}
+function aoDeslizar(el, cb){
+  let x0 = null, y0 = null;
+  el.addEventListener('touchstart', e=>{ const t = e.touches[0]; x0 = t.clientX; y0 = t.clientY; }, {passive:true});
+  el.addEventListener('touchend', e=>{
+    if (x0 == null) return;
+    const t = e.changedTouches[0], dx = t.clientX - x0, dy = t.clientY - y0; x0 = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) cb(dx < 0 ? 1 : -1);
+  }, {passive:true});
+}
+
+/* ==========================================================================
+   TELA: AGENDA (substitui a antiga tela "Hoje"; o resumo do dia vem no topo)
+   ========================================================================== */
+function renderAgenda(){
+  garantirConfig();
+  const alvo = $('painel-hoje');
+  const hoje = inicioDia(new Date());
+  alvo.innerHTML = `
+    <h1 class="so-leitor">Agenda</h1>
+    <div class="ag-barra">
+      <div class="ag-modos" role="group" aria-label="Visão da agenda">
+        <button type="button" class="chip" aria-pressed="${agModo==='dia'}" data-ag-modo="dia">Dia</button>
+        <button type="button" class="chip" aria-pressed="${agModo==='mes'}" data-ag-modo="mes">Mês</button>
+      </div>
+      <button type="button" class="chip" id="ag-hoje">Hoje</button>
+      <button type="button" class="btn-ico ag-ico" id="ag-config" aria-label="Horários de atendimento">${ICONE_HORARIOS}</button>
+    </div>
+    <div id="ag-corpo"></div>`;
+  alvo.querySelectorAll('[data-ag-modo]').forEach(b=> b.onclick = ()=>{
+    agModo = b.dataset.agModo;
+    if (agModo === 'mes') agMes = new Date(agDia.getFullYear(), agDia.getMonth(), 1);
+    renderAgenda();
+  });
+  $('ag-hoje').onclick = ()=>{ agDia = hoje; agMes = new Date(hoje.getFullYear(), hoje.getMonth(), 1); agModo = 'dia'; renderAgenda(); };
+  $('ag-config').onclick = ()=> telaHorarios();
+  agModo === 'dia' ? renderDia() : renderMes();
+}
+renderHoje = renderAgenda;   // a aba continua com o mesmo id ("hoje"); só o conteúdo muda
+
+function resumoHoje(ats, parte){
+  const feitos = ats.filter(a=> a.estado === 'encerrado');
+  const recebido = feitos.reduce((s, a)=> s + a.preco_total, 0);
+  const sobrou = feitos.reduce((s, a)=> s + (a.preco_total - a.custo_total), 0);
+  const parcial = feitos.some(a=> a.custo_parcial);
+  const alertas = D.itens.filter(i=> i.ativo && itemEstoqueBaixo(i));
+  const retorno = clientesParaRetorno();
+  if (parte === 'kpis') return `
+    <div class="grade2">
+      <div class="kpi"><p class="rotulo">Recebido hoje</p><p class="valor">${dinheiro(recebido)}</p></div>
+      <div class="kpi"><p class="rotulo">Sobrou pra você*</p><p class="valor verde">${dinheiro(sobrou)}</p></div>
+    </div>
+    <p style="font-size:.68rem;color:var(--tinta3);margin-top:.35rem">*descontado só o material.
+      ${parcial ? '<span class="aviso-parcial">Há itens sem preço cadastrado — custo parcial.</span>' : ''}</p>`;
+  return `
+    ${alertas.length ? `<div class="cartao" style="border-color:var(--ambar)">
+      <strong style="color:var(--ambar)">⚠ Estoque baixo:</strong>
+      <span style="font-size:.85rem">${alertas.map(i=> esc(i.nome + (i.cor ? ' ' + i.cor : ''))).join(' · ')}</span>
+      <div style="margin-top:.4rem"><button type="button" class="chip" data-ir-estoque>Ver estoque</button></div></div>` : ''}
+    ${retorno.length ? `<div class="cartao retorno-card">
+      <strong style="color:var(--framboesa-escuro)">✧ Hora de chamar de volta</strong>
+      <div>${retorno.slice(0, 5).map(r=>{
+        const c = buscarCliente(r.cliente_id); const zap = c ? linkWhats(c.telefone, msgRetorno(r.nome, r.dias_desde)) : '';
+        return `<div class="linha-lista" style="padding:.6rem .1rem">
+          <div class="cresce"><p class="titulo-linha">${esc(r.nome)}</p>
+            <p class="sub-linha">última visita há ${r.dias_desde} dias · ${r.dias_atraso} dia(s) além do ciclo</p></div>
+          ${zap ? `<a class="chip ag-zap-chip" href="${zap}" target="_blank" rel="noopener" aria-label="Chamar ${esc(r.nome)} no WhatsApp">WhatsApp</a>` : ''}
+          <button type="button" class="chip" data-agendar-retorno="${r.cliente_id}">agendar</button>
+        </div>`; }).join('')}</div></div>` : ''}`;
+}
+
+function renderDia(){
+  const corpo = $('ag-corpo');
+  const hoje = inicioDia(new Date());
+  const ehHoje = mesmoDia(agDia, hoje);
+  const domingo = somaDias(agDia, -agDia.getDay());
+  const semana = [...Array(7)].map((_, i)=> somaDias(domingo, i));
+  const ats = atsDoDia(agDia);
+  const bls = bloqueiosDoDia(agDia);
+  const h = D.config.horarios[agDia.getDay()];
+  const ativos = ats.filter(ocupaHorario);
+  const previsto = ativos.reduce((s, a)=> s + (a.estado === 'encerrado' ? a.preco_total : a.servicos.reduce((t, x)=> t + (x.preco_cobrado || 0), 0)), 0);
+  const agoraT = Date.now();
+  const proxima = ehHoje ? ats.find(a=> (a.estado === 'agendado') && new Date(a.data_hora).getTime() >= agoraT - 15*60000) : null;
+  const diaInteiroBloq = bls.some(b=> new Date(b.inicio) <= agDia && new Date(b.fim) >= somaDias(agDia, 1));
+
+  /* faixa de horas: horário de atendimento, ampliado para caber qualquer atendimento fora dele */
+  let ini = h.ativo ? minutosDe(h.inicio) : 8*60, fim = h.ativo ? minutosDe(h.fim) : 20*60;
+  ats.forEach(a=>{ const s = minutosDoDia(a.data_hora); ini = Math.min(ini, s); fim = Math.max(fim, s + duracaoDe(a)); });
+  ini = Math.max(0, Math.floor(ini/60)*60); fim = Math.min(24*60, Math.ceil(fim/60)*60);
+  const alturaTotal = (fim - ini) * PX_MIN;
+  const y = m => (m - ini) * PX_MIN;
+
+  const horas = [], slots = [];
+  for (let m = ini; m <= fim; m += 30){
+    horas.push(`<div class="ag-linha${m % 60 ? ' meia' : ''}" style="top:${y(m)}px"></div>`);
+    if (m % 60 === 0) horas.push(`<span class="ag-hora" style="top:${y(m)}px">${hhmm(m)}</span>`);
+    if (m < fim){
+      const q = new Date(agDia); q.setHours(0, m, 0, 0);
+      slots.push(`<button type="button" class="ag-slot" style="top:${y(m)}px;height:${30*PX_MIN}px" data-min="${m}"
+        aria-label="Novo atendimento ${dataExtenso(agDia)} às ${hhmm(m)}"></button>`);
+    }
+  }
+  const pi = minutosDe(h.pausa_inicio), pf = minutosDe(h.pausa_fim);
+  const pausa = h.ativo && pi != null && pf != null && pf > pi
+    ? `<div class="ag-pausa" style="top:${y(Math.max(pi, ini))}px;height:${(Math.min(pf, fim) - Math.max(pi, ini))*PX_MIN}px">Pausa</div>` : '';
+  const bloqs = bls.map(b=>{
+    const bi = Math.max(ini, mesmoDia(new Date(b.inicio), agDia) ? minutosDoDia(b.inicio) : ini);
+    const bf = Math.min(fim, mesmoDia(new Date(b.fim), agDia) ? minutosDoDia(b.fim) : fim);
+    if (bf <= bi) return '';
+    return `<div class="ag-bloq" aria-hidden="true" style="top:${y(bi)}px;height:${(bf - bi)*PX_MIN}px">
+      Bloqueado${b.motivo ? ' · ' + esc(b.motivo) : ''}</div>`;
+  }).join('');
+  /* os bloqueios do dia ficam listados acima da linha do tempo, com botão de remover
+     (na linha do tempo eles são só desenho, para os horários continuarem tocáveis) */
+  const descBloq = b=>{
+    const i = new Date(b.inicio), e = new Date(b.fim);
+    const diaTodo = i <= agDia && e >= somaDias(agDia, 1);
+    return (diaTodo ? 'Dia inteiro' : `${mesmoDia(i, agDia) ? horaBR(i) : '00:00'}–${mesmoDia(e, agDia) ? horaBR(e) : '24:00'}`) + (b.motivo ? ' · ' + b.motivo : '');
+  };
+  const listaBloq = bls.length ? `<div class="cartao ag-bloq-lista" style="padding:.2rem 1rem">${bls.map(b=>`
+    <div class="linha-lista"><div class="cresce"><p class="titulo-linha">Bloqueado</p><p class="sub-linha">${esc(descBloq(b))}</p></div>
+      <button type="button" class="chip" data-rm-bloq="${b.id}" aria-label="Remover bloqueio ${esc(descBloq(b))}">remover</button></div>`).join('')}</div>` : '';
+  /* atendimentos sobrepostos ficam lado a lado e ganham contorno de aviso */
+  const itens = ats.map(a=>({a, s: minutosDoDia(a.data_hora), e: minutosDoDia(a.data_hora) + duracaoDe(a)}));
+  const grupos = []; let atual = null;
+  itens.forEach(it=>{
+    if (!atual || it.s >= atual.fim){ atual = {fim: it.e, itens: [], colunas: []}; grupos.push(atual); }
+    atual.fim = Math.max(atual.fim, it.e);
+    let c = atual.colunas.findIndex(fimCol=> fimCol <= it.s);
+    if (c < 0){ c = atual.colunas.length; atual.colunas.push(it.e); } else atual.colunas[c] = it.e;
+    it.col = c; atual.itens.push(it);
+  });
+  const blocos = grupos.flatMap(g=> g.itens.map(it=>{
+    const a = it.a, n = g.colunas.length, sit = situacaoDe(a);
+    const c = buscarCliente(a.cliente_id), nome = c ? c.nome : '(cliente removida)';
+    const choque = n > 1 && g.itens.filter(o=> ocupaHorario(o.a)).length > 1 && ocupaHorario(a);
+    const sv = nomesServicosDe(a) || 'serviço a definir';
+    const alto = (it.e - it.s) * PX_MIN;
+    return `<button type="button" class="ag-bloco ${sit}${choque ? ' choque' : ''}" data-ag-at="${a.id}"
+      style="top:${y(it.s)+1}px;height:${Math.max(alto - 2, 30)}px;left:calc(${100*it.col/n}% + 2px);width:calc(${100/n}% - 4px)"
+      aria-label="${esc(nome)}, ${horaBR(a.data_hora)} às ${horaBR(fimDe(a))}, ${esc(sv)}, ${ROTULO_SIT[sit]}${choque ? ', choque de horário' : ''}">
+      <span class="n">${choque ? '⚠ ' : ''}${esc(nome)}</span>
+      <span class="s">${horaBR(a.data_hora)}–${horaBR(fimDe(a))} · ${esc(sv)}</span>
+      ${alto >= 62 ? `<span class="s st">${sit === 'concluido' ? dinheiro(a.preco_total) : ROTULO_SIT[sit]}</span>` : ''}
+    </button>`;
+  })).join('');
+  const agoraMin = minutosDoDia(new Date());
+  const linhaAgora = ehHoje && agoraMin >= ini && agoraMin <= fim ? `<div class="ag-agora" style="top:${y(agoraMin)}px" aria-hidden="true"></div>` : '';
+
+  corpo.innerHTML = `
+    <div class="ag-semana">
+      <button type="button" class="btn-ico ag-seta" data-sem="-1" aria-label="Semana anterior">‹</button>
+      <div class="ag-dias" role="group" aria-label="Dias da semana">${semana.map(d=>{
+        const atsD = atsDoDia(d).filter(ocupaHorario), sel = mesmoDia(d, agDia);
+        const folga = !D.config.horarios[d.getDay()].ativo;
+        return `<button type="button" class="ag-dia${sel ? ' sel' : ''}${mesmoDia(d, hoje) ? ' hoje' : ''}${folga ? ' folga' : ''}"
+          data-dia="${chaveDia(d)}" aria-pressed="${sel}" aria-label="${capital(dataExtenso(d))}: ${atsD.length} atendimento(s)${folga ? ', folga' : ''}">
+          <span class="ag-dsem">${DIAS_CURTOS[d.getDay()]}</span><span class="ag-dnum">${d.getDate()}</span>
+          <span class="ag-pontos">${pontosHTML(atsD)}</span></button>`; }).join('')}</div>
+      <button type="button" class="btn-ico ag-seta" data-sem="1" aria-label="Próxima semana">›</button>
+    </div>
+    <div class="ag-titulo-dia">
+      <h2>${ehHoje ? 'Hoje · ' : ''}${capital(dataExtenso(agDia))}</h2>
+      <p class="sub-linha">${ativos.length ? `${ativos.length} atendimento(s) · previsto ${dinheiro(previsto)}` : 'Nenhum atendimento'}
+        ${h.ativo ? ` · atende ${h.inicio}–${h.fim}` : ''}</p>
+      ${proxima ? `<button type="button" class="ag-proxima" data-ag-at="${proxima.id}">Próxima: <strong>${esc((buscarCliente(proxima.cliente_id) || {nome:'cliente'}).nome)}</strong> às ${horaBR(proxima.data_hora)} · ${emQuanto(proxima.data_hora)}</button>` : ''}
+    </div>
+    ${ehHoje ? resumoHoje(ats, 'kpis') : ''}
+    ${!h.ativo || diaInteiroBloq ? `<div class="cartao ag-aviso-dia">${!h.ativo ? 'Dia de folga' : 'Dia bloqueado'} — ainda dá para agendar tocando num horário.</div>` : ''}
+    ${listaBloq}
+    <div class="cartao ag-tempo-cartao">
+      <div class="ag-tempo" style="height:${alturaTotal}px">
+        ${horas.join('')}${pausa}${slots.join('')}${bloqs}${blocos}${linhaAgora}
+      </div>
+    </div>
+    <p class="dica-campo" style="text-align:center">Toque num horário livre para agendar · deslize para trocar de dia</p>
+    <div class="ag-legenda" aria-hidden="true">
+      <span><i class="agendado"></i>agendado</span><span><i class="confirmado"></i>confirmado</span>
+      <span><i class="concluido"></i>concluído</span><span><i class="faltou"></i>faltou/cancelado</span>
+    </div>
+    <button type="button" class="btn contorno" id="ag-bloquear">Bloquear horário ou folga</button>
+    ${ehHoje ? resumoHoje(ats, 'avisos') : ''}`;
+
+  corpo.querySelectorAll('[data-sem]').forEach(b=> b.onclick = ()=>{ agDia = somaDias(agDia, 7 * Number(b.dataset.sem)); renderDia(); });
+  corpo.querySelectorAll('[data-dia]').forEach(b=> b.onclick = ()=>{ agDia = deChave(b.dataset.dia); renderDia(); });
+  aoDeslizar(corpo.querySelector('.ag-semana'), passo=>{ agDia = somaDias(agDia, 7 * passo); renderDia(); });
+  aoDeslizar(corpo.querySelector('.ag-tempo-cartao'), passo=>{ agDia = somaDias(agDia, passo); renderDia(); });
+  corpo.querySelectorAll('.ag-slot').forEach(b=> b.onclick = ()=>{
+    const q = new Date(agDia); q.setHours(0, Number(b.dataset.min), 0, 0);
+    formAgendamento({quandoPre: q});
+  });
+  corpo.querySelectorAll('[data-ag-at]').forEach(b=> b.onclick = ()=> verAtendimento(b.dataset.agAt));
+  corpo.querySelectorAll('[data-rm-bloq]').forEach(b=> b.onclick = ()=>{
+    if (!confirm('Remover este bloqueio?')) return;
+    D.config.bloqueios = D.config.bloqueios.filter(x=> x.id !== b.dataset.rmBloq);
+    salvarDados(); renderDia(); aviso('Bloqueio removido ✓');
+  });
+  $('ag-bloquear').onclick = ()=> formBloqueio(agDia);
+  const btnEstoque = corpo.querySelector('[data-ir-estoque]');
+  if (btnEstoque) btnEstoque.onclick = ()=> irParaAba('estoque');
+  corpo.querySelectorAll('[data-agendar-retorno]').forEach(b=> b.onclick = ()=> formAgendamento({clientePre: buscarCliente(b.dataset.agendarRetorno)}));
+}
+
+function renderMes(){
+  const corpo = $('ag-corpo');
+  const hoje = inicioDia(new Date());
+  const ano = agMes.getFullYear(), mes = agMes.getMonth();
+  const primeiro = new Date(ano, mes, 1), diasNoMes = new Date(ano, mes + 1, 0).getDate();
+  const semanas = Math.ceil((primeiro.getDay() + diasNoMes) / 7);
+  const inicioGrade = somaDias(primeiro, -primeiro.getDay());
+  const porDia = new Map();
+  D.atendimentos.forEach(a=>{ const k = chaveDia(new Date(a.data_hora)); if (!porDia.has(k)) porDia.set(k, []); porDia.get(k).push(a); });
+  const doMes = D.atendimentos.filter(a=>{ const d = new Date(a.data_hora); return d.getFullYear() === ano && d.getMonth() === mes; });
+  const nAgendados = doMes.filter(a=> a.estado === 'agendado').length, nFeitos = doMes.filter(a=> a.estado === 'encerrado').length;
+  const celulas = [...Array(semanas * 7)].map((_, i)=>{
+    const d = somaDias(inicioGrade, i), fora = d.getMonth() !== mes;
+    const ats = (porDia.get(chaveDia(d)) || []).filter(ocupaHorario);
+    const folga = !D.config.horarios[d.getDay()].ativo;
+    return `<button type="button" class="ag-mcel${fora ? ' fora' : ''}${mesmoDia(d, hoje) ? ' hoje' : ''}${mesmoDia(d, agDia) ? ' sel' : ''}${folga ? ' folga' : ''}"
+      data-dia="${chaveDia(d)}" aria-label="${capital(dataExtenso(d))}: ${ats.length} atendimento(s)${folga ? ', folga' : ''}">
+      <span class="n">${d.getDate()}</span><span class="ag-pontos">${pontosHTML(ats)}</span>
+      <span class="ag-mqtd">${ats.length > 3 ? '+' + (ats.length - 3) : ''}</span></button>`;
+  }).join('');
+  corpo.innerHTML = `
+    <div class="ag-mes-topo">
+      <button type="button" class="btn-ico ag-seta" data-mes="-1" aria-label="Mês anterior">‹</button>
+      <h2>${capital(MESES[mes])} ${ano}</h2>
+      <button type="button" class="btn-ico ag-seta" data-mes="1" aria-label="Próximo mês">›</button>
+    </div>
+    <div class="cartao ag-mes-cartao">
+      <div class="ag-mgrade" aria-hidden="true">${DIAS_CURTOS.map(s=> `<span class="ag-msem">${s}</span>`).join('')}</div>
+      <div class="ag-mgrade" id="ag-mgrade">${celulas}</div>
+    </div>
+    <p class="sub-linha" style="text-align:center;margin-top:.6rem">${nAgendados} agendado(s) · ${nFeitos} concluído(s) neste mês</p>
+    <p class="dica-campo" style="text-align:center">Toque num dia para ver os horários · deslize para trocar de mês</p>`;
+  corpo.querySelectorAll('[data-mes]').forEach(b=> b.onclick = ()=>{ agMes = new Date(ano, mes + Number(b.dataset.mes), 1); renderMes(); });
+  corpo.querySelectorAll('[data-dia]').forEach(b=> b.onclick = ()=>{ agDia = deChave(b.dataset.dia); agModo = 'dia'; renderAgenda(); });
+  aoDeslizar($('ag-mgrade'), passo=>{ agMes = new Date(ano, mes + passo, 1); renderMes(); });
+}
+
+/* ==========================================================================
+   DETALHE DE UM AGENDAMENTO (agendado, confirmado, faltou, cancelado).
+   Atendimentos encerrados continuam abrindo a tela original, com custos e fotos.
+   ========================================================================== */
+const _verAtendimentoOriginal = verAtendimento;
+verAtendimento = function(id){
+  const a = buscarAtendimento(id);
+  if (a && a.estado !== 'encerrado') return detalheAgendamento(id);
+  return _verAtendimentoOriginal(id);
+};
+
+function detalheAgendamento(id){
+  const a = buscarAtendimento(id); if (!a){ aviso('Atendimento não encontrado.'); return; }
+  const c = buscarCliente(a.cliente_id) || {nome:'(cliente removida)', telefone:'', observacoes:''};
+  const sit = situacaoDe(a), ini = new Date(a.data_hora), fim = fimDe(a);
+  const sv = nomesServicosDe(a) || 'serviço a definir';
+  const ativo = sit === 'agendado' || sit === 'confirmado';
+  const choque = ativo ? textoConflitos(ini, fim, [a.id]) : '';
+  const temTel = !!telWhats(c.telefone);
+  const nomeArq = `atendimento-${chaveDia(ini)}-${primeiroNome(c.nome).toLowerCase() || 'cliente'}.ics`;
+  abrirFolha('Agendamento', `
+    <div class="cartao ag-det-topo">
+      <span class="avatar" aria-hidden="true">${esc(iniciais(c.nome))}</span>
+      <div class="cresce"><p class="titulo-linha">${esc(c.nome)}</p>
+        <p class="sub-linha">${capital(dataExtenso(ini))}</p>
+        <p class="sub-linha"><strong>${horaBR(ini)}–${horaBR(fim)}</strong> · ${esc(sv)}</p></div>
+      <span class="tag ag-tag-${sit}">${ROTULO_SIT[sit]}</span>
+    </div>
+    ${c.observacoes ? `<div class="cartao" style="border-color:var(--ambar)"><strong style="color:var(--ambar)">Atenção:</strong> ${esc(c.observacoes)}</div>` : ''}
+    ${choque ? `<div class="aviso-caixa" role="note">⚠ ${esc(choque)}</div>` : ''}
+    ${ativo ? `
+      <button type="button" class="btn primario" id="ad-encerrar">Encerrar atendimento (ficha)</button>
+      ${sit === 'agendado'
+        ? '<button type="button" class="btn claro" id="ad-confirmar">Marcar como confirmado ✓</button>'
+        : '<button type="button" class="btn contorno" id="ad-desconfirmar">Desfazer confirmação</button>'}
+      <div class="secao-titulo"><h2>WhatsApp</h2></div>
+      ${temTel ? `<div class="grade2 ag-grade-btn">
+          <a class="btn contorno" href="${linkWhats(c.telefone, msgConfirmar(a, c))}" target="_blank" rel="noopener">Pedir confirmação</a>
+          <a class="btn contorno" href="${linkWhats(c.telefone, msgLembrete(a, c))}" target="_blank" rel="noopener">Enviar lembrete</a></div>`
+        : `<p class="sub-linha" style="margin-top:.5rem">Cadastre o telefone de ${esc(primeiroNome(c.nome))} para mandar a mensagem pronta.</p>
+           ${a.cliente_id && buscarCliente(a.cliente_id) ? '<button type="button" class="btn contorno" id="ad-tel">Adicionar telefone</button>' : ''}`}
+      <div class="secao-titulo"><h2>Organizar</h2></div>
+      <div class="grade2 ag-grade-btn">
+        <button type="button" class="btn contorno" id="ad-remarcar">Remarcar</button>
+        <a class="btn contorno" href="${linkICS(a)}" download="${esc(nomeArq)}">Calendário do iPhone</a>
+        <button type="button" class="btn contorno" id="ad-faltou">Faltou</button>
+        <button type="button" class="btn contorno" id="ad-cancelar">Cancelar</button>
+      </div>` : `
+      <button type="button" class="btn claro" id="ad-reabrir">Voltar para agendado</button>`}
+    <button type="button" class="btn perigo" id="ad-excluir">Excluir</button>`,
+    ()=> irParaAba(abaAtual));
+
+  const muda = (fn, msg)=>{ fn(); salvarDados(); fecharFolha(); aviso(msg); };
+  const el = id=> document.getElementById(id);
+  if (el('ad-encerrar')) el('ad-encerrar').onclick = ()=>{ fecharFolha(); fichaEncerramento(a.id); };
+  if (el('ad-confirmar')) el('ad-confirmar').onclick = ()=> muda(()=>{ a.confirmado = true; }, 'Confirmado ✓');
+  if (el('ad-desconfirmar')) el('ad-desconfirmar').onclick = ()=> muda(()=>{ a.confirmado = false; }, 'Confirmação desfeita');
+  if (el('ad-faltou')) el('ad-faltou').onclick = ()=>{
+    if (!confirm(`Marcar que ${primeiroNome(c.nome)} faltou?`)) return;
+    muda(()=>{ a.estado = 'faltou'; }, 'Marcado como falta');
+  };
+  if (el('ad-cancelar')) el('ad-cancelar').onclick = ()=>{
+    if (!confirm('Cancelar este agendamento? O horário fica livre.')) return;
+    muda(()=>{ a.estado = 'cancelado'; }, 'Agendamento cancelado');
+  };
+  if (el('ad-reabrir')) el('ad-reabrir').onclick = ()=> muda(()=>{ a.estado = 'agendado'; a.confirmado = false; }, 'Voltou para agendado ✓');
+  if (el('ad-remarcar')) el('ad-remarcar').onclick = ()=>{ fecharFolha(); formAgendamento({editar: a}); };
+  if (el('ad-tel')) el('ad-tel').onclick = ()=>{
+    const t = prompt(`Telefone de ${c.nome} com DDD (ex.: 31 99999-9999):`, c.telefone || '');
+    if (t == null) return;
+    if (!telWhats(t)){ aviso('Telefone não reconhecido. Use DDD + número.'); return; }
+    editarCliente(c.id, {telefone: t.trim()});
+    fecharFolha(); detalheAgendamento(a.id); aviso('Telefone salvo ✓');
+  };
+  el('ad-excluir').onclick = ()=>{
+    if (!confirm('Excluir este agendamento? Não dá para desfazer.')) return;
+    excluirAtendimento(a.id); fecharFolha(); aviso('Excluído ✓');
+  };
+}
+
+/* ==========================================================================
+   NOVO ATENDIMENTO / REMARCAR — com duração, aviso de choque e repetição
+   ========================================================================== */
+formNovoAtendimento = function(clientePre){ return formAgendamento({clientePre}); };
+
+function formAgendamento({clientePre = null, quandoPre = null, editar = null} = {}){
+  const a0 = editar;
+  let clienteSel = a0 ? buscarCliente(a0.cliente_id) : clientePre;
+  const servSel = new Set(a0 ? a0.servicos.map(s=> s.servico_id) : []);
+  const servicosLista = D.servicos.filter(s=> s.ativo || servSel.has(s.id));
+  const quando0 = a0 ? new Date(a0.data_hora) : (quandoPre || new Date());
+  const durManual0 = a0 && a0.duracao_min ? a0.duracao_min : null;
+  const opcoesDur = [15, 30, 45, 60, 75, 90, 105, 120, 150, 180, 210, 240, 300];
+  const f = abrirFolha(a0 ? 'Remarcar' : 'Novo atendimento', `
+    <label for="na-busca">Cliente</label>
+    <input id="na-busca" placeholder="Buscar ou digitar um nome novo…" autocomplete="off"
+      value="${clienteSel ? esc(clienteSel.nome) : ''}" role="combobox" aria-expanded="false" aria-controls="na-sug">
+    <div id="na-sug"></div>
+    <fieldset style="border:none;padding:0;margin-top:.9rem">
+      <legend style="font-size:.78rem;font-weight:700;color:var(--tinta2);text-transform:uppercase;letter-spacing:.06em">Serviço(s)</legend>
+      <div class="chips" id="na-serv" role="group" aria-label="Selecionar serviços">${
+        servicosLista.length ? servicosLista.map(s=>
+          `<button type="button" class="chip" aria-pressed="${servSel.has(s.id)}" data-id="${s.id}">${esc(s.nome)} · ${dinheiro(s.preco_padrao)}</button>`).join('')
+          : '<p class="sub-linha">Cadastre serviços no menu ☰ para agilizar.</p>'}</div>
+    </fieldset>
+    <label for="na-quando">Quando</label>
+    <input id="na-quando" type="datetime-local" value="${valorInputLocal(quando0)}">
+    <label for="na-dur">Duração</label>
+    <select id="na-dur">
+      <option value="auto">Pelos serviços</option>
+      ${opcoesDur.map(m=> `<option value="${m}" ${durManual0 === m ? 'selected' : ''}>${m < 60 ? m + ' min' : (m/60 | 0) + 'h' + (m % 60 ? String(m % 60).padStart(2, '0') : '')}</option>`).join('')}
+    </select>
+    <p class="dica-campo" id="na-dur-dica"></p>
+    ${a0 ? '' : `
+    <label for="na-rep">Repetir</label>
+    <select id="na-rep">
+      <option value="0">Não repetir</option>
+      <option value="7">Toda semana</option>
+      <option value="15">A cada 15 dias</option>
+      <option value="21">A cada 21 dias</option>
+      <option value="28">A cada 28 dias</option>
+      <option value="30">A cada 30 dias</option>
+    </select>
+    <div id="na-vezes-caixa" class="oculto">
+      <label for="na-vezes">Quantas vezes no total</label>
+      <select id="na-vezes">${[2,3,4,5,6,8,10,12].map(n=> `<option value="${n}" ${n === 4 ? 'selected' : ''}>${n} vezes</option>`).join('')}</select>
+    </div>`}
+    <div id="na-aviso" aria-live="polite"></div>
+    ${a0 ? '<button class="btn primario" id="na-salvar" type="button">Salvar alterações</button>' : `
+    <button class="btn primario" id="na-criar" type="button">Agendar</button>
+    <button class="btn claro" id="na-criar-encerrar" type="button">Criar e já encerrar (ficha)</button>`}`);
+
+  const sug = f.querySelector('#na-sug'), busca = f.querySelector('#na-busca');
+  const campoQuando = f.querySelector('#na-quando'), campoDur = f.querySelector('#na-dur');
+  if (durManual0 && !opcoesDur.includes(durManual0)){
+    campoDur.insertAdjacentHTML('beforeend', `<option value="${durManual0}" selected>${durManual0} min</option>`);
+  }
+  function duracaoAtual(){
+    if (campoDur.value !== 'auto') return Number(campoDur.value);
+    const soma = duracaoServicos([...servSel]); return soma > 0 ? soma : 60;
+  }
+  function atualizarAviso(){
+    const dur = duracaoAtual();
+    f.querySelector('#na-dur-dica').textContent = campoDur.value === 'auto'
+      ? `${dur} min${duracaoServicos([...servSel]) ? ' (soma dos serviços)' : ' (padrão, sem serviço escolhido)'}` : '';
+    const q = new Date(campoQuando.value);
+    const caixa = f.querySelector('#na-aviso');
+    if (isNaN(q)){ caixa.innerHTML = ''; return; }
+    const msg = textoConflitos(q, new Date(q.getTime() + dur*60000), a0 ? [a0.id] : []);
+    caixa.innerHTML = msg ? `<div class="aviso-caixa">⚠ ${esc(msg)}</div>` : '';
+  }
+  function renderSug(){
+    const t = busca.value.trim().toLowerCase();
+    const achadas = D.clientes.filter(c=> c.ativo && c.nome.toLowerCase().includes(t)).slice(0, 6);
+    busca.setAttribute('aria-expanded', String(!!(achadas.length || t)));
+    sug.innerHTML = achadas.length || t ? `<div class="cartao" style="padding:.2rem 1rem;margin-top:.5rem" role="listbox">${
+      achadas.map(c=> `<button type="button" class="linha-lista" role="option" data-c="${c.id}">
+        <span class="avatar" aria-hidden="true">${esc(iniciais(c.nome))}</span>
+        <span class="cresce titulo-linha">${esc(c.nome)}</span></button>`).join('')}
+      ${t && !achadas.some(c=> c.nome.toLowerCase() === t)
+        ? `<button type="button" class="linha-lista" data-nova="1"><span class="avatar" aria-hidden="true">+</span>
+           <span class="cresce titulo-linha" style="color:var(--framboesa)">Criar cliente "${esc(busca.value.trim())}"</span></button>` : ''}
+    </div>` : '';
+    sug.querySelectorAll('[data-c]').forEach(b=> b.onclick = ()=>{
+      clienteSel = buscarCliente(b.dataset.c); busca.value = clienteSel.nome; sug.innerHTML = ''; busca.setAttribute('aria-expanded', 'false');
+    });
+    const nv = sug.querySelector('[data-nova]');
+    if (nv) nv.onclick = ()=>{
+      clienteSel = criarCliente({nome: busca.value.trim()});
+      busca.value = clienteSel.nome; sug.innerHTML = ''; busca.setAttribute('aria-expanded', 'false'); aviso('Cliente criada ✓');
+    };
+  }
+  busca.oninput = ()=>{ if (clienteSel && busca.value.trim() !== clienteSel.nome) clienteSel = null; renderSug(); };
+  busca.onfocus = renderSug;
+  f.querySelectorAll('#na-serv .chip').forEach(ch=> ch.onclick = ()=>{
+    const id = ch.dataset.id, marcado = ch.getAttribute('aria-pressed') === 'true';
+    ch.setAttribute('aria-pressed', marcado ? 'false' : 'true');
+    marcado ? servSel.delete(id) : servSel.add(id);
+    atualizarAviso();
+  });
+  campoQuando.oninput = atualizarAviso; campoDur.onchange = atualizarAviso;
+  const rep = f.querySelector('#na-rep');
+  if (rep) rep.onchange = ()=> f.querySelector('#na-vezes-caixa').classList.toggle('oculto', rep.value === '0');
+  atualizarAviso();
+
+  function salvar(abrirFicha){
+    if (!clienteSel){ aviso('Escolha ou crie a cliente.'); busca.focus(); return; }
+    const quando = new Date(campoQuando.value);
+    if (isNaN(quando)){ aviso('Escolha a data e a hora.'); campoQuando.focus(); return; }
+    const dur = duracaoAtual();
+    const msg = textoConflitos(quando, new Date(quando.getTime() + dur*60000), a0 ? [a0.id] : []);
+    if (msg && !abrirFicha && !confirm(msg + '\n\nAgendar mesmo assim?')) return;
+
+    if (a0){
+      const antigos = new Map(a0.servicos.map(s=> [s.servico_id, s]));
+      a0.cliente_id = clienteSel.id; a0.data_hora = quando.toISOString(); a0.duracao_min = dur;
+      a0.servicos = [...servSel].map(id=> antigos.get(id) || {servico_id: id, preco_cobrado: (buscarServico(id) || {}).preco_padrao || 0});
+      salvarDados();
+      agDia = inicioDia(quando); agModo = 'dia';
+      fecharFolha(); irParaAba('hoje'); aviso('Agendamento atualizado ✓');
+      return;
+    }
+    const a = criarAtendimento({cliente_id: clienteSel.id, servico_ids: [...servSel], data_hora: quando.toISOString()});
+    a.duracao_min = dur;
+    let criados = 1, comChoque = 0;
+    const cada = rep ? Number(rep.value) : 0, vezes = cada ? Number(f.querySelector('#na-vezes').value) : 1;
+    if (cada && vezes > 1){
+      a.serie_id = novoId();
+      for (let i = 1; i < vezes; i++){
+        const q = somaDias(quando, cada * i);
+        const b = criarAtendimento({cliente_id: clienteSel.id, servico_ids: [...servSel], data_hora: q.toISOString()});
+        b.duracao_min = dur; b.serie_id = a.serie_id; criados++;
+        if (textoConflitos(q, new Date(q.getTime() + dur*60000), [b.id])) comChoque++;
+      }
+    }
+    salvarDados();
+    agDia = inicioDia(quando); agModo = 'dia';
+    fecharFolha();
+    if (abrirFicha) fichaEncerramento(a.id);
+    else {
+      irParaAba('hoje');
+      aviso(criados > 1 ? `${criados} horários agendados ✓${comChoque ? ` · ${comChoque} com choque, confira` : ''}` : 'Agendado ✓');
+    }
+  }
+  if (a0) f.querySelector('#na-salvar').onclick = ()=> salvar(false);
+  else {
+    f.querySelector('#na-criar').onclick = ()=> salvar(false);
+    f.querySelector('#na-criar-encerrar').onclick = ()=> salvar(true);
+  }
+}
+
+/* ==========================================================================
+   HORÁRIOS DE ATENDIMENTO, PAUSAS, FOLGAS E BLOQUEIOS
+   ========================================================================== */
+function telaHorarios(){
+  garantirConfig();
+  const cfg = JSON.parse(JSON.stringify(D.config));
+  const f = abrirFolha('Horários de atendimento', `
+    <p class="sub-linha" style="margin-top:.8rem">A agenda usa estes horários para montar o dia e avisar quando um atendimento fica fora deles.</p>
+    <div class="cartao" style="padding:.3rem 1rem">${cfg.horarios.map((h, i)=> `
+      <div class="ag-hcfg" data-i="${i}">
+        <label class="ag-hcfg-dia"><input type="checkbox" data-k="ativo" ${h.ativo ? 'checked' : ''}> ${DIAS_SEMANA[i]}
+          <span class="sub-linha ag-hcfg-folga">${h.ativo ? '' : 'folga'}</span></label>
+        <div class="ag-hcfg-horas${h.ativo ? '' : ' oculto'}">
+          <label>Começa<input type="time" data-k="inicio" value="${h.inicio}"></label>
+          <label>Termina<input type="time" data-k="fim" value="${h.fim}"></label>
+          <label>Pausa de<input type="time" data-k="pausa_inicio" value="${h.pausa_inicio || ''}"></label>
+          <label>até<input type="time" data-k="pausa_fim" value="${h.pausa_fim || ''}"></label>
+        </div>
+      </div>`).join('')}</div>
+    <label for="hc-int">Intervalo entre clientes</label>
+    <select id="hc-int">${[0, 5, 10, 15, 20, 30].map(v=> `<option value="${v}" ${v === cfg.intervalo_min ? 'selected' : ''}>${v ? v + ' minutos' : 'Sem intervalo'}</option>`).join('')}</select>
+    <p class="dica-campo">Tempo para limpar a mesa e organizar entre uma cliente e outra.</p>
+    <button type="button" class="btn primario" id="hc-salvar">Salvar horários</button>
+    <div class="secao-titulo"><h2>Folgas e bloqueios</h2></div>
+    <div class="cartao" style="padding:.2rem 1rem" id="hc-bloqs"></div>
+    <button type="button" class="btn contorno" id="hc-novo-bloq">+ Bloquear horário ou dia</button>`,
+    ()=> irParaAba(abaAtual));
+  f.querySelectorAll('.ag-hcfg [data-k="ativo"]').forEach(cb=> cb.onchange = ()=>{
+    const linha = cb.closest('.ag-hcfg');
+    linha.querySelector('.ag-hcfg-horas').classList.toggle('oculto', !cb.checked);
+    linha.querySelector('.ag-hcfg-folga').textContent = cb.checked ? '' : 'folga';
+  });
+  function renderBloqs(){
+    const futuros = D.config.bloqueios.filter(b=> new Date(b.fim) >= inicioDia(new Date()))
+      .sort((x, y)=> new Date(x.inicio) - new Date(y.inicio));
+    f.querySelector('#hc-bloqs').innerHTML = futuros.length ? futuros.map(b=>{
+      const i = new Date(b.inicio), e = new Date(b.fim);
+      const diaTodo = minutosDoDia(i) === 0 && minutosDoDia(e) === 0;
+      const quando = diaTodo
+        ? (mesmoDia(i, somaDias(e, -1)) ? capital(dataExtenso(i)) : `${dataBR(i)} a ${dataBR(somaDias(e, -1))}`)
+        : `${capital(dataExtenso(i))} · ${horaBR(i)}–${horaBR(e)}`;
+      return `<div class="linha-lista"><div class="cresce"><p class="titulo-linha">${esc(b.motivo || (diaTodo ? 'Folga' : 'Bloqueado'))}</p>
+        <p class="sub-linha">${quando}</p></div>
+        <button type="button" class="chip" data-rm="${b.id}" aria-label="Remover bloqueio de ${quando}">remover</button></div>`;
+    }).join('') : '<p class="vazio" style="padding:1.2rem">Nenhuma folga ou bloqueio marcado.</p>';
+    f.querySelectorAll('[data-rm]').forEach(b=> b.onclick = ()=>{
+      D.config.bloqueios = D.config.bloqueios.filter(x=> x.id !== b.dataset.rm); salvarDados(); renderBloqs(); aviso('Removido ✓');
+    });
+  }
+  renderBloqs();
+  f.querySelector('#hc-novo-bloq').onclick = ()=> formBloqueio(inicioDia(new Date()), true, renderBloqs);
+  f.querySelector('#hc-salvar').onclick = ()=>{
+    const novos = [...f.querySelectorAll('.ag-hcfg')].map(l=>{
+      const v = k=> l.querySelector(`[data-k="${k}"]`);
+      return {ativo: v('ativo').checked, inicio: v('inicio').value || '09:00', fim: v('fim').value || '19:00',
+              pausa_inicio: v('pausa_inicio').value, pausa_fim: v('pausa_fim').value};
+    });
+    for (let i = 0; i < 7; i++){
+      const h = novos[i]; if (!h.ativo) continue;
+      if (minutosDe(h.fim) <= minutosDe(h.inicio)){ aviso(`${DIAS_SEMANA[i]}: o horário de término precisa ser depois do início.`); return; }
+      if ((h.pausa_inicio && !h.pausa_fim) || (!h.pausa_inicio && h.pausa_fim)){ aviso(`${DIAS_SEMANA[i]}: preencha o início e o fim da pausa (ou deixe os dois vazios).`); return; }
+      if (h.pausa_inicio && (minutosDe(h.pausa_fim) <= minutosDe(h.pausa_inicio)
+          || minutosDe(h.pausa_inicio) < minutosDe(h.inicio) || minutosDe(h.pausa_fim) > minutosDe(h.fim))){
+        aviso(`${DIAS_SEMANA[i]}: a pausa precisa ficar dentro do horário de atendimento.`); return;
+      }
+    }
+    D.config.horarios = novos; D.config.intervalo_min = Number(f.querySelector('#hc-int').value);
+    salvarDados(); fecharFolha(); aviso('Horários salvos ✓');
+  };
+}
+
+function formBloqueio(diaPre, diaTodoPre = false, aoSalvar = null){
+  const f = abrirFolha('Bloquear horário', `
+    <label for="bq-dia">Dia</label>
+    <input id="bq-dia" type="date" value="${chaveDia(diaPre)}">
+    <label class="ag-check"><input type="checkbox" id="bq-todo" ${diaTodoPre ? 'checked' : ''}> O dia inteiro (folga)</label>
+    <div id="bq-horas" class="grade2${diaTodoPre ? ' oculto' : ''}" style="margin-top:0">
+      <div><label for="bq-ini">Das</label><input id="bq-ini" type="time" value="12:00"></div>
+      <div><label for="bq-fim">Até</label><input id="bq-fim" type="time" value="13:00"></div>
+    </div>
+    <div id="bq-ate-caixa" class="${diaTodoPre ? '' : 'oculto'}">
+      <label for="bq-ate">Até o dia (para vários dias)</label>
+      <input id="bq-ate" type="date" value="${chaveDia(diaPre)}">
+    </div>
+    <label for="bq-motivo">Motivo (opcional)</label>
+    <input id="bq-motivo" placeholder="Folga, curso, médico…" maxlength="40">
+    <button type="button" class="btn primario" id="bq-salvar">Bloquear</button>`);
+  const todo = f.querySelector('#bq-todo');
+  todo.onchange = ()=>{
+    f.querySelector('#bq-horas').classList.toggle('oculto', todo.checked);
+    f.querySelector('#bq-ate-caixa').classList.toggle('oculto', !todo.checked);
+  };
+  f.querySelector('#bq-salvar').onclick = ()=>{
+    const diaTxt = f.querySelector('#bq-dia').value;
+    if (!diaTxt){ aviso('Escolha o dia.'); return; }
+    const dia = deChave(diaTxt);
+    let ini, fim;
+    if (todo.checked){
+      const ateTxt = f.querySelector('#bq-ate').value || diaTxt;
+      const ate = deChave(ateTxt);
+      if (ate < dia){ aviso('O último dia precisa ser depois do primeiro.'); return; }
+      ini = dia; fim = somaDias(ate, 1);
+    } else {
+      const mi = minutosDe(f.querySelector('#bq-ini').value), mf = minutosDe(f.querySelector('#bq-fim').value);
+      if (mi == null || mf == null || mf <= mi){ aviso('O fim precisa ser depois do início.'); return; }
+      ini = new Date(dia); ini.setHours(0, mi, 0, 0); fim = new Date(dia); fim.setHours(0, mf, 0, 0);
+    }
+    const afetados = D.atendimentos.filter(a=> ocupaHorario(a) && a.estado !== 'encerrado'
+      && new Date(a.data_hora) < fim && fimDe(a) > ini).length;
+    if (afetados && !confirm(`Já existe(m) ${afetados} atendimento(s) nesse período. Eles continuam marcados. Bloquear mesmo assim?`)) return;
+    D.config.bloqueios.push({id: novoId(), inicio: ini.toISOString(), fim: fim.toISOString(),
+      motivo: f.querySelector('#bq-motivo').value.trim()});
+    salvarDados(); fecharFolha();
+    if (aoSalvar) aoSalvar(); else if (abaAtual === 'hoje') renderAgenda();
+    aviso('Bloqueado ✓');
+  };
+}
+
+</script>
+<script>
 iniciarTelaEntrada();
 </script>
 <script>
