@@ -4,7 +4,7 @@
    (então basta subir um index.html novo para atualizar o app); sem conexão — ou se a
    rede demorar — usa a cópia guardada no aparelho. Os dados da agenda NÃO passam por aqui:
    eles ficam no localStorage/IndexedDB do próprio iPhone. */
-const CACHE = 'nailgestor-v4';
+const CACHE = 'nailgestor-v5';
 const ARQUIVOS = ['./', './index.html', './manifest.webmanifest', './apple-touch-icon.png', './icon-192.png', './icon-512.png'];
 const ESPERA_REDE_MS = 3500;
 

@@ -424,6 +424,70 @@ input[type="time"],input[type="date"]{-webkit-appearance:none;appearance:none;mi
   background:var(--framboesa-suave);color:var(--framboesa-escuro);font-size:.82rem;font-weight:700;text-align:left}
 .ag-proxima strong{font-weight:800}
 
+/* FINANCEIRO */
+/* ===== FINANCEIRO ===== */
+.fin-modos{margin-top:.9rem}
+.fin-modos .chip{min-height:42px;padding:.45rem 1rem}
+.fin-rotulo{margin-top:.7rem;font-weight:700}
+.fin-datas{margin-top:.2rem}
+.fin-heroi{margin-top:.9rem;padding:1.05rem 1.15rem!important}
+.fin-heroi .valor{font-size:clamp(1.7rem,8vw,2.15rem)!important;margin-top:.3rem}
+.fin-heroi-sub{margin-top:.35rem;font-size:.8rem;font-weight:700;color:#FFE9F2;display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.fin-heroi-sub span{color:#FFE9F2}
+.grade3{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-top:.6rem}
+.grade3 .kpi{padding:.75rem .7rem}
+.grade3 .kpi .rotulo{font-size:.6rem;letter-spacing:.08em}
+.grade3 .kpi .valor{font-size:clamp(.88rem,4.1vw,1.08rem)}
+.fin-saiu{color:var(--erro)!important}
+.fin-mini{margin-top:.25rem;min-height:1.1rem}
+.fin-var{display:inline-block;font-size:.68rem;font-weight:800;padding:.08rem .45rem;border-radius:99px}
+.fin-var.boa{background:var(--esmeralda-suave);color:var(--esmeralda)}
+.fin-var.ruim{background:var(--erro-suave);color:var(--erro)}
+.fin-var.neutra{background:var(--linha2);color:var(--tinta2)}
+.fin-linha-info{margin-top:.6rem;text-align:center}
+.fin-linha-info strong{color:var(--ambar)}
+
+.fin-meta .fin-barra-trilha{margin:.5rem 0 .4rem}
+.fin-meta.vazia{border-style:dashed!important;text-align:center}
+.fin-meta.vazia .chip{margin-top:.5rem}
+.fin-barra{padding:.45rem 0}
+.fin-barra + .fin-barra{border-top:1px solid var(--linha2)}
+.fin-barra-topo{display:flex;justify-content:space-between;gap:.6rem;align-items:baseline;font-size:.88rem;font-weight:700;color:var(--ameixa)}
+.fin-barra-trilha{height:8px;border-radius:99px;background:var(--linha2);overflow:hidden;margin:.35rem 0 .15rem}
+.fin-barra-trilha.grossa{height:12px}
+.fin-barra-trilha > div{height:100%;border-radius:99px;background:linear-gradient(90deg,#7FC3A0,var(--esmeralda))}
+.fin-barra.saida .fin-barra-trilha > div{background:linear-gradient(90deg,#F1A9C4,var(--framboesa))}
+.fin-meta .fin-barra-trilha > div{background:var(--rose-gold)}
+
+.fin-grafico{padding:.8rem .7rem .5rem!important}
+.fin-grafico svg{width:100%;height:auto;display:block;margin-top:.4rem}
+.fin-leg{display:flex;gap:.9rem;align-items:center;font-size:.72rem;font-weight:800;color:var(--tinta2);padding:0 .3rem}
+.fin-leg .sub-linha{margin-left:auto;font-weight:600}
+.fin-leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:.3rem;vertical-align:-1px}
+.fin-leg i.e,.fin-b-e{background:var(--esmeralda);fill:var(--esmeralda)}
+.fin-leg i.s,.fin-b-s{background:#E28BAE;fill:#E28BAE}
+.fin-b-base{stroke:var(--linha);stroke-width:1}
+.fin-b-t{font-size:9px;font-weight:700;fill:#835C6D;font-family:inherit}
+
+.fin-rec .chip{flex:none}
+.fin-atraso{color:var(--erro);font-weight:800}
+.fin-ajuda p{margin-top:.6rem;line-height:1.45}
+.fin-ajuda p:first-child{margin-top:0}
+
+/* pagamento na ficha */
+.fin-pag{margin-top:1rem}
+.fin-titulo{font-size:.68rem;font-weight:800;color:var(--tinta3);text-transform:uppercase;letter-spacing:.07em}
+.fin-legenda{font-size:.72rem;font-weight:700;color:var(--tinta2);text-transform:uppercase;letter-spacing:.09em;margin-top:.8rem}
+.fin-ja{margin-top:.4rem}
+.fin-falta{margin-top:.7rem;font-weight:800;color:var(--ambar)}
+.fin-pago-resumo .sub-linha{margin-top:.25rem;line-height:1.5}
+.fin-desp-form{margin-top:1rem}
+.fin-desp-form label:first-child{margin-top:0}
+
+/* chip de comparação dentro do cartão escuro: fundo branco para manter o contraste */
+.fin-heroi .fin-var.boa,.fin-heroi .fin-var.ruim,.fin-heroi .fin-var.neutra{background:#fff}
+.ag-seta:disabled{opacity:.35;pointer-events:none}
+
 /* VISUAL VIDRO (desligado pela opção Visual: Sólido) */
 /* ===== VISUAL VIDRO (Liquid Glass) — camada por cima da Rosa Blush ===== */
 html:not(.solido){
@@ -613,7 +677,7 @@ html:not(.solido) .folha{background:#FFF6F9!important}
       <button class="aba" id="aba-clientes" role="tab" aria-controls="painel-clientes" data-aba="clientes">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3S3.6 15.3 3.6 9.6C3.6 7 5.6 5 8.1 5c1.7 0 3.1.9 3.9 2.3C12.8 5.9 14.2 5 15.9 5c2.5 0 4.5 2 4.5 4.6 0 5.7-8.4 10.7-8.4 10.7z"/></svg>Clientes</button>
       <button class="aba" id="aba-painel" role="tab" aria-controls="painel-painel" data-aba="painel">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20.5h16"/><rect x="5.6" y="11.5" width="3.2" height="6" rx="1.2"/><rect x="10.4" y="6.5" width="3.2" height="11" rx="1.2"/><rect x="15.2" y="13.5" width="3.2" height="4" rx="1.2"/></svg>Painel</button>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20.5h16"/><rect x="5.6" y="11.5" width="3.2" height="6" rx="1.2"/><rect x="10.4" y="6.5" width="3.2" height="11" rx="1.2"/><rect x="15.2" y="13.5" width="3.2" height="4" rx="1.2"/></svg>Financeiro</button>
       <button class="aba" id="aba-estoque" role="tab" aria-controls="painel-estoque" data-aba="estoque">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9.6" y="2.6" width="4.8" height="6.1" rx="1.4"/><path d="M8.3 8.7h7.4c.9 0 1.6.6 1.9 1.4l.6 1.9v6.4a3 3 0 0 1-3 3H8.8a3 3 0 0 1-3-3V12l.6-1.9c.3-.8 1-1.4 1.9-1.4z"/><path d="M8.7 14.4h6.6" opacity=".5"/></svg>Estoque</button>
     </div>
@@ -2209,11 +2273,14 @@ function abrirMenu(){
       <button type="button" class="linha-lista" id="mn-estoque">
         <span class="avatar" aria-hidden="true">✦</span><span class="cresce titulo-linha">Produtos e estoque</span><span aria-hidden="true">›</span></button>
       <button type="button" class="linha-lista" id="mn-despesas">
-        <span class="avatar" aria-hidden="true">▤</span><span class="cresce"><span class="titulo-linha" style="display:block">Despesas fixas</span>
-        <span class="sub-linha" style="display:block">aluguel, cursos… para a margem real</span></span><span aria-hidden="true">›</span></button>
+        <span class="avatar" aria-hidden="true">▤</span><span class="cresce"><span class="titulo-linha" style="display:block">Despesas</span>
+        <span class="sub-linha" style="display:block">aluguel, contas, cursos, transporte…</span></span><span aria-hidden="true">›</span></button>
       <button type="button" class="linha-lista" id="mn-horarios">
         <span class="avatar" aria-hidden="true">◷</span><span class="cresce"><span class="titulo-linha" style="display:block">Horários de atendimento</span>
         <span class="sub-linha" style="display:block">dias, pausas, folgas e intervalo</span></span><span aria-hidden="true">›</span></button>
+      <button type="button" class="linha-lista" id="mn-taxas">
+        <span class="avatar" aria-hidden="true">%</span><span class="cresce"><span class="titulo-linha" style="display:block">Taxas da maquininha e meta</span>
+        <span class="sub-linha" style="display:block">para o "Sobrou" ficar real</span></span><span aria-hidden="true">›</span></button>
     </div>
     <div class="cartao" style="padding:.2rem 1rem">
       <button type="button" class="linha-lista" id="mn-backup">
@@ -2274,6 +2341,7 @@ function abrirMenu(){
   const trancar = $('mn-trancar');
   if (trancar) trancar.onclick = ()=>{ fecharFolha(); trancarApp(); };
   $('mn-horarios').onclick = ()=>{ fecharFolha(); telaHorarios(); };
+  $('mn-taxas').onclick = ()=>{ fecharFolha(); telaConfigFinanceiro(); };
   document.querySelectorAll('[data-visual]').forEach(b=> b.onclick = ()=>{
     const solido = b.dataset.visual === 'solido';
     try{ localStorage.setItem('ng_visual', solido ? 'solido' : 'vidro'); }catch(e){}
@@ -2507,7 +2575,7 @@ function resumoHoje(ats, parte){
   const retorno = clientesParaRetorno();
   if (parte === 'kpis') return `
     <div class="grade2">
-      <div class="kpi"><p class="rotulo">Recebido hoje</p><p class="valor">${dinheiro(recebido)}</p></div>
+      <div class="kpi"><p class="rotulo">Faturado hoje</p><p class="valor">${dinheiro(recebido)}</p></div>
       <div class="kpi"><p class="rotulo">Sobrou pra você*</p><p class="valor verde">${dinheiro(sobrou)}</p></div>
     </div>
     <p style="font-size:.68rem;color:var(--tinta3);margin-top:.35rem">*descontado só o material.
@@ -2729,6 +2797,7 @@ function detalheAgendamento(id){
     </div>
     ${c.observacoes ? `<div class="cartao" style="border-color:var(--ambar)"><strong style="color:var(--ambar)">Atenção:</strong> ${esc(c.observacoes)}</div>` : ''}
     ${choque ? `<div class="aviso-caixa" role="note">⚠ ${esc(choque)}</div>` : ''}
+    ${typeof resumoPagamentosHTML === 'function' ? resumoPagamentosHTML(a) : ''}
     ${ativo ? `
       <button type="button" class="btn primario" id="ad-encerrar">Encerrar atendimento (ficha)</button>
       ${sit === 'agendado'
@@ -2746,7 +2815,8 @@ function detalheAgendamento(id){
         <a class="btn contorno" href="${linkICS(a)}" download="${esc(nomeArq)}">Calendário do iPhone</a>
         <button type="button" class="btn contorno" id="ad-faltou">Faltou</button>
         <button type="button" class="btn contorno" id="ad-cancelar">Cancelar</button>
-      </div>` : `
+      </div>
+      ${typeof formSinal === 'function' ? '<button type="button" class="btn contorno" id="ad-sinal">Registrar sinal (pagamento adiantado)</button>' : ''}` : `
       <button type="button" class="btn claro" id="ad-reabrir">Voltar para agendado</button>`}
     <button type="button" class="btn perigo" id="ad-excluir">Excluir</button>`,
     ()=> irParaAba(abaAtual));
@@ -2765,6 +2835,7 @@ function detalheAgendamento(id){
     muda(()=>{ a.estado = 'cancelado'; }, 'Agendamento cancelado');
   };
   if (el('ad-reabrir')) el('ad-reabrir').onclick = ()=> muda(()=>{ a.estado = 'agendado'; a.confirmado = false; }, 'Voltou para agendado ✓');
+  if (el('ad-sinal')) el('ad-sinal').onclick = ()=>{ fecharFolha(); formSinal(a); };
   if (el('ad-remarcar')) el('ad-remarcar').onclick = ()=>{ fecharFolha(); formAgendamento({editar: a}); };
   if (el('ad-tel')) el('ad-tel').onclick = ()=>{
     const t = prompt(`Telefone de ${c.nome} com DDD (ex.: 31 99999-9999):`, c.telefone || '');
@@ -3047,6 +3118,605 @@ function formBloqueio(diaPre, diaTodoPre = false, aoSalvar = null){
     aviso('Bloqueado ✓');
   };
 }
+
+</script>
+<script>
+/* ==========================================================================
+   FINANCEIRO DE GESTORA
+   Pagamentos (forma, taxa da maquininha, sinal, a receber), despesas por
+   categoria, painel Entrou / Saiu / Sobrou com comparação, gráfico, meta do mês
+   e exportação em planilha.
+
+   Dados: só acrescenta.
+   - atendimento.pagamentos = [{id, valor, forma, parcelas, data, sinal}]
+     (atendimentos antigos, sem essa lista, contam como pagos à vista no dia,
+      com forma "não informada" e sem taxa)
+   - atendimento.receber_ate = data prevista do que falta receber
+   - despesa.categoria
+   - D.config.taxas = {pix, dinheiro, debito, credito, credito_parcelado} (em %)
+   - D.config.meta_mensal (faturamento desejado no mês)
+
+   REGRAS DE CÁLCULO (as mesmas do botão "Como calculamos?")
+   - Faturado = soma do valor cobrado nos atendimentos concluídos no período.
+   - Entrou   = dinheiro de fato recebido no período (inclui sinais; não inclui o que falta receber).
+   - Taxas    = taxa da forma de pagamento sobre o que entrou.
+   - Material = custo do material usado nos atendimentos concluídos no período.
+   - Despesas = despesas avulsas do período + fixas mensais proporcionais aos dias.
+   - Saiu     = Taxas + Material + Despesas.
+   - Sobrou   = Entrou − Saiu.   Margem = Sobrou ÷ Entrou.
+   ========================================================================== */
+const FORMAS = {pix:'PIX', dinheiro:'Dinheiro', debito:'Débito', credito:'Crédito', nao_informada:'Não informada'};
+const CATEGORIAS = {
+  aluguel:'Aluguel e contas', material:'Material (fora do estoque)', marketing:'Marketing',
+  cursos:'Cursos', transporte:'Transporte', taxas:'Taxas e impostos', outras:'Outras'};
+const r2 = v => Math.round((v || 0) * 100) / 100;
+
+/* ---------- configuração ---------- */
+const _garantirConfigAgenda = garantirConfig;
+garantirConfig = function(){
+  _garantirConfigAgenda();
+  const t = D.config.taxas;
+  if (!t || typeof t !== 'object') D.config.taxas = {pix:0, dinheiro:0, debito:0, credito:0, credito_parcelado:0};
+  else ['pix','dinheiro','debito','credito','credito_parcelado'].forEach(k=>{ if (typeof t[k] !== 'number') t[k] = 0; });
+  if (typeof D.config.meta_mensal !== 'number') D.config.meta_mensal = 0;
+};
+garantirConfig();
+
+/* ---------- pagamentos ---------- */
+function pagamentosDe(a){
+  if (Array.isArray(a.pagamentos)) return a.pagamentos;
+  if (a.estado === 'encerrado')   // atendimento antigo: considerado pago à vista no dia
+    return [{id:'legado-' + a.id, valor:a.preco_total, forma:'nao_informada', parcelas:1, data:a.data_hora, legado:true}];
+  return [];
+}
+const pagoDe = a => r2(pagamentosDe(a).reduce((s, p)=> s + p.valor, 0));
+const faltaDe = a => a.estado === 'encerrado' ? Math.max(0, r2(a.preco_total - pagoDe(a))) : 0;
+function taxaPct(p){
+  const t = D.config.taxas;
+  if (p.forma === 'credito') return (p.parcelas > 1 ? t.credito_parcelado : t.credito) || 0;
+  return t[p.forma] || 0;
+}
+const valorTaxa = p => r2(p.valor * taxaPct(p) / 100);
+const rotuloForma = p => (FORMAS[p.forma] || 'Outra') + (p.forma === 'credito' && p.parcelas > 1 ? ` ${p.parcelas}x` : '');
+
+/* resumo de pagamentos usado no detalhe do agendamento */
+function resumoPagamentosHTML(a){
+  const ps = pagamentosDe(a);
+  if (!ps.length) return '';
+  return `<div class="cartao fin-pago-resumo"><p class="titulo-linha">Já recebido: ${dinheiro(pagoDe(a))}</p>
+    <p class="sub-linha">${ps.map(p=> `${p.sinal ? 'sinal' : 'pagamento'} ${dinheiro(p.valor)} · ${esc(rotuloForma(p))} · ${dataBR(p.data)}`).join('<br>')}</p></div>`;
+}
+
+/* escolha de forma de pagamento (reaproveitada na ficha, no sinal e no "recebi") */
+function camposFormaHTML(prefixo, forma = 'pix', parcelas = 1){
+  return `
+    <fieldset class="fin-formas" style="border:none;padding:0;margin:0">
+      <legend class="fin-legenda">Forma de pagamento</legend>
+      <div class="chips" role="radiogroup" aria-label="Forma de pagamento" id="${prefixo}-formas">${['pix','dinheiro','debito','credito'].map(k=>
+        `<button type="button" class="chip" role="radio" aria-checked="${k === forma}" data-forma="${k}">${FORMAS[k]}</button>`).join('')}</div>
+    </fieldset>
+    <div id="${prefixo}-parc-caixa" class="${forma === 'credito' ? '' : 'oculto'}">
+      <label for="${prefixo}-parc">Parcelas</label>
+      <select id="${prefixo}-parc">${[...Array(12)].map((_, i)=> `<option value="${i+1}" ${i+1 === parcelas ? 'selected' : ''}>${i ? (i+1) + 'x' : 'À vista'}</option>`).join('')}</select>
+    </div>`;
+}
+function ligarCamposForma(raiz, prefixo, aoMudar){
+  const estado = {forma: raiz.querySelector(`#${prefixo}-formas [aria-checked="true"]`).dataset.forma};
+  raiz.querySelectorAll(`#${prefixo}-formas [data-forma]`).forEach(b=> b.onclick = ()=>{
+    estado.forma = b.dataset.forma;
+    raiz.querySelectorAll(`#${prefixo}-formas [data-forma]`).forEach(x=> x.setAttribute('aria-checked', String(x === b)));
+    raiz.querySelector(`#${prefixo}-parc-caixa`).classList.toggle('oculto', estado.forma !== 'credito');
+    if (aoMudar) aoMudar();
+  });
+  const parc = raiz.querySelector(`#${prefixo}-parc`);
+  if (parc) parc.onchange = ()=> aoMudar && aoMudar();
+  return ()=> ({forma: estado.forma, parcelas: estado.forma === 'credito' ? Number(parc.value) : 1});
+}
+const lerValor = el => { const v = parseFloat(String(el.value).replace(',', '.')); return isNaN(v) ? null : r2(v); };
+
+/* ---------- sinal (pagamento adiantado) ---------- */
+function formSinal(a){
+  const c = buscarCliente(a.cliente_id) || {nome:'cliente'};
+  const f = abrirFolha('Registrar sinal', `
+    <p class="sub-linha" style="margin-top:.8rem">Valor que ${esc(primeiroNome(c.nome))} pagou antes do atendimento. Ele já conta como "Entrou" hoje e é descontado na hora de encerrar.</p>
+    <label for="sn-valor">Valor do sinal (R$)</label>
+    <input id="sn-valor" type="number" inputmode="decimal" step="0.01" min="0">
+    ${camposFormaHTML('sn')}
+    <button type="button" class="btn primario" id="sn-salvar">Salvar sinal</button>`, ()=> irParaAba(abaAtual));
+  const forma = ligarCamposForma(f, 'sn');
+  f.querySelector('#sn-salvar').onclick = ()=>{
+    const v = lerValor(f.querySelector('#sn-valor'));
+    if (!v || v <= 0){ aviso('Informe o valor do sinal.'); f.querySelector('#sn-valor').focus(); return; }
+    if (!Array.isArray(a.pagamentos)) a.pagamentos = [];
+    a.pagamentos.push({id: novoId(), valor: v, ...forma(), data: new Date().toISOString(), sinal: true});
+    salvarDados(); fecharFolha(); aviso('Sinal registrado ✓');
+  };
+}
+
+/* ---------- ficha de encerramento: seção "Pagamento" ---------- */
+const _fichaEncerramentoOriginal = fichaEncerramento;
+fichaEncerramento = async function(atendimentoId){
+  await _fichaEncerramentoOriginal(atendimentoId);
+  const f = $('camada-folhas').lastElementChild;
+  const btn = f && f.querySelector('#fe-salvar');
+  const a = buscarAtendimento(atendimentoId);
+  if (!btn || !a) return;
+  garantirConfig();
+  const ja = pagamentosDe(a);
+  const jaPago = pagoDe(a);
+  const precoInp = f.querySelector('#fe-preco');
+  const amanha7 = chaveDia(somaDias(new Date(), 7));
+  const secao = document.createElement('div');
+  secao.className = 'cartao fin-pag';
+  secao.innerHTML = `
+    <p class="fin-titulo">Pagamento</p>
+    ${ja.length ? `<p class="sub-linha fin-ja">Já recebido: <strong>${dinheiro(jaPago)}</strong> (${ja.map(p=> (p.sinal ? 'sinal ' : '') + rotuloForma(p)).join(', ')})</p>` : ''}
+    ${camposFormaHTML('fp', a.forma_ultima || 'pix')}
+    <label for="fp-valor">Recebido agora (R$)</label>
+    <input id="fp-valor" type="number" inputmode="decimal" step="0.01" min="0">
+    <div id="fp-falta-caixa" class="oculto">
+      <p class="fin-falta" id="fp-falta" role="status"></p>
+      <label for="fp-ate">Combinou de pagar até</label>
+      <input id="fp-ate" type="date" value="${a.receber_ate ? a.receber_ate.slice(0,10) : amanha7}">
+    </div>
+    <p class="dica-campo" id="fp-info" aria-live="polite"></p>`;
+  btn.previousElementSibling.before(secao);
+  const forma = ligarCamposForma(secao, 'fp', atualizar);
+  const valorInp = secao.querySelector('#fp-valor');
+  let valorEditado = false;
+  function restante(){ return Math.max(0, r2((parseFloat(precoInp.value) || 0) - jaPago)); }
+  function atualizar(){
+    if (!valorEditado) valorInp.value = restante() || '';
+    const recebido = lerValor(valorInp) || 0, falta = r2(restante() - recebido);
+    secao.querySelector('#fp-falta-caixa').classList.toggle('oculto', !(falta > 0.009));
+    secao.querySelector('#fp-falta').textContent = falta > 0.009 ? `Falta receber ${dinheiro(falta)}` : '';
+    const pct = taxaPct({forma: forma().forma, parcelas: forma().parcelas});
+    const tabela = [...f.querySelectorAll('#fe-serv [aria-pressed="true"]')].reduce((s, ch)=>{ const sv = buscarServico(ch.dataset.id); return s + (sv ? sv.preco_padrao : 0); }, 0);
+    const desconto = r2(tabela - (parseFloat(precoInp.value) || 0));
+    const partes = [];
+    if (recebido > 0) partes.push(pct ? `Taxa da maquininha: ${dinheiro(r2(recebido * pct / 100))} (${String(pct).replace('.', ',')}%).` : `Sem taxa cadastrada para ${FORMAS[forma().forma]}.`);
+    if (desconto > 0.009) partes.push(`Desconto de ${dinheiro(desconto)} sobre a tabela (${dinheiro(tabela)}).`);
+    secao.querySelector('#fp-info').textContent = partes.join(' ');
+  }
+  valorInp.addEventListener('input', ()=>{ valorEditado = true; atualizar(); });
+  precoInp.addEventListener('input', atualizar);
+  f.querySelectorAll('#fe-serv .chip').forEach(ch=> ch.addEventListener('click', ()=> setTimeout(atualizar, 0)));
+  atualizar();
+
+  const salvarOriginal = btn.onclick;
+  btn.onclick = async ev=>{
+    const recebido = lerValor(valorInp) || 0;
+    if (recebido < 0){ aviso('O valor recebido não pode ser negativo.'); return; }
+    if (recebido - restante() > 0.009){ aviso('O valor recebido passa do que falta pagar. Confira o preço ou o valor.'); valorInp.focus(); return; }
+    const pag = {...forma(), recebido, ate: secao.querySelector('#fp-ate').value};
+    const legadoAntes = !Array.isArray(a.pagamentos) && a.estado === 'encerrado' ? pagamentosDe(a) : null;
+    await salvarOriginal.call(btn, ev);
+    const at = buscarAtendimento(atendimentoId);
+    if (!at || at.estado !== 'encerrado' || document.contains(btn)) return;   // não salvou (ex.: faltou marcar serviço)
+    if (!Array.isArray(at.pagamentos)) at.pagamentos = legadoAntes ? legadoAntes.map(p=> ({...p, legado: undefined})) : [];
+    if (pag.recebido > 0){
+      const dataPag = new Date(at.data_hora) < inicioDia(new Date()) ? at.data_hora : new Date().toISOString();
+      at.pagamentos.push({id: novoId(), valor: pag.recebido, forma: pag.forma, parcelas: pag.parcelas, data: dataPag, sinal: false});
+    }
+    at.forma_ultima = pag.forma;
+    at.receber_ate = faltaDe(at) > 0.009 ? new Date(pag.ate ? deChave(pag.ate) : somaDias(new Date(), 7)).toISOString() : null;
+    salvarDados(); irParaAba(abaAtual);
+  };
+};
+
+/* ---------- "recebi" (quitar o que falta) ---------- */
+function formRecebi(a, aoSalvar){
+  const c = buscarCliente(a.cliente_id) || {nome:'cliente'};
+  const falta = faltaDe(a);
+  const f = abrirFolha('Registrar recebimento', `
+    <div class="cartao"><p class="titulo-linha">${esc(c.nome)}</p>
+      <p class="sub-linha">Atendimento de ${dataBR(a.data_hora)} · cobrado ${dinheiro(a.preco_total)} · falta ${dinheiro(falta)}</p></div>
+    <label for="rc-valor">Valor recebido (R$)</label>
+    <input id="rc-valor" type="number" inputmode="decimal" step="0.01" min="0" value="${falta}">
+    ${camposFormaHTML('rc')}
+    <button type="button" class="btn primario" id="rc-salvar">Salvar recebimento</button>`);
+  const forma = ligarCamposForma(f, 'rc');
+  f.querySelector('#rc-salvar').onclick = ()=>{
+    const v = lerValor(f.querySelector('#rc-valor'));
+    if (!v || v <= 0){ aviso('Informe o valor recebido.'); return; }
+    if (v - falta > 0.009){ aviso(`O valor passa do que falta (${dinheiro(falta)}).`); return; }
+    if (!Array.isArray(a.pagamentos)) a.pagamentos = pagamentosDe(a).map(p=> ({...p}));
+    a.pagamentos.push({id: novoId(), valor: v, ...forma(), data: new Date().toISOString(), sinal: false});
+    if (faltaDe(a) <= 0.009) a.receber_ate = null;
+    salvarDados(); fecharFolha(); aviso(faltaDe(a) > 0.009 ? `Recebido ✓ ainda falta ${dinheiro(faltaDe(a))}` : 'Quitado ✓');
+    if (aoSalvar) aoSalvar();
+  };
+}
+function msgCobranca(a, c){
+  return `Oi, ${primeiroNome(c.nome)}! Tudo bem? 😊\nPassando pra lembrar do valor de ${dinheiro(faltaDe(a))} do seu atendimento de ${dataBR(a.data_hora)}. Pode ser por PIX, tá?${assinatura()}`;
+}
+
+/* ---------- despesas ---------- */
+function despesasDoPeriodo(ini, fim){
+  const dias = (fim - ini) / 86400000;
+  const linhas = [];
+  for (const d of D.despesas){
+    if (!d.ativo) continue;
+    const cat = d.categoria || 'outras';
+    if (d.recorrencia === 'mensal') linhas.push({d, cat, valor: r2(d.valor / 30 * dias), fixa: true});
+    else { const t = new Date(d.data); if (t >= ini && t < fim) linhas.push({d, cat, valor: r2(d.valor), fixa: false}); }
+  }
+  return linhas;
+}
+
+/* ---------- cálculo do período ---------- */
+function calcularFinanceiro(ini, fim){
+  const dentro = iso => { const t = new Date(iso); return t >= ini && t < fim; };
+  const feitos = D.atendimentos.filter(a=> a.estado === 'encerrado' && dentro(a.data_hora));
+  const faturado = r2(feitos.reduce((s, a)=> s + a.preco_total, 0));
+  const material = r2(feitos.reduce((s, a)=> s + a.custo_total, 0));
+  const pags = [];
+  D.atendimentos.forEach(a=> pagamentosDe(a).forEach(p=>{ if (dentro(p.data)) pags.push({p, a}); }));
+  const entrou = r2(pags.reduce((s, x)=> s + x.p.valor, 0));
+  const taxas = r2(pags.reduce((s, x)=> s + valorTaxa(x.p), 0));
+  const desp = despesasDoPeriodo(ini, fim);
+  const despesas = r2(desp.reduce((s, x)=> s + x.valor, 0));
+  const saiu = r2(taxas + material + despesas);
+  const sobrou = r2(entrou - saiu);
+  const porForma = {};
+  pags.forEach(({p})=>{ const k = rotuloForma(p); porForma[k] = r2((porForma[k] || 0) + p.valor); });
+  const porCategoria = {};
+  if (material) porCategoria['Material usado'] = material;
+  if (taxas) porCategoria['Taxas da maquininha'] = taxas;
+  desp.forEach(x=>{ const k = CATEGORIAS[x.cat] || 'Outras'; porCategoria[k] = r2((porCategoria[k] || 0) + x.valor); });
+  /* lucro por serviço: margem média só em atendimentos de um serviço (no combo não dá para separar o material) */
+  const porServ = new Map();
+  feitos.forEach(a=>{
+    a.servicos.forEach(s=>{
+      if (!porServ.has(s.servico_id)){ const sv = buscarServico(s.servico_id); porServ.set(s.servico_id, {nome: sv ? sv.nome : '(removido)', n:0, receita:0, margens:[]}); }
+      const x = porServ.get(s.servico_id); x.n++; x.receita += s.preco_cobrado;
+    });
+    if (a.servicos.length === 1) porServ.get(a.servicos[0].servico_id).margens.push(a.preco_total - a.custo_total);
+  });
+  const servicos = [...porServ.values()].map(x=> ({...x, receita: r2(x.receita),
+    margem_media: x.margens.length ? r2(x.margens.reduce((s, m)=> s + m, 0) / x.margens.length) : null}))
+    .sort((p, q)=> q.receita - p.receita);
+  const porItem = new Map();
+  feitos.forEach(a=> a.consumos.forEach(c=>{
+    if (!porItem.has(c.item_id)){ const it = buscarItem(c.item_id); porItem.set(c.item_id, {nome: it ? it.nome : '(removido)', cor: it ? it.cor : '', custo: 0, usos: 0}); }
+    const x = porItem.get(c.item_id); x.usos++; if (c.custo_conhecido) x.custo += c.custo_unit * c.quantidade;
+  }));
+  const itens = [...porItem.values()].map(x=> ({...x, custo: r2(x.custo)})).sort((p, q)=> q.custo - p.custo);
+  return {ini, fim, feitos, pags, desp, faturado, material, entrou, taxas, despesas, saiu, sobrou,
+    margem: entrou ? sobrou / entrou : null, n: feitos.length, ticket: feitos.length ? r2(faturado / feitos.length) : null,
+    porForma, porCategoria, servicos, itens, custo_parcial: feitos.some(a=> a.custo_parcial),
+    tem_legado: pags.some(x=> x.p.legado)};
+}
+
+/* ---------- período escolhido ---------- */
+let finModo = 'mes';
+let finMes = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+let finIni = somaDias(inicioDia(new Date()), -29), finFim = inicioDia(new Date());
+function periodoFin(){
+  const hoje0 = inicioDia(new Date()), amanha = somaDias(hoje0, 1);
+  if (finModo === 'hoje') return {ini: hoje0, fim: amanha, rotulo: 'Hoje', ant: {ini: somaDias(hoje0, -1), fim: hoje0}, rotAnt: 'ontem'};
+  if (finModo === 'semana'){
+    const dom = somaDias(hoje0, -hoje0.getDay());
+    return {ini: dom, fim: amanha, rotulo: 'Esta semana', ant: {ini: somaDias(dom, -7), fim: somaDias(amanha, -7)}, rotAnt: 'mesmos dias da semana passada'};
+  }
+  if (finModo === 'mes'){
+    const m0 = new Date(finMes.getFullYear(), finMes.getMonth(), 1), m1 = new Date(finMes.getFullYear(), finMes.getMonth() + 1, 1);
+    const atual = hoje0 >= m0 && hoje0 < m1;
+    const fim = atual ? amanha : m1;
+    const a0 = new Date(m0.getFullYear(), m0.getMonth() - 1, 1);
+    const antFim = atual ? new Date(Math.min(new Date(a0.getFullYear(), a0.getMonth(), hoje0.getDate() + 1), m0)) : m0;
+    return {ini: m0, fim, rotulo: `${capital(MESES[m0.getMonth()])} ${m0.getFullYear()}`, ant: {ini: a0, fim: antFim},
+      rotAnt: atual ? `mesmos dias de ${MESES[a0.getMonth()]}` : MESES[a0.getMonth()], atual};
+  }
+  const ini = inicioDia(finIni), fim = somaDias(inicioDia(finFim), 1), dias = Math.round((fim - ini) / 86400000);
+  return {ini, fim, rotulo: `${dataBR(ini)} a ${dataBR(somaDias(fim, -1))}`, ant: {ini: somaDias(ini, -dias), fim: ini}, rotAnt: `os ${dias} dias anteriores`};
+}
+function variacao(atual, antes, bomSubir = true){
+  if (!antes){ return atual ? '<span class="fin-var neutra"><span aria-hidden="true">novo</span><span class="so-leitor">sem período anterior para comparar</span></span>' : ''; }
+  const pct = Math.round(100 * (atual - antes) / Math.abs(antes));
+  if (!pct) return '<span class="fin-var neutra">igual</span>';
+  const sobe = pct > 0, bom = sobe === bomSubir;
+  return `<span class="fin-var ${bom ? 'boa' : 'ruim'}">${sobe ? '↑' : '↓'} ${Math.abs(pct)}%</span>`;
+}
+function diasUteisRestantes(){
+  const hoje0 = inicioDia(new Date()), m1 = new Date(hoje0.getFullYear(), hoje0.getMonth() + 1, 1);
+  let n = 0;
+  for (let d = somaDias(hoje0, 1); d < m1; d = somaDias(d, 1)){
+    if (!D.config.horarios[d.getDay()].ativo) continue;
+    if (D.config.bloqueios.some(b=> new Date(b.inicio) <= d && new Date(b.fim) >= somaDias(d, 1))) continue;
+    n++;
+  }
+  return n;
+}
+
+/* ---------- gráfico de barras (SVG) ---------- */
+function graficoHTML(fin){
+  const dias = Math.round((fin.fim - fin.ini) / 86400000);
+  if (dias < 2) return '';
+  const passo = dias > 45 ? 7 : 1;
+  const grupos = [];
+  for (let d = new Date(fin.ini); d < fin.fim; d = somaDias(d, passo)){
+    const fimG = new Date(Math.min(somaDias(d, passo), fin.fim));
+    const sub = calcularFinanceiro(d, fimG);
+    grupos.push({d, entrou: sub.entrou, saiu: sub.saiu});
+  }
+  const max = Math.max(1, ...grupos.map(g=> Math.max(g.entrou, g.saiu)));
+  const W = 340, H = 150, base = H - 18, larg = W / grupos.length, b = Math.max(2, Math.min(14, larg * 0.36));
+  const barras = grupos.map((g, i)=>{
+    const x = i * larg + larg / 2;
+    const he = (g.entrou / max) * (base - 6), hs = (g.saiu / max) * (base - 6);
+    const rot = passo === 1 ? (grupos.length <= 8 ? DIAS_CURTOS[g.d.getDay()] + ' ' + g.d.getDate() : (g.d.getDate() % 5 === 1 || i === 0 ? g.d.getDate() : '')) : (i % 2 === 0 ? dataBR(g.d) : '');
+    return `<g><title>${passo === 1 ? dataBR(g.d) : 'Semana de ' + dataBR(g.d)}: entrou ${dinheiro(g.entrou)}, saiu ${dinheiro(g.saiu)}</title>
+      <rect x="${x - b - 1}" y="${base - he}" width="${b}" height="${he}" rx="${Math.min(3, b/2)}" class="fin-b-e"/>
+      <rect x="${x + 1}" y="${base - hs}" width="${b}" height="${hs}" rx="${Math.min(3, b/2)}" class="fin-b-s"/>
+      ${rot !== '' ? `<text x="${x}" y="${H - 4}" text-anchor="middle" class="fin-b-t">${rot}</text>` : ''}</g>`;
+  }).join('');
+  return `<div class="cartao fin-grafico">
+    <div class="fin-leg"><span><i class="e"></i>Entrou</span><span><i class="s"></i>Saiu</span><span class="sub-linha">${passo === 1 ? 'por dia' : 'por semana'}</span></div>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico de entradas e saídas ${passo === 1 ? 'por dia' : 'por semana'}: entrou ${dinheiro(fin.entrou)} e saiu ${dinheiro(fin.saiu)} no período">
+      <line x1="0" x2="${W}" y1="${base}" y2="${base}" class="fin-b-base"/>${barras}</svg></div>`;
+}
+function barrasHTML(obj, total, classe){
+  const itens = Object.entries(obj).sort((a, b)=> b[1] - a[1]);
+  if (!itens.length) return '<p class="vazio" style="padding:1.2rem">Nada no período.</p>';
+  return itens.map(([k, v])=> `<div class="fin-barra ${classe || ''}">
+      <div class="fin-barra-topo"><span>${esc(k)}</span><strong class="num">${dinheiro(v)}</strong></div>
+      <div class="fin-barra-trilha"><div style="width:${total ? Math.max(2, Math.min(100, 100 * v / total)) : 0}%"></div></div>
+      <span class="sub-linha">${total ? Math.round(100 * v / total) : 0}%</span></div>`).join('');
+}
+
+/* ==========================================================================
+   TELA: FINANCEIRO (substitui o antigo Painel)
+   ========================================================================== */
+function renderFinanceiro(){
+  garantirConfig();
+  const alvo = $('painel-painel');
+  const per = periodoFin();
+  const fin = calcularFinanceiro(per.ini, per.fim);
+  const ant = calcularFinanceiro(per.ant.ini, per.ant.fim);
+  const hoje0 = inicioDia(new Date());
+  const mesAtual = calcularFinanceiro(new Date(hoje0.getFullYear(), hoje0.getMonth(), 1), somaDias(hoje0, 1));
+  const meta = D.config.meta_mensal;
+  const aReceber = D.atendimentos.filter(a=> faltaDe(a) > 0.009).sort((x, y)=> new Date(x.receber_ate || x.data_hora) - new Date(y.receber_ate || y.data_hora));
+  const totalReceber = r2(aReceber.reduce((s, a)=> s + faltaDe(a), 0));
+  const margemTxt = fin.margem != null ? `${Math.round(fin.margem * 100)}% do que entrou` : '—';
+  const restanteMeta = r2(meta - mesAtual.faturado), diasRest = diasUteisRestantes();
+
+  alvo.innerHTML = `
+    <h1 class="so-leitor">Financeiro</h1>
+    <div class="chips fin-modos" role="group" aria-label="Período">
+      ${[['hoje','Hoje'],['semana','Semana'],['mes','Mês'],['periodo','Período']].map(([k, t])=>
+        `<button type="button" class="chip" aria-pressed="${finModo === k}" data-fin-modo="${k}">${t}</button>`).join('')}
+    </div>
+    ${finModo === 'mes' ? `<div class="ag-mes-topo">
+      <button type="button" class="btn-ico ag-seta" data-fin-mes="-1" aria-label="Mês anterior">‹</button>
+      <h2>${per.rotulo}</h2>
+      <button type="button" class="btn-ico ag-seta" data-fin-mes="1" aria-label="Próximo mês" ${per.atual ? 'disabled' : ''}>›</button></div>` : ''}
+    ${finModo === 'periodo' ? `<div class="grade2 fin-datas">
+      <div><label for="fin-ini">De</label><input id="fin-ini" type="date" value="${chaveDia(finIni)}"></div>
+      <div><label for="fin-fim">Até</label><input id="fin-fim" type="date" value="${chaveDia(finFim)}"></div></div>` : ''}
+    ${finModo !== 'mes' ? `<p class="sub-linha fin-rotulo">${per.rotulo}</p>` : ''}
+
+    <div class="kpi destaque fin-heroi">
+      <p class="rotulo">Sobrou pra você</p>
+      <p class="valor">${dinheiro(fin.sobrou)}</p>
+      <p class="fin-heroi-sub">${margemTxt} · ${variacao(fin.sobrou, ant.sobrou)} <span>vs ${per.rotAnt}</span></p>
+    </div>
+    <div class="grade3">
+      <div class="kpi"><p class="rotulo">Faturado</p><p class="valor">${dinheiro(fin.faturado)}</p><p class="fin-mini">${variacao(fin.faturado, ant.faturado)}</p></div>
+      <div class="kpi"><p class="rotulo">Entrou</p><p class="valor verde">${dinheiro(fin.entrou)}</p><p class="fin-mini">${variacao(fin.entrou, ant.entrou)}</p></div>
+      <div class="kpi"><p class="rotulo">Saiu</p><p class="valor fin-saiu">${dinheiro(fin.saiu)}</p><p class="fin-mini">${variacao(fin.saiu, ant.saiu, false)}</p></div>
+    </div>
+    <p class="sub-linha fin-linha-info">${fin.n} atendimento(s) concluído(s) · ticket médio ${dinheiro(fin.ticket)}${totalReceber ? ` · <strong>a receber ${dinheiro(totalReceber)}</strong>` : ''}</p>
+    ${fin.custo_parcial ? '<p class="aviso-parcial">Há atendimentos com custo parcial (item sem preço no estoque).</p>' : ''}
+
+    ${meta > 0 ? `<div class="cartao fin-meta">
+      <div class="fin-barra-topo"><span class="titulo-linha">Meta de ${MESES[hoje0.getMonth()]}</span><strong class="num">${dinheiro(mesAtual.faturado)} de ${dinheiro(meta)}</strong></div>
+      <div class="fin-barra-trilha grossa" role="progressbar" aria-label="Meta do mês" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.min(100, Math.round(100 * mesAtual.faturado / meta))}">
+        <div style="width:${Math.min(100, 100 * mesAtual.faturado / meta)}%"></div></div>
+      <p class="sub-linha">${restanteMeta > 0
+        ? `Faltam ${dinheiro(restanteMeta)}${diasRest ? ` · cerca de ${dinheiro(restanteMeta / diasRest)} por dia de atendimento (${diasRest} dias)` : ''}`
+        : 'Meta batida! 🎉'}</p></div>`
+      : `<div class="cartao fin-meta vazia"><p class="sub-linha">Defina uma meta de faturamento para acompanhar o mês.</p>
+         <button type="button" class="chip" id="fin-def-meta">Definir meta do mês</button></div>`}
+
+    ${graficoHTML(fin)}
+
+    <div class="secao-titulo"><h2>Para onde foi o dinheiro</h2></div>
+    <div class="cartao">${barrasHTML(fin.porCategoria, fin.saiu, 'saida')}</div>
+
+    <div class="secao-titulo"><h2>Como entrou</h2></div>
+    <div class="cartao">${barrasHTML(fin.porForma, fin.entrou)}
+      ${fin.tem_legado ? '<p class="dica-campo">"Não informada": atendimentos registrados antes desta versão, considerados pagos no dia.</p>' : ''}</div>
+
+    <div class="secao-titulo"><h2>A receber</h2></div>
+    <div class="cartao" style="padding:.2rem 1rem" id="fin-receber">${aReceber.length ? aReceber.map(a=>{
+      const c = buscarCliente(a.cliente_id) || {nome:'(cliente removida)', telefone:''};
+      const venc = a.receber_ate ? new Date(a.receber_ate) : null, atrasado = venc && venc < hoje0;
+      const zap = linkWhats(c.telefone, msgCobranca(a, c));
+      return `<div class="linha-lista fin-rec">
+        <div class="cresce"><p class="titulo-linha">${esc(c.nome)}</p>
+          <p class="sub-linha">${dinheiro(faltaDe(a))} · atendimento ${dataBR(a.data_hora)}${venc ? ` · <span class="${atrasado ? 'fin-atraso' : ''}">${atrasado ? 'venceu' : 'até'} ${dataBR(venc)}</span>` : ''}</p></div>
+        ${zap ? `<a class="chip ag-zap-chip" href="${zap}" target="_blank" rel="noopener" aria-label="Cobrar ${esc(c.nome)} no WhatsApp">Cobrar</a>` : ''}
+        <button type="button" class="chip" data-recebi="${a.id}" aria-label="Registrar recebimento de ${esc(c.nome)}">Recebi</button></div>`;
+    }).join('') : '<p class="vazio" style="padding:1.2rem">Nada pendente. Tudo recebido ✓</p>'}</div>
+
+    <div class="secao-titulo"><h2>Lucro por serviço</h2></div>
+    <div class="cartao" style="padding:.2rem 1rem">${fin.servicos.map(s=> `
+      <div class="linha-lista"><div class="cresce"><p class="titulo-linha">${esc(s.nome)}</p>
+        <p class="sub-linha">${s.n}× · faturou ${dinheiro(s.receita)}</p></div>
+        <div class="dir num">${s.margem_media != null ? `<span style="color:var(--esmeralda);font-weight:800">+${dinheiro(s.margem_media)}</span><p class="sub-linha">sobra média*</p>` : '<span class="sub-linha">só em combo</span>'}</div>
+      </div>`).join('') || '<p class="vazio" style="padding:1.2rem">Sem atendimentos no período.</p>'}
+      ${fin.servicos.length ? '<p class="dica-campo" style="padding-bottom:.6rem">*preço menos material, por atendimento.</p>' : ''}</div>
+
+    <div class="secao-titulo"><h2>Produtos que mais custaram</h2></div>
+    <div class="cartao" style="padding:.2rem 1rem">${fin.itens.slice(0, 5).map(i=> `
+      <div class="linha-lista"><div class="cresce"><p class="titulo-linha">${esc(i.nome)}${i.cor ? ` <span class="tag cinza">${esc(i.cor)}</span>` : ''}</p>
+        <p class="sub-linha">em ${i.usos} atendimento(s)</p></div><div class="dir num" style="font-weight:800">${dinheiro(i.custo)}</div></div>`).join('')
+      || '<p class="vazio" style="padding:1.2rem">Registre o material na ficha para ver esta análise.</p>'}</div>
+
+    <button type="button" class="btn claro" id="fin-despesa">+ Lançar despesa</button>
+    <div class="grade2 ag-grade-btn" style="margin-top:.7rem">
+      <button type="button" class="btn contorno" id="fin-config">Taxas e meta</button>
+      <button type="button" class="btn contorno" id="fin-csv">Exportar planilha</button>
+    </div>
+    <button type="button" class="btn contorno" id="fin-ajuda">Como calculamos?</button>`;
+
+  alvo.querySelectorAll('[data-fin-modo]').forEach(b=> b.onclick = ()=>{
+    finModo = b.dataset.finModo;
+    if (finModo === 'mes') finMes = new Date(hoje0.getFullYear(), hoje0.getMonth(), 1);
+    renderFinanceiro();
+  });
+  alvo.querySelectorAll('[data-fin-mes]').forEach(b=> b.onclick = ()=>{ finMes = new Date(finMes.getFullYear(), finMes.getMonth() + Number(b.dataset.finMes), 1); renderFinanceiro(); });
+  if (finModo === 'periodo'){
+    const muda = ()=>{
+      const i = $('fin-ini').value, e = $('fin-fim').value;
+      if (!i || !e) return;
+      if (deChave(e) < deChave(i)){ aviso('A data final precisa ser depois da inicial.'); return; }
+      finIni = deChave(i); finFim = deChave(e); renderFinanceiro();
+    };
+    $('fin-ini').onchange = muda; $('fin-fim').onchange = muda;
+  }
+  const defMeta = $('fin-def-meta'); if (defMeta) defMeta.onclick = ()=> telaConfigFinanceiro();
+  alvo.querySelectorAll('[data-recebi]').forEach(b=> b.onclick = ()=> formRecebi(buscarAtendimento(b.dataset.recebi), renderFinanceiro));
+  $('fin-despesa').onclick = ()=> telaDespesas(true);
+  $('fin-config').onclick = ()=> telaConfigFinanceiro();
+  $('fin-csv').onclick = ()=> exportarCSV(fin, per);
+  $('fin-ajuda').onclick = ()=> abrirFolha('Como calculamos', `
+    <div class="cartao fin-ajuda">
+      <p><strong>Faturado</strong> — soma do valor cobrado nos atendimentos concluídos no período.</p>
+      <p><strong>Entrou</strong> — dinheiro que de fato chegou no período, incluindo sinais. O que falta receber só entra quando você marca "Recebi".</p>
+      <p><strong>Saiu</strong> — taxas da maquininha + material usado nos atendimentos + despesas (as avulsas do período e as fixas mensais divididas pelos dias).</p>
+      <p><strong>Sobrou</strong> — Entrou menos Saiu. É o que fica pra você, antes de pagar seu próprio salário.</p>
+      <p><strong>Margem</strong> — quanto do que entrou sobrou, em porcentagem.</p>
+      <p class="sub-linha">A comparação (↑ ↓) é com o período anterior do mesmo tamanho. Compras de material para o estoque não entram como despesa: o custo aparece aos poucos, conforme o material é usado nos atendimentos.</p>
+    </div>`);
+}
+renderPainel = renderFinanceiro;
+
+/* ---------- despesas (substitui a tela antiga, agora com categoria) ---------- */
+telaDespesas = function(abrirFormulario){
+  const fixas = D.despesas.filter(d=> d.ativo && d.recorrencia === 'mensal');
+  const avulsas = D.despesas.filter(d=> d.ativo && d.recorrencia !== 'mensal').sort((a, b)=> new Date(b.data) - new Date(a.data)).slice(0, 30);
+  const totalFixas = r2(fixas.reduce((s, d)=> s + d.valor, 0));
+  const linha = d=> `<div class="linha-lista"><div class="cresce">
+      <p class="titulo-linha">${esc(d.descricao)}</p>
+      <p class="sub-linha">${esc(CATEGORIAS[d.categoria || 'outras'])}${d.recorrencia === 'mensal' ? ' · todo mês' : ' · ' + dataBR(d.data)}</p></div>
+      <span class="dir num" style="font-weight:800">${dinheiro(d.valor)}</span>
+      <button type="button" class="btn-ico" style="margin-left:.4rem" data-del="${d.id}" aria-label="Excluir despesa ${esc(d.descricao)}">✕</button></div>`;
+  const f = abrirFolha('Despesas', `
+    <p class="sub-linha" style="margin-top:.8rem">O que você gasta para trabalhar, além do material do estoque: aluguel, contas, cursos, transporte…</p>
+    <div class="cartao fin-desp-form">
+      <label for="de-desc">Descrição</label><input id="de-desc" placeholder="Ex.: Aluguel da cadeira" maxlength="60">
+      <div class="grade2" style="margin-top:0">
+        <div><label for="de-valor">Valor (R$)</label><input id="de-valor" type="number" inputmode="decimal" step="0.01" min="0"></div>
+        <div><label for="de-rec">Frequência</label>
+          <select id="de-rec"><option value="unica">Só desta vez</option><option value="mensal">Todo mês</option></select></div>
+      </div>
+      <label for="de-cat">Categoria</label>
+      <select id="de-cat">${Object.entries(CATEGORIAS).map(([k, t])=> `<option value="${k}">${t}</option>`).join('')}</select>
+      <div id="de-data-caixa"><label for="de-data">Data</label><input id="de-data" type="date" value="${chaveDia(new Date())}"></div>
+      <button type="button" class="btn primario" id="de-add">Adicionar despesa</button>
+    </div>
+    <div class="secao-titulo"><h2>Fixas do mês · ${dinheiro(totalFixas)}</h2></div>
+    <div class="cartao" style="padding:.2rem 1rem">${fixas.map(linha).join('') || '<p class="vazio" style="padding:1.2rem">Nenhuma despesa fixa.</p>'}</div>
+    <div class="secao-titulo"><h2>Avulsas recentes</h2></div>
+    <div class="cartao" style="padding:.2rem 1rem">${avulsas.map(linha).join('') || '<p class="vazio" style="padding:1.2rem">Nenhuma despesa avulsa.</p>'}</div>`,
+    ()=> irParaAba(abaAtual));
+  const rec = f.querySelector('#de-rec');
+  rec.onchange = ()=> f.querySelector('#de-data-caixa').classList.toggle('oculto', rec.value === 'mensal');
+  f.querySelectorAll('[data-del]').forEach(b=> b.onclick = ()=>{
+    if (!confirm('Excluir esta despesa? Ela sai de todos os períodos.')) return;
+    arquivarDespesa(b.dataset.del); fecharFolha(); telaDespesas(); aviso('Despesa excluída');
+  });
+  f.querySelector('#de-add').onclick = ()=>{
+    const desc = f.querySelector('#de-desc').value.trim(), valor = lerValor(f.querySelector('#de-valor'));
+    if (!desc || !valor || valor <= 0){ aviso('Preencha descrição e valor.'); return; }
+    const mensal = rec.value === 'mensal';
+    const dataTxt = f.querySelector('#de-data').value;
+    const d = criarDespesa({descricao: desc, valor, recorrencia: mensal ? 'mensal' : 'unica',
+      data: mensal || !dataTxt ? new Date().toISOString() : (()=>{ const x = deChave(dataTxt); x.setHours(12); return x.toISOString(); })()});
+    d.categoria = f.querySelector('#de-cat').value; salvarDados();
+    fecharFolha(); telaDespesas(); aviso('Despesa adicionada ✓');
+  };
+  if (abrirFormulario) setTimeout(()=> f.querySelector('#de-desc').focus(), 50);
+};
+
+/* ---------- taxas da maquininha e meta ---------- */
+function telaConfigFinanceiro(){
+  garantirConfig();
+  const t = D.config.taxas;
+  const campo = (k, rot)=> `<div><label for="tx-${k}">${rot} (%)</label>
+    <input id="tx-${k}" type="number" inputmode="decimal" step="0.01" min="0" max="30" value="${t[k] || ''}" placeholder="0"></div>`;
+  const f = abrirFolha('Taxas e meta', `
+    <p class="sub-linha" style="margin-top:.8rem">Confira as taxas no app da sua maquininha. Elas são descontadas do que entrou, para o "Sobrou" ficar real.</p>
+    <div class="cartao">
+      <div class="grade2" style="margin-top:0">${campo('debito', 'Débito')}${campo('credito', 'Crédito à vista')}
+        ${campo('credito_parcelado', 'Crédito parcelado')}${campo('pix', 'PIX')}</div>
+      <p class="dica-campo">Dinheiro não tem taxa.</p>
+    </div>
+    <label for="tx-meta">Meta de faturamento do mês (R$)</label>
+    <input id="tx-meta" type="number" inputmode="decimal" step="50" min="0" value="${D.config.meta_mensal || ''}" placeholder="Ex.: 5000">
+    <button type="button" class="btn primario" id="tx-salvar">Salvar</button>`, ()=> irParaAba(abaAtual));
+  f.querySelector('#tx-salvar').onclick = ()=>{
+    const novo = {...t};
+    for (const k of ['debito','credito','credito_parcelado','pix']){
+      const v = lerValor(f.querySelector('#tx-' + k)) || 0;
+      if (v < 0 || v > 30){ aviso('As taxas precisam ficar entre 0% e 30%.'); return; }
+      novo[k] = v;
+    }
+    novo.dinheiro = 0;
+    const meta = lerValor(f.querySelector('#tx-meta')) || 0;
+    if (meta < 0){ aviso('A meta não pode ser negativa.'); return; }
+    D.config.taxas = novo; D.config.meta_mensal = meta;
+    salvarDados(); fecharFolha(); aviso('Salvo ✓');
+  };
+}
+
+/* ---------- exportar planilha (CSV para Excel/Numbers/Google Planilhas) ---------- */
+async function compartilharArquivo(nome, conteudo, tipo){
+  const blob = new Blob([conteudo], {type: tipo});
+  try{
+    const arq = new File([blob], nome, {type: tipo});
+    if (navigator.canShare && navigator.canShare({files: [arq]})){ await navigator.share({files: [arq], title: nome}); return; }
+  }catch(e){ if (e && e.name === 'AbortError') return; }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = nome;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=> URL.revokeObjectURL(url), 4000);
+}
+function exportarCSV(fin, per){
+  const n = v => r2(v).toFixed(2).replace('.', ',');
+  const cel = t => { const s = String(t ?? ''); return /[;"\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+  const linhas = [['Data','Tipo','Categoria','Descrição','Forma','Valor (R$)']];
+  fin.pags.forEach(({p, a})=>{
+    const c = buscarCliente(a.cliente_id);
+    linhas.push([dataHoraBR(p.data), 'Entrou', p.sinal ? 'Sinal' : 'Atendimento', (c ? c.nome : '') + ' · ' + (nomesServicosDe(a) || 'atendimento'), rotuloForma(p), n(p.valor)]);
+    const tx = valorTaxa(p);
+    if (tx) linhas.push([dataHoraBR(p.data), 'Saiu', 'Taxas da maquininha', 'Taxa ' + rotuloForma(p) + ' · ' + (c ? c.nome : ''), rotuloForma(p), n(-tx)]);
+  });
+  fin.feitos.forEach(a=>{
+    if (!a.custo_total) return;
+    const c = buscarCliente(a.cliente_id);
+    linhas.push([dataHoraBR(a.data_hora), 'Saiu', 'Material usado', (c ? c.nome : '') + ' · ' + (nomesServicosDe(a) || ''), '', n(-a.custo_total)]);
+  });
+  fin.desp.forEach(x=> linhas.push([x.fixa ? `${dataBR(per.ini)} a ${dataBR(somaDias(per.fim, -1))}` : dataHoraBR(x.d.data), 'Saiu',
+    CATEGORIAS[x.cat] || 'Outras', x.d.descricao + (x.fixa ? ' (fixa, proporcional ao período)' : ''), '', n(-x.valor)]));
+  linhas.push([], ['', '', '', 'Faturado', '', n(fin.faturado)], ['', '', '', 'Entrou', '', n(fin.entrou)],
+    ['', '', '', 'Saiu', '', n(-fin.saiu)], ['', '', '', 'Sobrou', '', n(fin.sobrou)]);
+  const csv = '﻿' + linhas.map(l=> l.map(cel).join(';')).join('\r\n');
+  const nome = `nailgestor-financeiro-${chaveDia(per.ini)}-a-${chaveDia(somaDias(per.fim, -1))}.csv`;
+  compartilharArquivo(nome, csv, 'text/csv');
+}
+
+/* dados de exemplo: as duas despesas do exemplo já vêm com categoria */
+const _carregarDadosExemploOriginal = carregarDadosExemplo;
+carregarDadosExemplo = function(){
+  _carregarDadosExemploOriginal();
+  const cat = {'Aluguel da cadeira':'aluguel', 'Curso de atualização':'cursos'};
+  D.despesas.forEach(d=>{ if (!d.categoria && cat[d.descricao]) d.categoria = cat[d.descricao]; });
+  salvarDados();
+};
 
 </script>
 <script>
