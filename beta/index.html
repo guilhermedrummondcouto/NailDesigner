@@ -578,6 +578,29 @@ input[type="time"],input[type="date"]{-webkit-appearance:none;appearance:none;mi
 .bk-status.em-dia{border:1.5px solid var(--esmeralda)!important;background:var(--esmeralda-suave)!important}
 .bk-status.em-dia .titulo-linha{color:var(--esmeralda)}
 .bk-info p + p{margin-top:.3rem}
+/* ===== FICHA DA CLIENTE ===== */
+.fc-extra .fin-legenda{margin-top:1rem}
+.fc-extra .chips{margin-top:.4rem}
+.fc-saude-alerta{margin-top:.9rem}
+.fc-aniv-alerta{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font-weight:600}
+.fc-aniv-alerta .chip{margin-left:auto}
+.fc-resumo{padding:.3rem 1rem!important}
+.fc-linha{display:flex;justify-content:space-between;align-items:center;gap:.8rem;padding:.55rem 0;font-size:.88rem;color:var(--tinta2)}
+.fc-linha + .fc-linha{border-top:1px solid var(--linha2)}
+.fc-linha strong{color:var(--ameixa);text-align:right}
+.fc-cores{display:flex;gap:.25rem;flex-wrap:wrap;justify-content:flex-end}
+.cor-bolinha.grande{width:16px;height:16px;margin:0}
+.fc-tag-saude{color:var(--ambar);font-weight:800}
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-top:.5rem}
+.galeria-item{aspect-ratio:1;border-radius:14px;overflow:hidden;padding:0;border:1px solid var(--linha2)}
+.galeria-item img{width:100%;height:100%;object-fit:cover;display:block}
+.foto-grande{margin:1rem 0 0}
+.foto-grande img{width:100%;border-radius:18px;display:block}
+.foto-grande figcaption{margin-top:.5rem;text-align:center}
+.ini-aviso.aniv{background:#FFF0F6;color:var(--framboesa-escuro)}
+.ini-aviso.aniv .chip{margin-left:auto;flex:none}
+.ini-aniv-txt{margin-left:0!important;font-size:.86rem!important}
+.ini-mini{grid-template-columns:1fr 1fr!important}
 
 /* VISUAL VIDRO (desligado pela opção Visual: Sólido) */
 /* ===== VISUAL VIDRO (Liquid Glass) — camada por cima da Rosa Blush ===== */
@@ -4319,6 +4342,203 @@ renderInicio = function(){
   const ref = alvo.querySelector('.ini-hoje');
   ref ? ref.before(card) : alvo.prepend(card);
   card.querySelector('#ini-backup').onclick = ()=> telaBackup();
+};
+
+/* ==========================================================================
+   MELHORIAS — 2) FICHA DA CLIENTE COMPLETA, ANIVERSÁRIO E FOTOS
+   cliente.ficha = {aniversario:'AAAA-MM-DD', formato, tamanho, cores:[], saude:[], indicada_por}
+   (só acrescenta; clientes antigos continuam válidos)
+   ========================================================================== */
+const FORMATOS = ['Quadrada','Quadrada arredondada','Redonda','Oval','Amendoada','Stiletto','Bailarina'];
+const TAMANHOS = ['Curta','Média','Longa','Extra longa'];
+const SAUDE = ['Alergia a gel/acrilato','Alergia a látex','Pele sensível','Gestante','Diabetes','Rói as unhas','Unhas fracas','Suspeita de micose'];
+const fichaDe = c => (c && c.ficha) || {};
+
+function proximoAniversario(c){
+  const a = fichaDe(c).aniversario; if (!a) return null;
+  const [, m, d] = a.split('-').map(Number); if (!m || !d) return null;
+  const hoje = inicioDia(new Date());
+  let x = new Date(hoje.getFullYear(), m - 1, d);
+  if (x < hoje) x = new Date(hoje.getFullYear() + 1, m - 1, d);
+  return {data: x, dias: Math.round((x - hoje) / 86400000)};
+}
+const textoAniv = n => n === 0 ? 'hoje' : n === 1 ? 'amanhã' : `em ${n} dias`;
+function msgAniversario(c){ return `Feliz aniversário, ${primeiroNome(c.nome)}! 🎂💅 Desejo um ano lindo! Que tal comemorar com as unhas novas? Tenho um horário especial pra você.${assinatura()}`; }
+function contagemFaltas(clienteId){
+  const ats = D.atendimentos.filter(a=> a.cliente_id === clienteId);
+  return {faltas: ats.filter(a=> a.estado === 'faltou').length, cancel: ats.filter(a=> a.estado === 'cancelado').length};
+}
+function alertasSaude(c){ return (fichaDe(c).saude || []); }
+
+/* ---------- formulário da cliente: campos novos ---------- */
+const _formClienteOriginal = formCliente;
+formCliente = function(c){
+  _formClienteOriginal(c);
+  const f = $('camada-folhas').lastElementChild;
+  const btn = f && f.querySelector('#fc-salvar'); if (!btn) return;
+  const fi = fichaDe(c);
+  const chips = (nome, lista, sel, multi)=> `<div class="chips" role="group" aria-label="${nome}">${lista.map(v=>
+    `<button type="button" class="chip" aria-pressed="${multi ? (sel || []).includes(v) : sel === v}" data-${multi ? 'm' : 'u'}="${esc(v)}">${esc(v)}</button>`).join('')}</div>`;
+  const extra = document.createElement('div');
+  extra.className = 'fc-extra';
+  extra.innerHTML = `
+    <label for="fc-aniv">Aniversário</label>
+    <input id="fc-aniv" type="date" value="${fi.aniversario || ''}">
+    <p class="fin-legenda">Formato preferido</p><div id="fc-formato">${chips('Formato preferido', FORMATOS, fi.formato, false)}</div>
+    <p class="fin-legenda">Tamanho</p><div id="fc-tamanho">${chips('Tamanho', TAMANHOS, fi.tamanho, false)}</div>
+    <p class="fin-legenda" id="fc-cores-tit">Cores favoritas</p>
+    <div class="fi-paleta" role="group" aria-labelledby="fc-cores-tit" id="fc-cores">${todasCoresEsmalte().map(([n, v])=>
+      `<button type="button" class="fi-cor" data-cor="${esc(n)}" aria-label="${esc(n)}" title="${esc(n)}" aria-pressed="${(fi.cores || []).includes(n)}"><span style="background:${v}"></span></button>`).join('')}</div>
+    <p class="fin-legenda">Saúde e cuidados</p><div id="fc-saude">${chips('Saúde e cuidados', SAUDE, fi.saude, true)}</div>
+    <label for="fc-indic">Indicada por (opcional)</label>
+    <input id="fc-indic" list="fc-indic-lista" value="${esc(fi.indicada_por || '')}" placeholder="Nome de quem indicou">
+    <datalist id="fc-indic-lista">${D.clientes.filter(x=> x.ativo && (!c || x.id !== c.id)).map(x=> `<option value="${esc(x.nome)}">`).join('')}</datalist>`;
+  btn.before(extra);
+  extra.querySelectorAll('[data-u]').forEach(b=> b.onclick = ()=>{
+    const marcado = b.getAttribute('aria-pressed') === 'true';
+    b.parentElement.querySelectorAll('[data-u]').forEach(x=> x.setAttribute('aria-pressed', 'false'));
+    b.setAttribute('aria-pressed', String(!marcado));
+  });
+  extra.querySelectorAll('[data-m], .fi-cor').forEach(b=> b.onclick = ()=> b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')));
+  const salvarOriginal = btn.onclick;
+  btn.onclick = async ev=>{
+    const sel = (id, attr)=> [...extra.querySelectorAll(`#${id} [aria-pressed="true"]`)].map(b=> b.dataset[attr]);
+    const ficha = {aniversario: extra.querySelector('#fc-aniv').value || '', formato: sel('fc-formato', 'u')[0] || '',
+      tamanho: sel('fc-tamanho', 'u')[0] || '', cores: sel('fc-cores', 'cor'), saude: sel('fc-saude', 'm'),
+      indicada_por: extra.querySelector('#fc-indic').value.trim()};
+    const nome = f.querySelector('#fc-nome').value.trim();
+    const antes = new Set(D.clientes.map(x=> x.id));
+    await salvarOriginal.call(btn, ev);
+    const alvo = c ? buscarCliente(c.id) : D.clientes.find(x=> !antes.has(x.id) && x.nome === nome);
+    if (alvo){ alvo.ficha = ficha; salvarDados(); if (abaAtual === 'clientes') renderClientes(); }
+  };
+};
+
+/* ---------- visualizar foto em tela cheia ---------- */
+async function verFoto(chave, legenda){
+  let url = null; try{ url = await idb.get(chave); }catch(e){}
+  if (!url){ aviso('Foto não encontrada neste aparelho.'); return; }
+  abrirFolha('Foto', `<figure class="foto-grande"><img src="${url}" alt="${esc(legenda)}"><figcaption class="sub-linha">${esc(legenda)}</figcaption></figure>`);
+}
+async function miniaturasHTML(lista){
+  const partes = [];
+  for (const x of lista){
+    let url = null; try{ url = await idb.get(x.chave); }catch(e){}
+    if (url) partes.push(`<button type="button" class="galeria-item" data-foto="${x.chave}" data-leg="${esc(x.legenda)}" aria-label="Ver foto: ${esc(x.legenda)}"><img src="${url}" alt=""></button>`);
+  }
+  return partes.join('');
+}
+function fotosDe(filtro){
+  return D.atendimentos.filter(a=> a.estado === 'encerrado' && filtro(a)).sort((a, b)=> new Date(b.data_hora) - new Date(a.data_hora))
+    .flatMap(a=> (a.fotos || []).filter(f=> f.chave_foto).map(f=>{
+      const c = buscarCliente(a.cliente_id);
+      return {chave: f.chave_foto, legenda: `${c ? c.nome : ''} · ${dataBR(a.data_hora)} · ${nomesServicosDe(a) || 'atendimento'}`};
+    }));
+}
+function ligarGaleria(raiz){ raiz.querySelectorAll('[data-foto]').forEach(b=> b.onclick = ()=> verFoto(b.dataset.foto, b.dataset.leg)); }
+
+/* ---------- tela da cliente: ficha, números e galeria ---------- */
+const _verClienteOriginal = verCliente;
+verCliente = async function(clienteId){
+  await _verClienteOriginal(clienteId);
+  const c = buscarCliente(clienteId); if (!c) return;
+  const f = $('camada-folhas').lastElementChild; if (!f) return;
+  const fi = fichaDe(c), an = proximoAniversario(c), {faltas, cancel} = contagemFaltas(c.id);
+  const feitos = D.atendimentos.filter(a=> a.cliente_id === c.id && a.estado === 'encerrado').sort((a, b)=> new Date(a.data_hora) - new Date(b.data_hora));
+  let freq = null;
+  if (feitos.length >= 2){ const dias = (new Date(feitos.at(-1).data_hora) - new Date(feitos[0].data_hora)) / 86400000; freq = Math.round(dias / (feitos.length - 1)); }
+  const ticket = feitos.length ? feitos.reduce((s, a)=> s + a.preco_total, 0) / feitos.length : null;
+  const zap = linkWhats(c.telefone, `Oi, ${primeiroNome(c.nome)}! Tudo bem? 💅${assinatura()}`);
+  const saude = alertasSaude(c);
+  const bloco = document.createElement('div');
+  bloco.innerHTML = `
+    ${saude.length ? `<div class="aviso-caixa fc-saude-alerta" role="note"><strong>Cuidado:</strong> ${saude.map(esc).join(' · ')}</div>` : ''}
+    ${an && an.dias <= 7 ? `<div class="cartao fc-aniv-alerta">🎂 Aniversário <strong>${textoAniv(an.dias)}</strong>
+      ${linkWhats(c.telefone, msgAniversario(c)) ? `<a class="chip ag-zap-chip" href="${linkWhats(c.telefone, msgAniversario(c))}" target="_blank" rel="noopener">Mandar parabéns</a>` : ''}</div>` : ''}
+    <div class="cartao fc-resumo">
+      <div class="fc-linha"><span>Vem a cada</span><strong>${freq ? `${freq} dias` : '—'}</strong></div>
+      <div class="fc-linha"><span>Ticket médio</span><strong>${ticket != null ? dinheiro(ticket) : '—'}</strong></div>
+      <div class="fc-linha"><span>Faltas / cancelamentos</span><strong class="${faltas ? 'fin-atraso' : ''}">${faltas} / ${cancel}</strong></div>
+      ${fi.aniversario ? `<div class="fc-linha"><span>Aniversário</span><strong>${fi.aniversario.slice(8, 10)}/${fi.aniversario.slice(5, 7)}</strong></div>` : ''}
+      ${fi.formato || fi.tamanho ? `<div class="fc-linha"><span>Unhas</span><strong>${esc([fi.formato, fi.tamanho].filter(Boolean).join(' · '))}</strong></div>` : ''}
+      ${(fi.cores || []).length ? `<div class="fc-linha"><span>Cores favoritas</span><strong class="fc-cores">${fi.cores.map(n=> `<span class="cor-bolinha grande" style="background:${amostraDe(n) || '#ccc'}" title="${esc(n)}"></span>`).join('')}<span class="so-leitor">${fi.cores.map(esc).join(', ')}</span></strong></div>` : ''}
+      ${fi.indicada_por ? `<div class="fc-linha"><span>Indicada por</span><strong>${esc(fi.indicada_por)}</strong></div>` : ''}
+    </div>
+    ${zap ? `<a class="btn contorno" href="${zap}" target="_blank" rel="noopener">Conversar no WhatsApp</a>` : ''}`;
+  const kpis = f.querySelector('.grade2');
+  kpis ? kpis.after(...bloco.children) : f.querySelector('.folha-corpo').prepend(...bloco.children);
+  const fotos = fotosDe(a=> a.cliente_id === c.id);
+  if (fotos.length){
+    const sec = document.createElement('div');
+    sec.innerHTML = `<div class="secao-titulo"><h2>Fotos (${fotos.length})</h2></div><div class="galeria" id="vc-galeria"></div>`;
+    const hist = f.querySelector('#vc-hist'); (hist.previousElementSibling || hist).before(...sec.children);
+    const g = f.querySelector('#vc-galeria'); g.innerHTML = await miniaturasHTML(fotos.slice(0, 12)); ligarGaleria(g);
+  }
+};
+
+/* ---------- portfólio: todas as fotos ---------- */
+async function telaPortfolio(){
+  const fotos = fotosDe(()=> true);
+  const f = abrirFolha('Portfólio', `
+    <p class="sub-linha" style="margin-top:.8rem">Fotos dos atendimentos, das mais novas para as mais antigas. Toque para ampliar e mostrar para a cliente.</p>
+    <div class="galeria grande" id="pf-galeria">${fotos.length ? '' : '<p class="vazio">Tire a foto do resultado na ficha de encerramento e ela aparece aqui.</p>'}</div>`);
+  if (fotos.length){ const g = f.querySelector('#pf-galeria'); g.innerHTML = await miniaturasHTML(fotos.slice(0, 60)); ligarGaleria(g); }
+}
+
+/* ---------- lista de clientes: aniversário e faltas ---------- */
+function decorarListaClientes(){
+  document.querySelectorAll('#cl-lista [data-ver]').forEach(b=>{
+    const c = buscarCliente(b.dataset.ver); if (!c) return;
+    const sub = b.querySelector('.sub-linha'); if (!sub) return;
+    const an = proximoAniversario(c), {faltas} = contagemFaltas(c.id), extras = [];
+    if (an && an.dias <= 7) extras.push(`🎂 ${textoAniv(an.dias)}`);
+    if (faltas) extras.push(`<span class="fin-atraso">${faltas} falta${faltas > 1 ? 's' : ''}</span>`);
+    if (alertasSaude(c).length) extras.push('<span class="fc-tag-saude">⚠ cuidado</span>');
+    if (extras.length) sub.insertAdjacentHTML('beforeend', ' · ' + extras.join(' · '));
+  });
+}
+const _renderClientesOriginal = renderClientes;
+renderClientes = function(){
+  _renderClientesOriginal();
+  decorarListaClientes();
+  $('cl-busca').addEventListener('input', decorarListaClientes);
+};
+
+/* ---------- alerta de saúde no agendamento e na ficha de encerramento ---------- */
+function inserirAlertaSaude(clienteId){
+  const c = buscarCliente(clienteId), s = alertasSaude(c); if (!s.length) return;
+  const f = $('camada-folhas').lastElementChild; if (!f || f.querySelector('.fc-saude-alerta')) return;
+  const d = document.createElement('div'); d.className = 'aviso-caixa fc-saude-alerta'; d.setAttribute('role', 'note');
+  d.innerHTML = `<strong>Cuidado com ${esc(primeiroNome(c.nome))}:</strong> ${s.map(esc).join(' · ')}`;
+  f.querySelector('.folha-corpo').prepend(d);
+}
+const _detalheAgendamentoFicha = detalheAgendamento;
+detalheAgendamento = function(id){ _detalheAgendamentoFicha(id); const a = buscarAtendimento(id); if (a) inserirAlertaSaude(a.cliente_id); };
+const _fichaEncerramentoFicha = fichaEncerramento;
+fichaEncerramento = async function(id){ await _fichaEncerramentoFicha(id); const a = buscarAtendimento(id); if (a) inserirAlertaSaude(a.cliente_id); };
+
+/* ---------- início: aniversários da semana + atalho do portfólio ---------- */
+const _renderInicioFicha = renderInicio;
+renderInicio = function(){
+  _renderInicioFicha();
+  const alvo = $('painel-inicio');
+  const anivs = D.clientes.filter(c=> c.ativo).map(c=> ({c, an: proximoAniversario(c)})).filter(x=> x.an && x.an.dias <= 7).sort((a, b)=> a.an.dias - b.an.dias);
+  if (anivs.length){
+    let caixa = alvo.querySelector('.ini-avisos');
+    if (!caixa){ caixa = document.createElement('div'); caixa.className = 'ini-avisos'; alvo.querySelector('.secao-titulo').before(caixa); }
+    caixa.insertAdjacentHTML('afterbegin', anivs.map(({c, an})=>{
+      const z = linkWhats(c.telefone, msgAniversario(c));
+      return `<div class="ini-aviso aniv">🎂 <span class="ini-aniv-txt"><strong>${esc(primeiroNome(c.nome))}</strong> faz aniversário ${textoAniv(an.dias)}</span>
+        ${z ? `<a class="chip ag-zap-chip" href="${z}" target="_blank" rel="noopener">Parabéns</a>` : ''}</div>`;
+    }).join(''));
+  }
+  const mini = alvo.querySelector('.ini-mini');
+  if (mini){
+    mini.insertAdjacentHTML('beforeend', `<button type="button" class="ini-link" id="ini-portfolio"><span class="ini-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8 8"/></svg></span>Portfólio</button>
+      <button type="button" class="ini-link" id="ini-bk"><span class="ini-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5l7 3v5c0 4.5-3 7.9-7 9-4-1.1-7-4.5-7-9v-5z"/><path d="M9 12l2 2 4-4"/></svg></span>Backup</button>`);
+    $('ini-portfolio').onclick = ()=> telaPortfolio();
+    $('ini-bk').onclick = ()=> telaBackup();
+  }
 };
 
 </script>
