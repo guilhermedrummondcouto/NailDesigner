@@ -567,6 +567,18 @@ input[type="time"],input[type="date"]{-webkit-appearance:none;appearance:none;mi
 .fi-cor[aria-pressed="true"]{border-color:var(--framboesa)}
 .cor-bolinha{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.3rem;vertical-align:-1px;box-shadow:inset 0 0 0 1px rgba(58,28,42,.2)}
 
+/* MELHORIAS */
+/* ===== BACKUP ===== */
+.bk-lembrete{margin-top:.9rem;border:1.5px solid var(--ambar)!important;background:var(--ambar-suave)!important}
+.bk-lembrete .titulo-linha{color:var(--ambar)}
+.bk-lembrete .btn{margin-top:.7rem}
+.bk-status{margin-top:.9rem}
+.bk-status.atrasado{border:1.5px solid var(--ambar)!important;background:var(--ambar-suave)!important}
+.bk-status.atrasado .titulo-linha{color:var(--ambar)}
+.bk-status.em-dia{border:1.5px solid var(--esmeralda)!important;background:var(--esmeralda-suave)!important}
+.bk-status.em-dia .titulo-linha{color:var(--esmeralda)}
+.bk-info p + p{margin-top:.3rem}
+
 /* VISUAL VIDRO (desligado pela opção Visual: Sólido) */
 /* ===== VISUAL VIDRO (Liquid Glass) — camada por cima da Rosa Blush ===== */
 html:not(.solido){
@@ -4182,6 +4194,132 @@ function renderInicio(){
   };
   alvo.querySelectorAll('[data-ini]').forEach(b=> b.onclick = ()=> acoes[b.dataset.ini]());
 }
+
+</script>
+<script>
+/* ==========================================================================
+   MELHORIAS — 1) BACKUP SEGURO
+   - Backup pelo menu de compartilhar do iPhone (Arquivos/iCloud, WhatsApp, e-mail),
+     com fotos dentro do arquivo.
+   - Guarda a data do último backup e lembra na tela inicial a cada 7 dias.
+   - Tela "Backup e segurança": último backup, restaurar, espaço usado.
+   ========================================================================== */
+const CHAVE_ULT_BACKUP = 'ng_ultimo_backup';
+const DIAS_LEMBRETE_BACKUP = 7;
+function ultimoBackup(){
+  try{ const v = localStorage.getItem(CHAVE_ULT_BACKUP); return v ? new Date(v) : null; }catch(e){ return null; }
+}
+function diasDesdeBackup(){ const u = ultimoBackup(); return u ? Math.floor((Date.now() - u) / 86400000) : null; }
+const temDadosReais = ()=> D.atendimentos.length > 0 || D.clientes.length > 0 || D.itens.length > 0;
+function precisaBackup(){ const d = diasDesdeBackup(); return temDadosReais() && (d == null || d >= DIAS_LEMBRETE_BACKUP); }
+function textoUltimoBackup(){
+  const d = diasDesdeBackup();
+  if (d == null) return 'nunca';
+  if (d === 0) return 'hoje';
+  if (d === 1) return 'ontem';
+  return `há ${d} dias`;
+}
+
+/* compartilha o arquivo; devolve true só se foi salvo/enviado (cancelar não conta como backup) */
+async function salvarArquivoBackup(nome, texto){
+  const tipo = 'application/json';
+  const blob = new Blob([texto], {type: tipo});
+  try{
+    const arq = new File([blob], nome, {type: tipo});
+    if (navigator.canShare && navigator.canShare({files: [arq]})){
+      await navigator.share({files: [arq], title: 'Backup do NailGestor'});
+      return true;
+    }
+  }catch(e){ if (e && e.name === 'AbortError') return false; }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = nome;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=> URL.revokeObjectURL(url), 4000);
+  return true;
+}
+baixarBackup = async function(){
+  const dados = await exportarBackup();
+  dados.versao_app = 'nailgestor-2026-11';
+  const ok = await salvarArquivoBackup(`nailgestor-backup-${chaveDia(new Date())}.json`, JSON.stringify(dados));
+  if (ok){ try{ localStorage.setItem(CHAVE_ULT_BACKUP, new Date().toISOString()); }catch(e){} }
+  return ok;
+};
+
+async function telaBackup(){
+  const nFotos = D.atendimentos.reduce((s, a)=> s + (a.fotos || []).length, 0);
+  let espaco = '';
+  try{
+    if (navigator.storage && navigator.storage.estimate){
+      const e = await navigator.storage.estimate();
+      if (e && e.usage != null) espaco = `${(e.usage / 1048576).toFixed(1).replace('.', ',')} MB usados neste aparelho`;
+    }
+  }catch(e){}
+  let protegido = null;
+  try{ if (navigator.storage && navigator.storage.persisted) protegido = await navigator.storage.persisted(); }catch(e){}
+  const atrasado = precisaBackup();
+  const f = abrirFolha('Backup e segurança', `
+    <div class="cartao bk-status ${atrasado ? 'atrasado' : 'em-dia'}">
+      <p class="titulo-linha">Último backup: ${textoUltimoBackup()}</p>
+      <p class="sub-linha">${atrasado
+        ? 'Seus dados estão só neste celular. Se ele for trocado, perdido ou formatado, tudo se perde sem um backup.'
+        : 'Tudo certo. O app vai lembrar de novo em alguns dias.'}</p>
+    </div>
+    <button type="button" class="btn primario" id="bk-fazer">Fazer backup agora</button>
+    <p class="dica-campo">No iPhone, escolha <strong>Salvar em Arquivos → iCloud Drive</strong> ou mande para o seu próprio WhatsApp. As fotos vão junto no arquivo.</p>
+    <div class="secao-titulo"><h2>Restaurar</h2></div>
+    <p class="sub-linha">Use num celular novo ou se algo der errado. Substitui os dados atuais pelos do arquivo.</p>
+    <button type="button" class="btn contorno" id="bk-restaurar">Restaurar de um backup</button>
+    <input type="file" id="bk-arq" accept="application/json,.json" class="oculto">
+    <div class="secao-titulo"><h2>Neste aparelho</h2></div>
+    <div class="cartao bk-info">
+      <p>${D.clientes.filter(c=> c.ativo).length} clientes · ${D.atendimentos.length} atendimentos · ${nFotos} fotos</p>
+      ${espaco ? `<p class="sub-linha">${espaco}</p>` : ''}
+      ${protegido === true ? '<p class="sub-linha">Armazenamento protegido pelo sistema ✓</p>'
+        : protegido === false ? '<p class="sub-linha">Dica: instale o app na tela de início (Compartilhar → Adicionar à Tela de Início) para o iPhone não apagar os dados sozinho.</p>' : ''}
+    </div>`, ()=> irParaAba(abaAtual));
+  f.querySelector('#bk-fazer').onclick = ev=> comCarregando(ev.currentTarget, 'Preparando…', async ()=>{
+    const ok = await baixarBackup();
+    if (ok){ fecharFolha(); aviso('Backup feito ✓'); } else aviso('Backup cancelado.');
+  });
+  const arq = f.querySelector('#bk-arq');
+  f.querySelector('#bk-restaurar').onclick = ()=> arq.click();
+  arq.onchange = async ()=>{
+    const a = arq.files[0]; if (!a) return;
+    if (!confirm('Restaurar este backup? Os dados atuais deste aparelho serão substituídos.')){ arq.value = ''; return; }
+    try{ await importarBackup(a); fecharFolha(); irParaAba(abaAtual); aviso('Backup restaurado ✓'); }
+    catch(e){ aviso(e.message || 'Não consegui ler o arquivo.'); }
+    arq.value = '';
+  };
+}
+
+/* menu: o item de backup abre a tela nova e mostra a data do último */
+const _abrirMenuOriginal = abrirMenu;
+abrirMenu = function(){
+  _abrirMenuOriginal();
+  const b = $('mn-backup');
+  if (b){
+    b.onclick = ()=>{ fecharFolha(); telaBackup(); };
+    const sub = b.querySelector('.sub-linha');
+    if (sub) sub.textContent = `último backup: ${textoUltimoBackup()}`;
+    const tit = b.querySelector('.titulo-linha'); if (tit) tit.textContent = 'Backup e segurança';
+  }
+};
+
+/* início: lembrete quando faz 7 dias (ou nunca) */
+const _renderInicioBackup = renderInicio;
+renderInicio = function(){
+  _renderInicioBackup();
+  if (!precisaBackup()) return;
+  const alvo = $('painel-inicio');
+  const card = document.createElement('div');
+  card.className = 'cartao bk-lembrete';
+  card.innerHTML = `<p class="titulo-linha">🛟 Hora do backup</p>
+    <p class="sub-linha">Último backup: <strong>${textoUltimoBackup()}</strong>. Seus dados estão só neste celular.</p>
+    <button type="button" class="btn primario" id="ini-backup">Fazer backup agora</button>`;
+  const ref = alvo.querySelector('.ini-hoje');
+  ref ? ref.before(card) : alvo.prepend(card);
+  card.querySelector('#ini-backup').onclick = ()=> telaBackup();
+};
 
 </script>
 <script>
